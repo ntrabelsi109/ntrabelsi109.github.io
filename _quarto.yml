@@ -3,7 +3,7 @@ project:
   output-dir: "."
 
 website:
-  title: "YOUR NAME"
+  title: "Nada Trabelsi"
   navbar:
     pinned: true
     left:
@@ -11,8 +11,12 @@ website:
         href: project.qmd
       - text: Blog
         href: blog-listing.qmd
+      - text: Python Basics
+        href: basic-python-intro.ipynb
+      - text: Python Basics with R
+        href: danl-210-quarto-reticulate.qmd
   page-footer: 
-    center: "Powered with GitHub and Quarto<br>© YOUR NAME, 2023"
+    center: "Powered with GitHub and Quarto<br>© Nada Trabelsi, 2024"
 
 format:
   html:

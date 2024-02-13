@@ -21,27 +21,6 @@
     "text": "2.2 MPG and a Type of Cars\nThe following boxplot shows how the distribution of highway MPG (hwy) varies by a type of cars (class) 🚙 🚚 🚐.\n\nggplot(data = mpg) +\n  geom_boxplot(aes(x = class, y = hwy, fill = class),\n               show.legend = F) +\n  labs(x = \"Class\", y = \"Highway\\nMPG\")"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "YOUR NAME",
-    "section": "",
-    "text": "Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana."
-  },
-  {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "YOUR NAME",
-    "section": "Education",
-    "text": "Education\nState University of New York at Geneseo | Geneseo, NY  B.S. in Data Analytics | Aug 2022 - May 2026  Minor in Business Administration"
-  },
-  {
-    "objectID": "index.html#experience",
-    "href": "index.html#experience",
-    "title": "YOUR NAME",
-    "section": "Experience",
-    "text": "Experience\nStarbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024"
-  },
-  {
     "objectID": "posts/starwars/starwars_df.html",
     "href": "posts/starwars/starwars_df.html",
     "title": "Starwars",
@@ -61,20 +40,6 @@
     "title": "Starwars",
     "section": "Human vs. Droid",
     "text": "Human vs. Droid\n\nggplot(data = \n         starwars %&gt;% \n         filter(species %in% c(\"Human\", \"Droid\"))) +\n  geom_boxplot(aes(x = species, y = mass, \n                   fill = species),\n               show.legend = FALSE)"
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code with no space in the folder name.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
     "objectID": "posts/beer-markets/beer-markets.html",
@@ -124,5 +89,131 @@
     "title": "Insightful Analytics",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nBeer Markets\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n\n9 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Nada Trabelsi",
+    "section": "",
+    "text": "Nada Trabelsi majors in Accounting at SUNY Geneseo. When not working at her family restaurant, Nada enjoys spending time crocheting and learning how to sew."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Nada Trabelsi",
+    "section": "Education",
+    "text": "Education\nState University of New York at Geneseo | Geneseo, NY  B.S. in Accounting | Aug 2022 - May 2026  Minor in Data Analytics"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Nada Trabelsi",
+    "section": "Experience",
+    "text": "Experience\nGregorio’s Pizzeria | Part-Time Restaurant Worker | June 2018 - Present\nSewgreen | Sewing Supply Store Intern | July 2022-Aug 2022"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code with no space in the folder name.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "danl-210-quarto-reticulate.html",
+    "href": "danl-210-quarto-reticulate.html",
+    "title": "DANL 210: Data Preparation and Management",
+    "section": "",
+    "text": "In Python, variables can store data of different types without explicitly declaring the type.\nFor example:\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\n\nfloat_variable\n\n10.5"
+  },
+  {
+    "objectID": "danl-210-quarto-reticulate.html#variables-and-data-types",
+    "href": "danl-210-quarto-reticulate.html#variables-and-data-types",
+    "title": "DANL 210: Data Preparation and Management",
+    "section": "",
+    "text": "In Python, variables can store data of different types without explicitly declaring the type.\nFor example:\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\n\nfloat_variable\n\n10.5"
+  },
+  {
+    "objectID": "danl-210-quarto-reticulate.html#control-structures",
+    "href": "danl-210-quarto-reticulate.html#control-structures",
+    "title": "DANL 210: Data Preparation and Management",
+    "section": "0.2 Control Structures",
+    "text": "0.2 Control Structures\nPython supports the usual logical conditions from mathematics:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b\n\nThese conditions can be used in several ways, most commonly in ‘if statements’ and loops.\n\n# if statement:\nif 5 &gt; 2:\n    print('Five is greater than two!')\n\nFive is greater than two!"
+  },
+  {
+    "objectID": "danl-210-quarto-reticulate.html#functions",
+    "href": "danl-210-quarto-reticulate.html#functions",
+    "title": "DANL 210: Data Preparation and Management",
+    "section": "0.3 Functions",
+    "text": "0.3 Functions\nA function is a block of code which only runs when it is called.\nYou can pass data, known as parameters, into a function.\nA function can return data as a result.\n\n# Defining a function:\ndef my_function():\n    print('Hello from a function')\n\n# Calling a function:\nmy_function()\n\nHello from a function"
+  },
+  {
+    "objectID": "danl-210-quarto-reticulate.html#lists-and-dictionaries",
+    "href": "danl-210-quarto-reticulate.html#lists-and-dictionaries",
+    "title": "DANL 210: Data Preparation and Management",
+    "section": "0.4 Lists and Dictionaries",
+    "text": "0.4 Lists and Dictionaries\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}"
+  },
+  {
+    "objectID": "danl-210-quarto-reticulate.html#import-python-libraries",
+    "href": "danl-210-quarto-reticulate.html#import-python-libraries",
+    "title": "DANL 210: Data Preparation and Management",
+    "section": "1.1 Import Python libraries",
+    "text": "1.1 Import Python libraries\n\nimport pandas as pd\n\n\noj = pd.read_csv('https://bcdanl.github.io/data/dominick_oj.csv')\n\n\n\nCode!\noj\n\n\n         sales  price      brand  ad\n0       8256.0   3.87  tropicana   0\n1       6144.0   3.87  tropicana   0\n2       3840.0   3.87  tropicana   0\n3       8000.0   3.87  tropicana   0\n4       8896.0   3.87  tropicana   0\n...        ...    ...        ...  ..\n28942   2944.0   2.00  dominicks   0\n28943   4928.0   1.94  dominicks   0\n28944  13440.0   1.59  dominicks   0\n28945  55680.0   1.49  dominicks   0\n28946   7040.0   1.75  dominicks   0\n\n[28947 rows x 4 columns]\n\n\n\noj.describe()\n\n               sales         price            ad\ncount   28947.000000  28947.000000  28947.000000\nmean    17312.213356      2.282488      0.237261\nstd     27477.660437      0.648001      0.425411\nmin        64.000000      0.520000      0.000000\n25%      4864.000000      1.790000      0.000000\n50%      8384.000000      2.170000      0.000000\n75%     17408.000000      2.730000      0.000000\nmax    716416.000100      3.870000      1.000000"
+  },
+  {
+    "objectID": "danl-210-quarto-reticulate.html#python-r-interaction",
+    "href": "danl-210-quarto-reticulate.html#python-r-interaction",
+    "title": "DANL 210: Data Preparation and Management",
+    "section": "1.2 Python-R Interaction",
+    "text": "1.2 Python-R Interaction\nBelow is using Python’s DataFrame oj to visualize using R’s ggplot\n\nlibrary(tidyverse)\n\n# Access the Python pandas DataFrame\noj &lt;- py$oj\n\n# Plot using ggplot2\nggplot(oj, aes(x = log(sales), y = log(price), \n               color = brand)) +\n  geom_point(alpha = .25) +\n  geom_smooth(method = lm) +\n  theme_minimal()\n\n\n\n\n\n1.2.1 Interactive DataFrame with R’s DT Package\n\n\n\n\n\n\n\nIn *.ipynb on Google Colab, we can use itables or just Google Colab’s default to print DataFrame.\n\n# !pip install itables\nfrom itables import init_notebook_mode, show\ninit_notebook_mode(all_interactive=False)\n\noj = pd.read_csv('https://bcdanl.github.io/data/dominick_oj.csv')\nshow(oj)"
+  },
+  {
+    "objectID": "basic-python-intro.html",
+    "href": "basic-python-intro.html",
+    "title": "Introduction to Python",
+    "section": "",
+    "text": "Python is a high-level, interpreted programming language. This is a simple Python code:\n\nprint('Hello, World!')"
+  },
+  {
+    "objectID": "basic-python-intro.html#what-is-python",
+    "href": "basic-python-intro.html#what-is-python",
+    "title": "Introduction to Python",
+    "section": "",
+    "text": "Python is a high-level, interpreted programming language. This is a simple Python code:\n\nprint('Hello, World!')"
+  },
+  {
+    "objectID": "basic-python-intro.html#variables-and-data-types",
+    "href": "basic-python-intro.html#variables-and-data-types",
+    "title": "Introduction to Python",
+    "section": "Variables and Data Types",
+    "text": "Variables and Data Types\nIn Python, variables can store data of different types without explicitly declaring the type.\nFor example:\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\n\nfloat_variable\n\n10.5"
+  },
+  {
+    "objectID": "basic-python-intro.html#control-structures",
+    "href": "basic-python-intro.html#control-structures",
+    "title": "Introduction to Python",
+    "section": "Control Structures",
+    "text": "Control Structures\nPython supports the usual logical conditions from mathematics:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b\n\nThese conditions can be used in several ways, most commonly in ‘if statements’ and loops.\n\n# if statement:\nif 5 &gt; 2:\n    print('Five is greater than two!')"
+  },
+  {
+    "objectID": "basic-python-intro.html#functions",
+    "href": "basic-python-intro.html#functions",
+    "title": "Introduction to Python",
+    "section": "Functions",
+    "text": "Functions\nA function is a block of code which only runs when it is called.\nYou can pass data, known as parameters, into a function.\nA function can return data as a result.\n\n# Defining a function:\ndef my_function():\n    print('Hello from a function')\n\n# Calling a function:\nmy_function()"
+  },
+  {
+    "objectID": "basic-python-intro.html#lists-and-dictionaries",
+    "href": "basic-python-intro.html#lists-and-dictionaries",
+    "title": "Introduction to Python",
+    "section": "Lists and Dictionaries",
+    "text": "Lists and Dictionaries\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}"
   }
 ]

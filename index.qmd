@@ -1,41 +1,40 @@
 ---
-title: "YOUR NAME" 
+title: "Nada Trabelsi" 
 about:
   template: trestles  # jolla  trestles  solana  marquee  broadside
-  image: img/profile.png
+  image: img/profile.jpg
   image-width: 16em
   image-shape: round # rectangle  round  rounded
   
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
-    - icon: instagram
-      text: Instagram
-      href: https://instagram.com
+      href: https://linkedin.com/in/nada-trabelsi-40233624a/
     - icon: github
       text: GitHub
-      href: https://github.com
+      href: https://github.com/ntrabelsi109
     - icon: file-earmark-pdf
       text: Resumé
-      href: https://GITHUB_USERNAME.github.io/resume-example.pdf
+      href: https://ntrabelsi109.github.io/nada_trabelsi_resume.pdf
     - icon: mailbox
       text: Email
-      href: mailto:YOUR_EMAIL@geneseo.edu
+      href: mailto:nbt2@geneseo.edu
 
 ---
 
 
-Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana.
+Nada Trabelsi majors in Accounting at SUNY Geneseo. When not working at her family restaurant, Nada enjoys spending time crocheting and learning how to sew.
 
 ## Education
 
 State University of New York at Geneseo | Geneseo, NY <br>
-B.S. in Data Analytics | Aug 2022 - May 2026 <br>
-Minor in Business Administration 
+B.S. in Accounting | Aug 2022 - May 2026 <br>
+Minor in Data Analytics 
 
 ## Experience
 
-Starbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024
+Gregorio's Pizzeria | Part-Time Restaurant Worker | June 2018 - Present
+
+Sewgreen | Sewing Supply Store Intern | July 2022-Aug 2022
 
 
