@@ -15,7 +15,7 @@ about:
       href: https://github.com/ntrabelsi109
     - icon: file-earmark-pdf
       text: Resumé
-      href: https://ntrabelsi109.github.io/nada_trabelsi_resume.pdf
+      href: https://github.com/ntrabelsi109/ntrabelsi109.github.io/blob/main/nada_trabelsi_resume.pdf
     - icon: mailbox
       text: Email
       href: mailto:nbt2@geneseo.edu
