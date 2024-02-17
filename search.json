@@ -88,7 +88,7 @@
     "href": "blog-listing.html",
     "title": "Insightful Analytics",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nBeer Markets\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n\n9 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nPython Basics\n\n\n\n\n\n\n\n\n\nFeb 20, 2024\n\n\nNada Trabelsi\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nBeer Markets\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n\n9 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -257,5 +257,61 @@
     "title": "Introduction to Python",
     "section": "Lists and Dictionaries",
     "text": "Lists and Dictionaries\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\nA tuple is a collection which is immutable.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}\n\n# Tuple example:\nmy_tuple = (1, 2, 3)\n\n\n# for Loops\n\nA loop is a way of executing a piece of code over and over\n\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html",
+    "href": "posts/python-basics/python-basics.html",
+    "title": "Python Basics",
+    "section": "",
+    "text": "Python is a high-level, interpreted programming language."
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#what-is-python",
+    "href": "posts/python-basics/python-basics.html#what-is-python",
+    "title": "Python Basics",
+    "section": "",
+    "text": "Python is a high-level, interpreted programming language."
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#variables-and-data-types",
+    "href": "posts/python-basics/python-basics.html#variables-and-data-types",
+    "title": "Python Basics",
+    "section": "Variables and Data Types",
+    "text": "Variables and Data Types\nVariables can store data of different types. There are many different data types.\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\nboolean_variable = True\nnothing_variable = None"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#control-structures",
+    "href": "posts/python-basics/python-basics.html#control-structures",
+    "title": "Python Basics",
+    "section": "Control Structures",
+    "text": "Control Structures\nPython supports basic conditions from math:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#lists-dictionaries-and-tuples",
+    "href": "posts/python-basics/python-basics.html#lists-dictionaries-and-tuples",
+    "title": "Python Basics",
+    "section": "Lists, Dictionaries, and Tuples",
+    "text": "Lists, Dictionaries, and Tuples\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\nA tuple is a collection which is immutable.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}\n\n# Tuple example:\nmy_tuple = (1, 2, 3)"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#for-loops",
+    "href": "posts/python-basics/python-basics.html#for-loops",
+    "title": "Python Basics",
+    "section": "for Loops",
+    "text": "for Loops\nA loop is a way of executing a piece of code over and over\n\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)\n\nBen\nChris\nKate\nMary"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#slicing-methods",
+    "href": "posts/python-basics/python-basics.html#slicing-methods",
+    "title": "Python Basics",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\nAn index is the position of a specific element in a sequence. Indexing in Python starts with 0.\nSlicing is a way to get a subset of a data object.\nYou can slice by using square brackets [], a start index, and an end index. You can also incude a “step” count to determine how you want to skip position by.\nformat: [start : end : step]\n\nstring = \"abcdefghijklmnaop\"\nprint( string[1 : 6 : 2] )\n\nbdf"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#importing-modules-packages-and-libraries",
+    "href": "posts/python-basics/python-basics.html#importing-modules-packages-and-libraries",
+    "title": "Python Basics",
+    "section": "Importing Modules, Packages, and Libraries",
+    "text": "Importing Modules, Packages, and Libraries\nA module is a group of related codes saved in a file with the extension .py\nA package is a directory of a collection of modules\nA library is a collection of packages\nYou can import modules, open Anaconda Prompt or Terminal and run:\n\npip install module_name\n\nRequirement already satisfied: module_name in c:\\users\\15857\\anaconda3\\lib\\site-packages (0.6.0)Note: you may need to restart the kernel to use updated packages.\n\n\n\nTo install a module on Google Colab add a excalamation point ! in the beginning ## Practice Problems\nQuestion 1.\nUsing Python operations only, calculate below:\n\n2**5/(7*(4-2**3))\n\n-1.1428571428571428\n\n\nQuestion 2.\nFor each expression below, what is the value of the expression? Explain thoroughly.\n\n20 == '20'\n\nFalse\n\n\nFalse, because the integer 20 is not equal to the string 20.\n\nx = 4.0\ny = .5\nz = 3*y - x\n\nx &lt; y or 3*y &lt; x\n\nTrue\n\n\nTrue because by using “or” you only need one of the statements to be true. So although one is false, because the other is true, the whole expression is true.\nQuestion 3.\nWrite a Python code that uses slicing and the print() function to print out the following message:\nThe total trip cost is: $12.80\n\nfare = \"$10.00\"\ntip = \"2.00$\"\ntax = \"$ 0.80\"\n\n\ntotal= fare[1] + tip[0] + \".\" + tax[4:6]\nprint(\"The total trip is: $\" + total)\n\nThe total trip is: $12.80\n\n\nQuestion 4.\nWrite a Python code that uses print() and max() functions to print out the largest value in the list, list_variable, as follows:\nThe largest value in the list is: 1000\n\nlist_variable = [100, 144, 169, 1000, 8]\nprint(\"The largest value in the list is: \", max(list_variable))\n\nThe largest value in the list is:  1000\n\n\nQuestion 5.\nImport the pandas library as pd. Install the itables package. From itables, import the functions init_notebook_mode and show.\n\nimport pandas as pd\n!pip install itables\nfrom itables import init_notebook_mode\nfrom itables import show\n\nRequirement already satisfied: itables in c:\\users\\15857\\anaconda3\\lib\\site-packages (1.7.0)\nRequirement already satisfied: IPython in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (8.15.0)\nRequirement already satisfied: pandas in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (2.0.3)\nRequirement already satisfied: numpy in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (1.24.3)\nRequirement already satisfied: backcall in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.2.0)\nRequirement already satisfied: decorator in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (5.1.1)\nRequirement already satisfied: jedi&gt;=0.16 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.18.1)\nRequirement already satisfied: matplotlib-inline in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.1.6)\nRequirement already satisfied: pickleshare in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.7.5)\nRequirement already satisfied: prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (3.0.36)\nRequirement already satisfied: pygments&gt;=2.4.0 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (2.15.1)\nRequirement already satisfied: stack-data in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.2.0)\nRequirement already satisfied: traitlets&gt;=5 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (5.7.1)\nRequirement already satisfied: colorama in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.4.6)\nRequirement already satisfied: python-dateutil&gt;=2.8.2 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2.8.2)\nRequirement already satisfied: pytz&gt;=2020.1 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2023.3.post1)\nRequirement already satisfied: tzdata&gt;=2022.1 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2023.3)\nRequirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from jedi&gt;=0.16-&gt;IPython-&gt;itables) (0.8.3)\nRequirement already satisfied: wcwidth in c:\\users\\15857\\anaconda3\\lib\\site-packages (from prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30-&gt;IPython-&gt;itables) (0.2.5)\nRequirement already satisfied: six&gt;=1.5 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas-&gt;itables) (1.16.0)\nRequirement already satisfied: executing in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (0.8.3)\nRequirement already satisfied: asttokens in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (2.0.5)\nRequirement already satisfied: pure-eval in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (0.2.2)"
   }
 ]

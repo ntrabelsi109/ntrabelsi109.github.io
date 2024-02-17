@@ -1,0 +1,154 @@
+---
+title: "Python Basics"
+author: "Nada Trabelsi"
+date: "2024-02-20"
+categories: [code, data analysis]
+image: "image.jpg"
+
+execute: 
+  warning: false
+  message: false
+  code-tools: true
+  
+toc: true
+
+format: 
+  html: default
+  ipynb: default
+format-links: [ipynb]
+---
+## What is Python?
+
+Python is a high-level, interpreted programming language.
+
+## Variables and Data Types
+
+Variables can store data of different types. There are many different data types.
+
+```{python}
+integer_variable = 10
+string_variable = 'Hello'
+float_variable = 10.5
+boolean_variable = True
+nothing_variable = None
+```
+
+## Control Structures
+
+Python supports basic conditions from math:
+```{python}
+# Equals: a == b
+# Not Equals: a != b
+# Less than: a < b
+# Less than or equal to: a <= b
+# Greater than: a > b
+# Greater than or equal to: a >= b
+```
+
+## Lists, Dictionaries, and Tuples
+A list is a collection which is ordered and changeable.
+
+A dictionary is a collection which is unordered, changeable and indexed.
+
+A tuple is a collection which is immutable.
+```{python}
+# List example:
+my_list = ['apple', 'banana', 'cherry']
+
+# Dictionary example:
+my_dict = {'name': 'John', 'age': 36}
+
+# Tuple example:
+my_tuple = (1, 2, 3)
+```
+## for Loops
+A loop is a way of executing a piece of code over and over 
+```{python}
+name_list = ["Ben", "Chris", "Kate", "Mary"]
+
+for name in name_list:
+    print(name)
+```
+
+## Slicing Methods
+
+An index is the position of a specific element in a sequence. Indexing in Python starts with 0.
+
+Slicing is a way to get a subset of a data object.
+
+You can slice by using square brackets [], a start index, and an end index. You can also incude a "step" count to determine how you want to skip position by.
+
+format: [start : end : step]
+```{python}
+string = "abcdefghijklmnaop"
+print( string[1 : 6 : 2] )
+```
+## Importing Modules, Packages, and Libraries
+A module is a group of related codes saved in a file with the extension .py
+
+A package is a directory of a collection of modules
+
+A library is a collection of packages
+
+You can import modules, open Anaconda Prompt or Terminal and run:
+```{python}
+pip install module_name
+```
+To install a module on Google Colab add a excalamation point ! in the beginning
+## Practice Problems
+
+Question 1.
+
+Using Python operations only, calculate below:
+```{python}
+2**5/(7*(4-2**3))
+```
+Question 2.
+
+For each expression below, what is the value of the expression? Explain thoroughly.
+```{python}
+20 == '20'
+```
+False, because the integer 20 is not equal to the string 20.
+```{python}
+x = 4.0
+y = .5
+z = 3*y - x
+
+x < y or 3*y < x
+```
+True because by using "or" you only need one of the statements to be true. So although one is false, because the other is true, the whole expression is true.
+
+Question 3.
+
+Write a Python code that uses slicing and the print() function to print out the following message:
+
+The total trip cost is: $12.80
+```{python}
+fare = "$10.00"
+tip = "2.00$"
+tax = "$ 0.80"
+```
+```{python}
+total= fare[1] + tip[0] + "." + tax[4:6]
+print("The total trip is: $" + total)
+```
+Question 4.
+
+Write a Python code that uses print() and max() functions to print out the largest value in the list, list_variable, as follows:
+
+The largest value in the list is: 1000
+```{python}
+list_variable = [100, 144, 169, 1000, 8]
+print("The largest value in the list is: ", max(list_variable))
+```
+Question 5.
+
+Import the pandas library as pd. Install the itables package. From itables, import the functions init_notebook_mode and show.
+
+```{python}
+import pandas as pd
+!pip install itables
+from itables import init_notebook_mode
+from itables import show
+```

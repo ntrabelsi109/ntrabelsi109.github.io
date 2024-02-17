@@ -1,0 +1,10 @@
+{
+  "hash": "169012cc55cb6e4ac4893f763ad06df2",
+  "result": {
+    "markdown": "---\ntitle: \"Python Basics\"\nauthor: \"Nada Trabelsi\"\ndate: \"2024-02-20\"\ncategories: [code, data analysis]\nimage: \"image.png\"\n\nexecute: \n  warning: false\n  message: false\n  code-tools: true\n  \ntoc: true\n\nformat: \n  html: default\n  ipynb: default\nformat-links: [ipynb]\n---\n\n## What is Python?\n\nPython is a high-level, interpreted programming language.\n\n## Variables and Data Types\n\nVariables can store data of different types. There are many different data types.\n\n::: {#e5f4139e .cell execution_count=1}\n``` {.python .cell-code}\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\nboolean_variable = True\nnothing_variable = None\n```\n:::\n\n\n## Control Structures\n\nPython supports basic conditions from math:\n\n::: {#a384c782 .cell execution_count=2}\n``` {.python .cell-code}\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a < b\n# Less than or equal to: a <= b\n# Greater than: a > b\n# Greater than or equal to: a >= b\n```\n:::\n\n\n## Lists, Dictionaries, and Tuples\nA list is a collection which is ordered and changeable.\n\nA dictionary is a collection which is unordered, changeable and indexed.\n\nA tuple is a collection which is immutable.\n\n::: {#618c5ebf .cell execution_count=3}\n``` {.python .cell-code}\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}\n\n# Tuple example:\nmy_tuple = (1, 2, 3)\n```\n:::\n\n\n## for Loops\nA loop is a way of executing a piece of code over and over \n\n::: {#39466582 .cell execution_count=4}\n``` {.python .cell-code}\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nBen\nChris\nKate\nMary\n```\n:::\n:::\n\n\n---\njupyter:\n  kernelspec:\n    display_name: Python 3 (ipykernel)\n    language: python\n    name: python3\n---\n",
+    "supporting": [
+      "python-basics_files\\figure-ipynb"
+    ],
+    "filters": []
+  }
+}
