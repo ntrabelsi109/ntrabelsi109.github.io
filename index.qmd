@@ -2,7 +2,7 @@
 title: "Nada Trabelsi" 
 about:
   template: trestles  # jolla  trestles  solana  marquee  broadside
-  image: img/profile.jpg
+  image: img/profilepic.jpg
   image-width: 16em
   image-shape: round # rectangle  round  rounded
   

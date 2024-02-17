@@ -12,9 +12,7 @@ website:
       - text: Blog
         href: blog-listing.qmd
       - text: Python Basics
-        href: basic-python-intro.ipynb
-      - text: Python Basics with R
-        href: danl-210-quarto-reticulate.qmd
+        href: python_basics.ipynb
   page-footer: 
     center: "Powered with GitHub and Quarto<br>© Nada Trabelsi, 2024"
 
