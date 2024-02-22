@@ -1,45 +1,108 @@
 [
   {
-    "objectID": "project.html",
-    "href": "project.html",
-    "title": "DANL Project",
+    "objectID": "python_basics.html",
+    "href": "python_basics.html",
+    "title": "Introduction to Python",
     "section": "",
-    "text": "About this project 👏\n\n1 + 1\n\n[1] 2"
+    "text": "Python is a high-level, interpreted programming language. This is a simple Python code:\n\nprint('Hello, World!')"
   },
   {
-    "objectID": "project.html#summary-statistics",
-    "href": "project.html#summary-statistics",
-    "title": "DANL Project",
-    "section": "2.1 Summary Statistics",
-    "text": "2.1 Summary Statistics\n\nmpg &lt;- ggplot2::mpg\n\n\n\n\n  \n\n\n\nskim(mpg) %&gt;% \n  select(-n_missing)\n\n\nData summary\n\n\nName\nmpg\n\n\nNumber of rows\n234\n\n\nNumber of columns\n11\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n6\n\n\nnumeric\n5\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\nskim_variable\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nmanufacturer\n1\n4\n10\n0\n15\n0\n\n\nmodel\n1\n2\n22\n0\n38\n0\n\n\ntrans\n1\n8\n10\n0\n10\n0\n\n\ndrv\n1\n1\n1\n0\n3\n0\n\n\nfl\n1\n1\n1\n0\n5\n0\n\n\nclass\n1\n3\n10\n0\n7\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ndispl\n1\n3.47\n1.29\n1.6\n2.4\n3.3\n4.6\n7\n▇▆▆▃▁\n\n\nyear\n1\n2003.50\n4.51\n1999.0\n1999.0\n2003.5\n2008.0\n2008\n▇▁▁▁▇\n\n\ncyl\n1\n5.89\n1.61\n4.0\n4.0\n6.0\n8.0\n8\n▇▁▇▁▇\n\n\ncty\n1\n16.86\n4.26\n9.0\n14.0\n17.0\n19.0\n35\n▆▇▃▁▁\n\n\nhwy\n1\n23.44\n5.95\n12.0\n18.0\n24.0\n27.0\n44\n▅▅▇▁▁"
-  },
-  {
-    "objectID": "project.html#mpg-and-a-type-of-cars",
-    "href": "project.html#mpg-and-a-type-of-cars",
-    "title": "DANL Project",
-    "section": "2.2 MPG and a Type of Cars",
-    "text": "2.2 MPG and a Type of Cars\nThe following boxplot shows how the distribution of highway MPG (hwy) varies by a type of cars (class) 🚙 🚚 🚐.\n\nggplot(data = mpg) +\n  geom_boxplot(aes(x = class, y = hwy, fill = class),\n               show.legend = F) +\n  labs(x = \"Class\", y = \"Highway\\nMPG\")"
-  },
-  {
-    "objectID": "posts/starwars/starwars_df.html",
-    "href": "posts/starwars/starwars_df.html",
-    "title": "Starwars",
+    "objectID": "python_basics.html#what-is-python",
+    "href": "python_basics.html#what-is-python",
+    "title": "Introduction to Python",
     "section": "",
-    "text": "Let’s analyze the starwars data:\nstarwars &lt;- read_csv(\"https://bcdanl.github.io/data/starwars.csv\")"
+    "text": "Python is a high-level, interpreted programming language. This is a simple Python code:\n\nprint('Hello, World!')"
   },
   {
-    "objectID": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
-    "href": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
-    "title": "Starwars",
-    "section": "Variable Description for starwars data.frame",
-    "text": "Variable Description for starwars data.frame\nThe following describes the variables in the starwars data.frame.\n\nfilms List of films the character appeared in\nname Name of the character\nspecies Name of species\nheight Height (cm)\nmass Weight (kg)\nhair_color, skin_color, eye_color Hair, skin, and eye colors\nbirth_year Year born (BBY = Before Battle of Yavin)\nsex The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids).\ngender The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids).\nhomeworld Name of homeworld"
+    "objectID": "python_basics.html#variables-and-data-types",
+    "href": "python_basics.html#variables-and-data-types",
+    "title": "Introduction to Python",
+    "section": "Variables and Data Types",
+    "text": "Variables and Data Types\nIn Python, variables can store data of different types without explicitly declaring the type.\nFor example:\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\nboolean_variable = True\nnothing_variable = None\n\nfloat_variable\n\n10.5"
   },
   {
-    "objectID": "posts/starwars/starwars_df.html#human-vs.-droid",
-    "href": "posts/starwars/starwars_df.html#human-vs.-droid",
-    "title": "Starwars",
-    "section": "Human vs. Droid",
-    "text": "Human vs. Droid\n\nggplot(data = \n         starwars %&gt;% \n         filter(species %in% c(\"Human\", \"Droid\"))) +\n  geom_boxplot(aes(x = species, y = mass, \n                   fill = species),\n               show.legend = FALSE)"
+    "objectID": "python_basics.html#control-structures",
+    "href": "python_basics.html#control-structures",
+    "title": "Introduction to Python",
+    "section": "Control Structures",
+    "text": "Control Structures\nPython supports the usual logical conditions from mathematics:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b\n\nThese conditions can be used in several ways, most commonly in ‘if statements’ and loops.\n\n# if statement:\nif 5 &gt; 2:\n    print('Five is greater than two!')"
+  },
+  {
+    "objectID": "python_basics.html#functions",
+    "href": "python_basics.html#functions",
+    "title": "Introduction to Python",
+    "section": "Functions",
+    "text": "Functions\nA function is a block of code which only runs when it is called.\nYou can pass data, known as parameters, into a function.\nA function can return data as a result.\n\n# Defining a function:\ndef my_function():\n    print('Hello from a function')\n\n# Calling a function:\nmy_function()"
+  },
+  {
+    "objectID": "python_basics.html#lists-and-dictionaries",
+    "href": "python_basics.html#lists-and-dictionaries",
+    "title": "Introduction to Python",
+    "section": "Lists and Dictionaries",
+    "text": "Lists and Dictionaries\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\nA tuple is a collection which is immutable.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}\n\n# Tuple example:\nmy_tuple = (1, 2, 3)\n\n\n# for Loops\n\nA loop is a way of executing a piece of code over and over\n\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html",
+    "href": "posts/python-basics/python-basics.html",
+    "title": "Python Basics",
+    "section": "",
+    "text": "Python is a high-level, interpreted programming language."
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#what-is-python",
+    "href": "posts/python-basics/python-basics.html#what-is-python",
+    "title": "Python Basics",
+    "section": "",
+    "text": "Python is a high-level, interpreted programming language."
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#variables-and-data-types",
+    "href": "posts/python-basics/python-basics.html#variables-and-data-types",
+    "title": "Python Basics",
+    "section": "Variables and Data Types",
+    "text": "Variables and Data Types\nVariables can store data of different types. There are many different data types.\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\nboolean_variable = True\nnothing_variable = None"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#control-structures",
+    "href": "posts/python-basics/python-basics.html#control-structures",
+    "title": "Python Basics",
+    "section": "Control Structures",
+    "text": "Control Structures\nPython supports basic conditions from math:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#lists-dictionaries-and-tuples",
+    "href": "posts/python-basics/python-basics.html#lists-dictionaries-and-tuples",
+    "title": "Python Basics",
+    "section": "Lists, Dictionaries, and Tuples",
+    "text": "Lists, Dictionaries, and Tuples\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\nA tuple is a collection which is immutable.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}\n\n# Tuple example:\nmy_tuple = (1, 2, 3)"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#for-loops",
+    "href": "posts/python-basics/python-basics.html#for-loops",
+    "title": "Python Basics",
+    "section": "for Loops",
+    "text": "for Loops\nA loop is a way of executing a piece of code over and over\n\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)\n\nBen\nChris\nKate\nMary"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#slicing-methods",
+    "href": "posts/python-basics/python-basics.html#slicing-methods",
+    "title": "Python Basics",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\nAn index is the position of a specific element in a sequence. Indexing in Python starts with 0.\nSlicing is a way to get a subset of a data object.\nYou can slice by using square brackets [], a start index, and an end index. You can also incude a “step” count to determine how you want to skip position by.\nformat: [start : end : step]\n\nstring = \"abcdefghijklmnaop\"\nprint( string[1 : 6 : 2] )\n\nbdf"
+  },
+  {
+    "objectID": "posts/python-basics/python-basics.html#importing-modules-packages-and-libraries",
+    "href": "posts/python-basics/python-basics.html#importing-modules-packages-and-libraries",
+    "title": "Python Basics",
+    "section": "Importing Modules, Packages, and Libraries",
+    "text": "Importing Modules, Packages, and Libraries\nA module is a group of related codes saved in a file with the extension .py\nA package is a directory of a collection of modules\nA library is a collection of packages\nYou can import modules, open Anaconda Prompt or Terminal and run:\n\npip install module_name\n\nRequirement already satisfied: module_name in c:\\users\\15857\\anaconda3\\lib\\site-packages (0.6.0)Note: you may need to restart the kernel to use updated packages.\n\n\n\nTo install a module on Google Colab add a excalamation point ! in the beginning"
   },
   {
     "objectID": "posts/beer-markets/beer-markets.html",
@@ -119,199 +182,52 @@
     "text": "This is a post with executable code with no space in the folder name.\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/starwars/starwars_df.html",
+    "href": "posts/starwars/starwars_df.html",
+    "title": "Starwars",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Let’s analyze the starwars data:\nstarwars &lt;- read_csv(\"https://bcdanl.github.io/data/starwars.csv\")"
   },
   {
-    "objectID": "danl-210-quarto-reticulate.html",
-    "href": "danl-210-quarto-reticulate.html",
-    "title": "DANL 210: Data Preparation and Management",
+    "objectID": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
+    "href": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
+    "title": "Starwars",
+    "section": "Variable Description for starwars data.frame",
+    "text": "Variable Description for starwars data.frame\nThe following describes the variables in the starwars data.frame.\n\nfilms List of films the character appeared in\nname Name of the character\nspecies Name of species\nheight Height (cm)\nmass Weight (kg)\nhair_color, skin_color, eye_color Hair, skin, and eye colors\nbirth_year Year born (BBY = Before Battle of Yavin)\nsex The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids).\ngender The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids).\nhomeworld Name of homeworld"
+  },
+  {
+    "objectID": "posts/starwars/starwars_df.html#human-vs.-droid",
+    "href": "posts/starwars/starwars_df.html#human-vs.-droid",
+    "title": "Starwars",
+    "section": "Human vs. Droid",
+    "text": "Human vs. Droid\n\nggplot(data = \n         starwars %&gt;% \n         filter(species %in% c(\"Human\", \"Droid\"))) +\n  geom_boxplot(aes(x = species, y = mass, \n                   fill = species),\n               show.legend = FALSE)"
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "DANL Project",
     "section": "",
-    "text": "In Python, variables can store data of different types without explicitly declaring the type.\nFor example:\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\n\nfloat_variable\n\n10.5"
+    "text": "About this project 👏\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "danl-210-quarto-reticulate.html#variables-and-data-types",
-    "href": "danl-210-quarto-reticulate.html#variables-and-data-types",
-    "title": "DANL 210: Data Preparation and Management",
-    "section": "",
-    "text": "In Python, variables can store data of different types without explicitly declaring the type.\nFor example:\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\n\nfloat_variable\n\n10.5"
+    "objectID": "project.html#summary-statistics",
+    "href": "project.html#summary-statistics",
+    "title": "DANL Project",
+    "section": "2.1 Summary Statistics",
+    "text": "2.1 Summary Statistics\n\nmpg &lt;- ggplot2::mpg\n\n\n\n\n  \n\n\n\nskim(mpg) %&gt;% \n  select(-n_missing)\n\n\nData summary\n\n\nName\nmpg\n\n\nNumber of rows\n234\n\n\nNumber of columns\n11\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n6\n\n\nnumeric\n5\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\nskim_variable\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nmanufacturer\n1\n4\n10\n0\n15\n0\n\n\nmodel\n1\n2\n22\n0\n38\n0\n\n\ntrans\n1\n8\n10\n0\n10\n0\n\n\ndrv\n1\n1\n1\n0\n3\n0\n\n\nfl\n1\n1\n1\n0\n5\n0\n\n\nclass\n1\n3\n10\n0\n7\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ndispl\n1\n3.47\n1.29\n1.6\n2.4\n3.3\n4.6\n7\n▇▆▆▃▁\n\n\nyear\n1\n2003.50\n4.51\n1999.0\n1999.0\n2003.5\n2008.0\n2008\n▇▁▁▁▇\n\n\ncyl\n1\n5.89\n1.61\n4.0\n4.0\n6.0\n8.0\n8\n▇▁▇▁▇\n\n\ncty\n1\n16.86\n4.26\n9.0\n14.0\n17.0\n19.0\n35\n▆▇▃▁▁\n\n\nhwy\n1\n23.44\n5.95\n12.0\n18.0\n24.0\n27.0\n44\n▅▅▇▁▁"
   },
   {
-    "objectID": "danl-210-quarto-reticulate.html#control-structures",
-    "href": "danl-210-quarto-reticulate.html#control-structures",
-    "title": "DANL 210: Data Preparation and Management",
-    "section": "0.2 Control Structures",
-    "text": "0.2 Control Structures\nPython supports the usual logical conditions from mathematics:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b\n\nThese conditions can be used in several ways, most commonly in ‘if statements’ and loops.\n\n# if statement:\nif 5 &gt; 2:\n    print('Five is greater than two!')\n\nFive is greater than two!"
+    "objectID": "project.html#mpg-and-a-type-of-cars",
+    "href": "project.html#mpg-and-a-type-of-cars",
+    "title": "DANL Project",
+    "section": "2.2 MPG and a Type of Cars",
+    "text": "2.2 MPG and a Type of Cars\nThe following boxplot shows how the distribution of highway MPG (hwy) varies by a type of cars (class) 🚙 🚚 🚐.\n\nggplot(data = mpg) +\n  geom_boxplot(aes(x = class, y = hwy, fill = class),\n               show.legend = F) +\n  labs(x = \"Class\", y = \"Highway\\nMPG\")"
   },
   {
-    "objectID": "danl-210-quarto-reticulate.html#functions",
-    "href": "danl-210-quarto-reticulate.html#functions",
-    "title": "DANL 210: Data Preparation and Management",
-    "section": "0.3 Functions",
-    "text": "0.3 Functions\nA function is a block of code which only runs when it is called.\nYou can pass data, known as parameters, into a function.\nA function can return data as a result.\n\n# Defining a function:\ndef my_function():\n    print('Hello from a function')\n\n# Calling a function:\nmy_function()\n\nHello from a function"
-  },
-  {
-    "objectID": "danl-210-quarto-reticulate.html#lists-and-dictionaries",
-    "href": "danl-210-quarto-reticulate.html#lists-and-dictionaries",
-    "title": "DANL 210: Data Preparation and Management",
-    "section": "0.4 Lists and Dictionaries",
-    "text": "0.4 Lists and Dictionaries\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}"
-  },
-  {
-    "objectID": "danl-210-quarto-reticulate.html#import-python-libraries",
-    "href": "danl-210-quarto-reticulate.html#import-python-libraries",
-    "title": "DANL 210: Data Preparation and Management",
-    "section": "1.1 Import Python libraries",
-    "text": "1.1 Import Python libraries\n\nimport pandas as pd\n\n\noj = pd.read_csv('https://bcdanl.github.io/data/dominick_oj.csv')\n\n\n\nCode!\noj\n\n\n         sales  price      brand  ad\n0       8256.0   3.87  tropicana   0\n1       6144.0   3.87  tropicana   0\n2       3840.0   3.87  tropicana   0\n3       8000.0   3.87  tropicana   0\n4       8896.0   3.87  tropicana   0\n...        ...    ...        ...  ..\n28942   2944.0   2.00  dominicks   0\n28943   4928.0   1.94  dominicks   0\n28944  13440.0   1.59  dominicks   0\n28945  55680.0   1.49  dominicks   0\n28946   7040.0   1.75  dominicks   0\n\n[28947 rows x 4 columns]\n\n\n\noj.describe()\n\n               sales         price            ad\ncount   28947.000000  28947.000000  28947.000000\nmean    17312.213356      2.282488      0.237261\nstd     27477.660437      0.648001      0.425411\nmin        64.000000      0.520000      0.000000\n25%      4864.000000      1.790000      0.000000\n50%      8384.000000      2.170000      0.000000\n75%     17408.000000      2.730000      0.000000\nmax    716416.000100      3.870000      1.000000"
-  },
-  {
-    "objectID": "danl-210-quarto-reticulate.html#python-r-interaction",
-    "href": "danl-210-quarto-reticulate.html#python-r-interaction",
-    "title": "DANL 210: Data Preparation and Management",
-    "section": "1.2 Python-R Interaction",
-    "text": "1.2 Python-R Interaction\nBelow is using Python’s DataFrame oj to visualize using R’s ggplot\n\nlibrary(tidyverse)\n\n# Access the Python pandas DataFrame\noj &lt;- py$oj\n\n# Plot using ggplot2\nggplot(oj, aes(x = log(sales), y = log(price), \n               color = brand)) +\n  geom_point(alpha = .25) +\n  geom_smooth(method = lm) +\n  theme_minimal()\n\n\n\n\n\n1.2.1 Interactive DataFrame with R’s DT Package\n\n\n\n\n\n\n\nIn *.ipynb on Google Colab, we can use itables or just Google Colab’s default to print DataFrame.\n\n# !pip install itables\nfrom itables import init_notebook_mode, show\ninit_notebook_mode(all_interactive=False)\n\noj = pd.read_csv('https://bcdanl.github.io/data/dominick_oj.csv')\nshow(oj)"
-  },
-  {
-    "objectID": "basic-python-intro.html",
-    "href": "basic-python-intro.html",
-    "title": "Introduction to Python",
-    "section": "",
-    "text": "Python is a high-level, interpreted programming language. This is a simple Python code:\n\nprint('Hello, World!')"
-  },
-  {
-    "objectID": "basic-python-intro.html#what-is-python",
-    "href": "basic-python-intro.html#what-is-python",
-    "title": "Introduction to Python",
-    "section": "",
-    "text": "Python is a high-level, interpreted programming language. This is a simple Python code:\n\nprint('Hello, World!')"
-  },
-  {
-    "objectID": "basic-python-intro.html#variables-and-data-types",
-    "href": "basic-python-intro.html#variables-and-data-types",
-    "title": "Introduction to Python",
-    "section": "Variables and Data Types",
-    "text": "Variables and Data Types\nIn Python, variables can store data of different types without explicitly declaring the type.\nFor example:\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\n\nfloat_variable\n\n10.5"
-  },
-  {
-    "objectID": "basic-python-intro.html#control-structures",
-    "href": "basic-python-intro.html#control-structures",
-    "title": "Introduction to Python",
-    "section": "Control Structures",
-    "text": "Control Structures\nPython supports the usual logical conditions from mathematics:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b\n\nThese conditions can be used in several ways, most commonly in ‘if statements’ and loops.\n\n# if statement:\nif 5 &gt; 2:\n    print('Five is greater than two!')"
-  },
-  {
-    "objectID": "basic-python-intro.html#functions",
-    "href": "basic-python-intro.html#functions",
-    "title": "Introduction to Python",
-    "section": "Functions",
-    "text": "Functions\nA function is a block of code which only runs when it is called.\nYou can pass data, known as parameters, into a function.\nA function can return data as a result.\n\n# Defining a function:\ndef my_function():\n    print('Hello from a function')\n\n# Calling a function:\nmy_function()"
-  },
-  {
-    "objectID": "basic-python-intro.html#lists-and-dictionaries",
-    "href": "basic-python-intro.html#lists-and-dictionaries",
-    "title": "Introduction to Python",
-    "section": "Lists and Dictionaries",
-    "text": "Lists and Dictionaries\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}"
-  },
-  {
-    "objectID": "python_basics.html",
-    "href": "python_basics.html",
-    "title": "Introduction to Python",
-    "section": "",
-    "text": "Python is a high-level, interpreted programming language. This is a simple Python code:\n\nprint('Hello, World!')"
-  },
-  {
-    "objectID": "python_basics.html#what-is-python",
-    "href": "python_basics.html#what-is-python",
-    "title": "Introduction to Python",
-    "section": "",
-    "text": "Python is a high-level, interpreted programming language. This is a simple Python code:\n\nprint('Hello, World!')"
-  },
-  {
-    "objectID": "python_basics.html#variables-and-data-types",
-    "href": "python_basics.html#variables-and-data-types",
-    "title": "Introduction to Python",
-    "section": "Variables and Data Types",
-    "text": "Variables and Data Types\nIn Python, variables can store data of different types without explicitly declaring the type.\nFor example:\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\nboolean_variable = True\nnothing_variable = None\n\nfloat_variable\n\n10.5"
-  },
-  {
-    "objectID": "python_basics.html#control-structures",
-    "href": "python_basics.html#control-structures",
-    "title": "Introduction to Python",
-    "section": "Control Structures",
-    "text": "Control Structures\nPython supports the usual logical conditions from mathematics:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b\n\nThese conditions can be used in several ways, most commonly in ‘if statements’ and loops.\n\n# if statement:\nif 5 &gt; 2:\n    print('Five is greater than two!')"
-  },
-  {
-    "objectID": "python_basics.html#functions",
-    "href": "python_basics.html#functions",
-    "title": "Introduction to Python",
-    "section": "Functions",
-    "text": "Functions\nA function is a block of code which only runs when it is called.\nYou can pass data, known as parameters, into a function.\nA function can return data as a result.\n\n# Defining a function:\ndef my_function():\n    print('Hello from a function')\n\n# Calling a function:\nmy_function()"
-  },
-  {
-    "objectID": "python_basics.html#lists-and-dictionaries",
-    "href": "python_basics.html#lists-and-dictionaries",
-    "title": "Introduction to Python",
-    "section": "Lists and Dictionaries",
-    "text": "Lists and Dictionaries\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\nA tuple is a collection which is immutable.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}\n\n# Tuple example:\nmy_tuple = (1, 2, 3)\n\n\n# for Loops\n\nA loop is a way of executing a piece of code over and over\n\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)"
-  },
-  {
-    "objectID": "posts/python-basics/python-basics.html",
-    "href": "posts/python-basics/python-basics.html",
+    "objectID": "posts/python-basics/python-basics.html#practice-problems",
+    "href": "posts/python-basics/python-basics.html#practice-problems",
     "title": "Python Basics",
-    "section": "",
-    "text": "Python is a high-level, interpreted programming language."
-  },
-  {
-    "objectID": "posts/python-basics/python-basics.html#what-is-python",
-    "href": "posts/python-basics/python-basics.html#what-is-python",
-    "title": "Python Basics",
-    "section": "",
-    "text": "Python is a high-level, interpreted programming language."
-  },
-  {
-    "objectID": "posts/python-basics/python-basics.html#variables-and-data-types",
-    "href": "posts/python-basics/python-basics.html#variables-and-data-types",
-    "title": "Python Basics",
-    "section": "Variables and Data Types",
-    "text": "Variables and Data Types\nVariables can store data of different types. There are many different data types.\n\ninteger_variable = 10\nstring_variable = 'Hello'\nfloat_variable = 10.5\nboolean_variable = True\nnothing_variable = None"
-  },
-  {
-    "objectID": "posts/python-basics/python-basics.html#control-structures",
-    "href": "posts/python-basics/python-basics.html#control-structures",
-    "title": "Python Basics",
-    "section": "Control Structures",
-    "text": "Control Structures\nPython supports basic conditions from math:\n\n# Equals: a == b\n# Not Equals: a != b\n# Less than: a &lt; b\n# Less than or equal to: a &lt;= b\n# Greater than: a &gt; b\n# Greater than or equal to: a &gt;= b"
-  },
-  {
-    "objectID": "posts/python-basics/python-basics.html#lists-dictionaries-and-tuples",
-    "href": "posts/python-basics/python-basics.html#lists-dictionaries-and-tuples",
-    "title": "Python Basics",
-    "section": "Lists, Dictionaries, and Tuples",
-    "text": "Lists, Dictionaries, and Tuples\nA list is a collection which is ordered and changeable.\nA dictionary is a collection which is unordered, changeable and indexed.\nA tuple is a collection which is immutable.\n\n# List example:\nmy_list = ['apple', 'banana', 'cherry']\n\n# Dictionary example:\nmy_dict = {'name': 'John', 'age': 36}\n\n# Tuple example:\nmy_tuple = (1, 2, 3)"
-  },
-  {
-    "objectID": "posts/python-basics/python-basics.html#for-loops",
-    "href": "posts/python-basics/python-basics.html#for-loops",
-    "title": "Python Basics",
-    "section": "for Loops",
-    "text": "for Loops\nA loop is a way of executing a piece of code over and over\n\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)\n\nBen\nChris\nKate\nMary"
-  },
-  {
-    "objectID": "posts/python-basics/python-basics.html#slicing-methods",
-    "href": "posts/python-basics/python-basics.html#slicing-methods",
-    "title": "Python Basics",
-    "section": "Slicing Methods",
-    "text": "Slicing Methods\nAn index is the position of a specific element in a sequence. Indexing in Python starts with 0.\nSlicing is a way to get a subset of a data object.\nYou can slice by using square brackets [], a start index, and an end index. You can also incude a “step” count to determine how you want to skip position by.\nformat: [start : end : step]\n\nstring = \"abcdefghijklmnaop\"\nprint( string[1 : 6 : 2] )\n\nbdf"
-  },
-  {
-    "objectID": "posts/python-basics/python-basics.html#importing-modules-packages-and-libraries",
-    "href": "posts/python-basics/python-basics.html#importing-modules-packages-and-libraries",
-    "title": "Python Basics",
-    "section": "Importing Modules, Packages, and Libraries",
-    "text": "Importing Modules, Packages, and Libraries\nA module is a group of related codes saved in a file with the extension .py\nA package is a directory of a collection of modules\nA library is a collection of packages\nYou can import modules, open Anaconda Prompt or Terminal and run:\n\npip install module_name\n\nRequirement already satisfied: module_name in c:\\users\\15857\\anaconda3\\lib\\site-packages (0.6.0)Note: you may need to restart the kernel to use updated packages.\n\n\n\nTo install a module on Google Colab add a excalamation point ! in the beginning ## Practice Problems\nQuestion 1.\nUsing Python operations only, calculate below:\n\n2**5/(7*(4-2**3))\n\n-1.1428571428571428\n\n\nQuestion 2.\nFor each expression below, what is the value of the expression? Explain thoroughly.\n\n20 == '20'\n\nFalse\n\n\nFalse, because the integer 20 is not equal to the string 20.\n\nx = 4.0\ny = .5\nz = 3*y - x\n\nx &lt; y or 3*y &lt; x\n\nTrue\n\n\nTrue because by using “or” you only need one of the statements to be true. So although one is false, because the other is true, the whole expression is true.\nQuestion 3.\nWrite a Python code that uses slicing and the print() function to print out the following message:\nThe total trip cost is: $12.80\n\nfare = \"$10.00\"\ntip = \"2.00$\"\ntax = \"$ 0.80\"\n\n\ntotal= fare[1] + tip[0] + \".\" + tax[4:6]\nprint(\"The total trip is: $\" + total)\n\nThe total trip is: $12.80\n\n\nQuestion 4.\nWrite a Python code that uses print() and max() functions to print out the largest value in the list, list_variable, as follows:\nThe largest value in the list is: 1000\n\nlist_variable = [100, 144, 169, 1000, 8]\nprint(\"The largest value in the list is: \", max(list_variable))\n\nThe largest value in the list is:  1000\n\n\nQuestion 5.\nImport the pandas library as pd. Install the itables package. From itables, import the functions init_notebook_mode and show.\n\nimport pandas as pd\n!pip install itables\nfrom itables import init_notebook_mode\nfrom itables import show\n\nRequirement already satisfied: itables in c:\\users\\15857\\anaconda3\\lib\\site-packages (1.7.0)\nRequirement already satisfied: IPython in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (8.15.0)\nRequirement already satisfied: pandas in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (2.0.3)\nRequirement already satisfied: numpy in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (1.24.3)\nRequirement already satisfied: backcall in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.2.0)\nRequirement already satisfied: decorator in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (5.1.1)\nRequirement already satisfied: jedi&gt;=0.16 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.18.1)\nRequirement already satisfied: matplotlib-inline in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.1.6)\nRequirement already satisfied: pickleshare in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.7.5)\nRequirement already satisfied: prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (3.0.36)\nRequirement already satisfied: pygments&gt;=2.4.0 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (2.15.1)\nRequirement already satisfied: stack-data in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.2.0)\nRequirement already satisfied: traitlets&gt;=5 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (5.7.1)\nRequirement already satisfied: colorama in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.4.6)\nRequirement already satisfied: python-dateutil&gt;=2.8.2 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2.8.2)\nRequirement already satisfied: pytz&gt;=2020.1 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2023.3.post1)\nRequirement already satisfied: tzdata&gt;=2022.1 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2023.3)\nRequirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from jedi&gt;=0.16-&gt;IPython-&gt;itables) (0.8.3)\nRequirement already satisfied: wcwidth in c:\\users\\15857\\anaconda3\\lib\\site-packages (from prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30-&gt;IPython-&gt;itables) (0.2.5)\nRequirement already satisfied: six&gt;=1.5 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas-&gt;itables) (1.16.0)\nRequirement already satisfied: executing in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (0.8.3)\nRequirement already satisfied: asttokens in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (2.0.5)\nRequirement already satisfied: pure-eval in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (0.2.2)"
+    "section": "Practice Problems",
+    "text": "Practice Problems\nQuestion 1.\nUsing Python operations only, calculate below:\n\n2**5/(7*(4-2**3))\n\n-1.1428571428571428\n\n\nQuestion 2.\nFor each expression below, what is the value of the expression? Explain thoroughly.\n\n20 == '20'\n\nFalse\n\n\nFalse, because the integer 20 is not equal to the string 20.\n\nx = 4.0\ny = .5\nz = 3*y - x\n\nx &lt; y or 3*y &lt; x\n\nTrue\n\n\nTrue because by using “or” you only need one of the statements to be true. So although one is false, because the other is true, the whole expression is true.\nQuestion 3.\nWrite a Python code that uses slicing and the print() function to print out the following message:\nThe total trip cost is: $12.80\n\nfare = \"$10.00\"\ntip = \"2.00$\"\ntax = \"$ 0.80\"\n\n\ntotal= fare[1] + tip[0] + \".\" + tax[4:6]\nprint(\"The total trip is: $\" + total)\n\nThe total trip is: $12.80\n\n\nQuestion 4.\nWrite a Python code that uses print() and max() functions to print out the largest value in the list, list_variable, as follows:\nThe largest value in the list is: 1000\n\nlist_variable = [100, 144, 169, 1000, 8]\nprint(\"The largest value in the list is: \", max(list_variable))\n\nThe largest value in the list is:  1000\n\n\nQuestion 5.\nImport the pandas library as pd. Install the itables package. From itables, import the functions init_notebook_mode and show.\n\nimport pandas as pd\n!pip install itables\nfrom itables import init_notebook_mode\nfrom itables import show\n\nRequirement already satisfied: itables in c:\\users\\15857\\anaconda3\\lib\\site-packages (1.7.0)\nRequirement already satisfied: IPython in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (8.15.0)\nRequirement already satisfied: pandas in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (2.0.3)\nRequirement already satisfied: numpy in c:\\users\\15857\\anaconda3\\lib\\site-packages (from itables) (1.24.3)\nRequirement already satisfied: backcall in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.2.0)\nRequirement already satisfied: decorator in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (5.1.1)\nRequirement already satisfied: jedi&gt;=0.16 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.18.1)\nRequirement already satisfied: matplotlib-inline in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.1.6)\nRequirement already satisfied: pickleshare in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.7.5)\nRequirement already satisfied: prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (3.0.36)\nRequirement already satisfied: pygments&gt;=2.4.0 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (2.15.1)\nRequirement already satisfied: stack-data in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.2.0)\nRequirement already satisfied: traitlets&gt;=5 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (5.7.1)\nRequirement already satisfied: colorama in c:\\users\\15857\\anaconda3\\lib\\site-packages (from IPython-&gt;itables) (0.4.6)\nRequirement already satisfied: python-dateutil&gt;=2.8.2 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2.8.2)\nRequirement already satisfied: pytz&gt;=2020.1 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2023.3.post1)\nRequirement already satisfied: tzdata&gt;=2022.1 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from pandas-&gt;itables) (2023.3)\nRequirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from jedi&gt;=0.16-&gt;IPython-&gt;itables) (0.8.3)\nRequirement already satisfied: wcwidth in c:\\users\\15857\\anaconda3\\lib\\site-packages (from prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30-&gt;IPython-&gt;itables) (0.2.5)\nRequirement already satisfied: six&gt;=1.5 in c:\\users\\15857\\anaconda3\\lib\\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas-&gt;itables) (1.16.0)\nRequirement already satisfied: executing in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (0.8.3)\nRequirement already satisfied: asttokens in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (2.0.5)\nRequirement already satisfied: pure-eval in c:\\users\\15857\\anaconda3\\lib\\site-packages (from stack-data-&gt;IPython-&gt;itables) (0.2.2)"
   }
 ]

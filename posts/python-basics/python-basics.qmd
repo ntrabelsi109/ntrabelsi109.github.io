@@ -95,6 +95,7 @@ You can import modules, open Anaconda Prompt or Terminal and run:
 pip install module_name
 ```
 To install a module on Google Colab add a excalamation point ! in the beginning
+
 ## Practice Problems
 
 Question 1.

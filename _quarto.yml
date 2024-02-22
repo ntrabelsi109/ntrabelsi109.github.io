@@ -11,8 +11,7 @@ website:
         href: project.qmd
       - text: Blog
         href: blog-listing.qmd
-      - text: Python Basics
-        href: python_basics.ipynb
+        
   page-footer: 
     center: "Powered with GitHub and Quarto<br>© Nada Trabelsi, 2024"
 
