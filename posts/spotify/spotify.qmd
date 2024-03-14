@@ -1,0 +1,70 @@
+---
+title: "Spotify"
+author: "Nada Trabelsi"
+date: "2024-03-08"
+categories: [code]
+image: "spotify_img.png"
+
+execute: 
+  warning: false
+  message: false
+  code-tools: true
+  
+toc: true
+
+format: 
+  html: default
+  ipynb: default
+format-links: [ipynb]
+---
+## Loading the Dataset
+```{python}
+import pandas as pd
+spotify = pd.read_csv('https://bcdanl.github.io/data/spotify_all.csv')
+spotify.info()
+```
+## Variable Description
+
+* pid: playlist ID; unique ID for playlist
+* playlist_name: a name of playlist
+* pos: a position of the track within a playlist (starting from 0)
+* artist_name: name of the track’s primary artist
+* track_name: name of the track
+* duration_ms: duration of the track in milliseconds
+* album_name: name of the track’s album
+
+## Filtering
+I will filter for one of my favorite artists: Shakira.
+```{python}
+shakira = spotify[ spotify["artist_name"] == "Shakira"]
+shakira
+```
+
+## Indexing and Sorting
+```{python}
+shakira= (
+          shakira
+          .set_index("pid")
+          .sort_index(ascending=True)
+)
+shakira.sort_values(by = ["playlist_name", "pos"],
+                    ascending = True)
+```
+
+## Counting
+```{python}
+shakira.nunique()
+```
+There are 116 unique playlists that have atleast 1 Shakira song in it.
+```{python}
+shakira['playlist_name'].value_counts()
+```
+The playlist with the most Shakira songs is "💃" with 9 songs included.
+
+```{python}
+shakira["track_name"].value_counts()
+```
+The most popular song (added to playlist the most times) is "Hips Don't Lie".
+
+
+
