@@ -205,9 +205,9 @@
   {
     "objectID": "project.html",
     "href": "project.html",
-    "title": "DANL Project",
+    "title": "Unifying Environmental, Social, and Governance Metrics with Financial Analysis",
     "section": "",
-    "text": "About this project 👏\n\n1 + 1\n\n[1] 2"
+    "text": "#| include: false"
   },
   {
     "objectID": "project.html#summary-statistics",
@@ -271,5 +271,12 @@
     "title": "Spotify",
     "section": "Counting",
     "text": "Counting\n\nshakira.nunique()\n\nplaylist_name    116\npos               86\nartist_name        1\ntrack_name        35\nduration_ms       36\nalbum_name        12\ndtype: int64\n\n\nThere are 116 unique playlists that have atleast 1 Shakira song in it.\n\nshakira['playlist_name'].value_counts()\n\nplaylist_name\n💃🏽              9\nmusica          7\nspanish jams    6\nGB              6\nParty           4\n               ..\nTaylor swift    1\nGabriel         1\nweekend         1\nmisc.           1\neverything      1\nName: count, Length: 116, dtype: int64\n\n\nThe playlist with the most Shakira songs is “💃” with 9 songs included.\n\nshakira[\"track_name\"].value_counts()\n\ntrack_name\nHips Don't Lie                                                                   53\nChantaje                                                                         18\nLa Tortura                                                                       13\nWaka Waka (This Time for Africa) (The Official 2010 FIFA World Cup (TM) Song)    12\nTry Everything - From \"Zootropolis\"                                               9\nCan't Remember to Forget You                                                      9\nWhenever, Wherever                                                                8\nMe Enamoré                                                                        7\nRabiosa                                                                           5\nPerro Fiel                                                                        4\nLoca                                                                              4\nAddicted to You                                                                   4\nOjos Así                                                                          2\nTrap                                                                              2\nUnderneath Your Clothes                                                           2\nShe Wolf                                                                          2\nGordita                                                                           2\nTe Aviso, Te Anuncio (Tango)                                                      1\nEmpire                                                                            1\nLo Hecho Está Hecho                                                               1\nEyes Like Yours (Ojos Así)                                                        1\nLa La La                                                                          1\nSuerte (Whenever, Wherever)                                                       1\nYou Don't Care About Me                                                           1\nLoca por Ti                                                                       1\nSombra de Ti                                                                      1\nCiega, Sordomuda                                                                  1\nAntologia                                                                         1\nMoscas en la Casa                                                                 1\nPienso en Ti                                                                      1\nDare (La La La)                                                                   1\nNo                                                                                1\nGypsy                                                                             1\nDon't Bother                                                                      1\nNunca Me Acuerdo de Olvidarte                                                     1\nName: count, dtype: int64\n\n\nThe most popular song (added to playlist the most times) is “Hips Don’t Lie”."
+  },
+  {
+    "objectID": "project_possibly.html",
+    "href": "project_possibly.html",
+    "title": "Project?",
+    "section": "",
+    "text": "import seaborn as sns import numpy as np from selenium import webdriver from selenium.webdriver.common.by import By from selenium.webdriver.chrome.options import Options import time"
   }
 ]
