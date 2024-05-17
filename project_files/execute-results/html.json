@@ -1,0 +1,11 @@
+{
+  "hash": "0c58f557fcf2e493e5068bcd92aab9c2",
+  "result": {
+    "markdown": "---\ntitle: \"Unifying Environmental, Social, and Governance Metrics with Financial Analysis\"\nauthor: Nada Trabelsi\ndate: 5/16/2024\n\ntoc: true\ntoc-title: \"Table of Contents\"\ntoc-depth: 2\nnumber-sections: true\n\nfig-width: 9\n\nexecute:\n  code-tools: true\n  message: false\n  warning: false\n\nfrom: markdown+emoji\n---\n\n# Introduction\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\nesg_proj = pd.read_csv(\"https://bcdanl.github.io/data/esg_proj.csv\")\n```\n:::\n\n\n",
+    "supporting": [
+      "project_files\\figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
