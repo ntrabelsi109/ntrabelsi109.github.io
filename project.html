@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nada Trabelsi">
+<meta name="dcterms.date" content="2024-05-16">
 
-<title>Nada Trabelsi - Unifying Environmental, Social, and Governance Metrics with Financial Analysis</title>
+<title>Nada Trabelsi - Understanding ESG Metrics and Financial Anaylis By Sector</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -61,6 +96,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -104,14 +142,25 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#the-distribution-of-esg-scores" id="toc-the-distribution-of-esg-scores" class="nav-link" data-scroll-target="#the-distribution-of-esg-scores"><span class="header-section-number">2</span> The Distribution of ESG Scores</a></li>
+  <li><a href="#financials-by-sector" id="toc-financials-by-sector" class="nav-link" data-scroll-target="#financials-by-sector"><span class="header-section-number">3</span> Financials By Sector</a></li>
+  <li><a href="#unifying-esg-metrics-and-financials" id="toc-unifying-esg-metrics-and-financials" class="nav-link" data-scroll-target="#unifying-esg-metrics-and-financials"><span class="header-section-number">4</span> Unifying ESG Metrics and Financials</a></li>
+  <li><a href="#diving-deeper-into-esg-metrics" id="toc-diving-deeper-into-esg-metrics" class="nav-link" data-scroll-target="#diving-deeper-into-esg-metrics"><span class="header-section-number">5</span> Diving Deeper into ESG Metrics</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6</span> References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unifying Environmental, Social, and Governance Metrics with Financial Analysis</h1>
+<h1 class="title">Understanding ESG Metrics and Financial Anaylis By Sector</h1>
 </div>
 
 
@@ -125,6 +174,12 @@ ul.task-list li input[type="checkbox"] {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 16, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -132,9 +187,561 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>#| include: false</p>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>ESG metrics are performance indicators of a company’s performance on Environmental, Social, and Governance issues. The ESG risk rating measures a companies risk of mismanaging environmental, social, and governance issues. A companies Controversy Level measures the level of incidents that negatively impact stockholders, the environment, or operations. A level 5 shows the highest controversy level with incidents that have the greatest possible impact to the company.</p>
+<p>I will be taking a deeper look and comparing companies ESG risk scores and financial analysis. Specifically focusing on the varying sectors and if there is a connection between a companies controversy level and their financials.</p>
+<p>First, I will merge the dataframes with the variables I will be using into one single DataFrame, ‘df’.</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>esg_proj <span class="op">=</span> pd.read_csv(<span class="st">"https://bcdanl.github.io/data/esg_proj.csv"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>history<span class="op">=</span> pd.read_csv(<span class="st">'https://ntrabelsi109.github.io/project_files/yfinance_history.csv'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>inc_stmnt<span class="op">=</span> pd.read_csv(<span class="st">'https://ntrabelsi109.github.io/project_files/yfinance_income_stmt.csv'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>bal_sheet<span class="op">=</span> pd.read_csv(<span class="st">'https://ntrabelsi109.github.io/project_files/yfinance_balance_sheet.csv'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>esg_scores <span class="op">=</span> pd.read_csv(<span class="st">"https://ntrabelsi109.github.io/project_files/company_esg_scores.csv"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Create merged dataframe with variables I will be using</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>df1<span class="op">=</span> (</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      esg_proj</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      [[<span class="st">'Symbol'</span>, <span class="st">'Company Name'</span>, <span class="st">'Sector'</span>, <span class="st">'Industry'</span>]]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span> (</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      inc_stmnt</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      [[<span class="st">'date'</span>, <span class="st">'company_name'</span>,<span class="st">'Net Income'</span>, <span class="st">'Total Expenses'</span>, <span class="st">'Gross Profit'</span>, <span class="st">'Total Revenue'</span>]]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      .rename(columns<span class="op">=</span>{<span class="st">'company_name'</span>: <span class="st">'Symbol'</span>})</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df3<span class="op">=</span> (</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      bal_sheet</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      [[<span class="st">'date'</span>, <span class="st">'company_name'</span>, <span class="st">'Total Assets'</span>, <span class="st">'Stockholders Equity'</span>, <span class="st">'Common Stock'</span>,<span class="st">'Net Debt'</span>]]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      .rename(columns<span class="op">=</span>{<span class="st">'company_name'</span>: <span class="st">'Symbol'</span>})</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>df4<span class="op">=</span>(</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>     esg_scores</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>     .rename(columns<span class="op">=</span>{<span class="st">'company'</span>:<span class="st">'Symbol'</span>}))</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span> pd.merge(esg_proj,df2, on<span class="op">=</span><span class="st">'Symbol'</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.merge(df, df3, on<span class="op">=</span>[<span class="st">'Symbol'</span>, <span class="st">'date'</span>])</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.merge(df, df4, on<span class="op">=</span>[<span class="st">'Symbol'</span>])</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>df.nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>Symbol                  634
+Company Name            633
+Sector                   12
+Industry                123
+Country                  19
+Market Cap              634
+date                     14
+Net Income             2569
+Total Expenses         2744
+Gross Profit           2476
+Total Revenue          2956
+Total Assets           3047
+Stockholders Equity    3021
+Common Stock           1302
+Net Debt               2611
+env_score               177
+soc_score               155
+gov_score               108
+total_score             250
+controversy_lvl           5
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="the-distribution-of-esg-scores" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Distribution of ESG Scores</h1>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(df,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>              x<span class="op">=</span> <span class="st">'total_score'</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              bins<span class="op">=</span> <span class="dv">10</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>             hue<span class="op">=</span> <span class="st">'Sector'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>&lt;Axes: xlabel='total_score', ylabel='Count'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="project_files/figure-html/cell-3-output-2.png" width="742" height="429"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(df,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>              x<span class="op">=</span> <span class="st">'controversy_lvl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>&lt;Axes: xlabel='controversy_lvl', ylabel='count'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="project_files/figure-html/cell-4-output-2.png" width="750" height="432"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'Sector'</span>)[<span class="st">'controversy_lvl'</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
 
 
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Sector</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Basic Materials</td>
+<td>35.0</td>
+<td>3.000000</td>
+<td>0.766965</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Communication Services</td>
+<td>70.0</td>
+<td>2.157143</td>
+<td>0.651324</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>3.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Consumer Discretionary</td>
+<td>697.0</td>
+<td>1.984218</td>
+<td>0.659618</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Consumer Staples</td>
+<td>99.0</td>
+<td>2.626263</td>
+<td>0.581796</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>4.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Energy</td>
+<td>123.0</td>
+<td>2.040650</td>
+<td>0.717445</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>3.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Financial Services</td>
+<td>440.0</td>
+<td>1.836364</td>
+<td>0.829713</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>5.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Health Care</td>
+<td>278.0</td>
+<td>2.248201</td>
+<td>0.853690</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>5.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Industrials</td>
+<td>390.0</td>
+<td>1.943590</td>
+<td>0.766857</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>4.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Miscellaneous</td>
+<td>4.0</td>
+<td>2.000000</td>
+<td>0.000000</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Real Estate</td>
+<td>122.0</td>
+<td>1.196721</td>
+<td>0.399159</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>2.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Technology</td>
+<td>258.0</td>
+<td>1.806202</td>
+<td>0.818821</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Utilities</td>
+<td>185.0</td>
+<td>2.081081</td>
+<td>0.852693</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>5.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>By looking at the distribution of ESG metrics, we can see that a majority of companies have a total risk score around 10-30. With the sectors with the highest risk score above 40 being Energy, and Utilities.</p>
+<p>The average company has a controversy level of 2, with only a few companies having a controversy level above 5.Only three sectors have companies who reached a level of 5: Financial Services, Health Care, and Utilities. However, the sector who has the greatest average and median is Basic Materials and the sector with the lowest controversy level is Real Estate with at least 75% of the companies only having a controversy level of 1 and the highest controversy level being 2.</p>
+</section>
+<section id="financials-by-sector" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Financials By Sector</h1>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sectors_gp<span class="op">=</span> (</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'Sector'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Gross Profit'</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>sectors_gp.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Sector</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Basic Materials</td>
+<td>39.0</td>
+<td>8.723186e+08</td>
+<td>5.478340e+08</td>
+<td>1.175010e+08</td>
+<td>5.102820e+08</td>
+<td>8.310000e+08</td>
+<td>1.249500e+09</td>
+<td>1.956000e+09</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Communication Services</td>
+<td>60.0</td>
+<td>8.202911e+09</td>
+<td>7.484955e+09</td>
+<td>5.402410e+08</td>
+<td>1.888500e+09</td>
+<td>4.234000e+09</td>
+<td>1.383225e+10</td>
+<td>2.166400e+10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Consumer Discretionary</td>
+<td>712.0</td>
+<td>2.143730e+09</td>
+<td>3.982030e+09</td>
+<td>-1.200000e+07</td>
+<td>5.627092e+08</td>
+<td>9.928395e+08</td>
+<td>2.135057e+09</td>
+<td>4.156300e+10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Consumer Staples</td>
+<td>104.0</td>
+<td>3.071622e+09</td>
+<td>3.780767e+09</td>
+<td>3.970000e+08</td>
+<td>8.153500e+08</td>
+<td>1.264200e+09</td>
+<td>3.452000e+09</td>
+<td>1.475300e+10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Energy</td>
+<td>142.0</td>
+<td>3.137069e+09</td>
+<td>4.435765e+09</td>
+<td>-1.195190e+08</td>
+<td>6.852500e+08</td>
+<td>1.799500e+09</td>
+<td>3.846500e+09</td>
+<td>2.396100e+10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Financial Services</td>
+<td>107.0</td>
+<td>1.001935e+09</td>
+<td>6.714125e+08</td>
+<td>7.914100e+07</td>
+<td>4.761500e+08</td>
+<td>8.120000e+08</td>
+<td>1.439500e+09</td>
+<td>3.003000e+09</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Health Care</td>
+<td>268.0</td>
+<td>3.349850e+09</td>
+<td>4.379822e+09</td>
+<td>9.487800e+07</td>
+<td>6.529835e+08</td>
+<td>1.515500e+09</td>
+<td>4.034000e+09</td>
+<td>2.338800e+10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Industrials</td>
+<td>472.0</td>
+<td>1.076500e+09</td>
+<td>1.088400e+09</td>
+<td>-7.040520e+08</td>
+<td>3.923628e+08</td>
+<td>6.717000e+08</td>
+<td>1.462425e+09</td>
+<td>6.428000e+09</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Miscellaneous</td>
+<td>4.0</td>
+<td>8.092500e+08</td>
+<td>3.536716e+08</td>
+<td>5.960000e+08</td>
+<td>6.155000e+08</td>
+<td>6.520000e+08</td>
+<td>8.457500e+08</td>
+<td>1.337000e+09</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Real Estate</td>
+<td>190.0</td>
+<td>5.109807e+08</td>
+<td>4.256441e+08</td>
+<td>2.676400e+07</td>
+<td>2.149412e+08</td>
+<td>3.859300e+08</td>
+<td>7.176070e+08</td>
+<td>2.045800e+09</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Technology</td>
+<td>349.0</td>
+<td>4.168420e+09</td>
+<td>9.194252e+09</td>
+<td>-1.206000e+09</td>
+<td>5.572000e+08</td>
+<td>1.113822e+09</td>
+<td>2.559000e+09</td>
+<td>5.485500e+10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Utilities</td>
+<td>203.0</td>
+<td>1.458809e+09</td>
+<td>9.803909e+08</td>
+<td>-1.056000e+09</td>
+<td>8.093500e+08</td>
+<td>1.224575e+09</td>
+<td>1.970000e+09</td>
+<td>8.108000e+09</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> sns.FacetGrid(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>       data <span class="op">=</span> df,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>       row<span class="op">=</span><span class="st">'Sector'</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> .<span class="bu">map</span>(sns.histplot, <span class="st">'Stockholders Equity'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="project_files/figure-html/cell-7-output-1.png" width="289" height="3443"></p>
+</div>
+</div>
+<p>The Sector with the highest average gross profit is Communication Services, the lowest being Real Estate. When looking at stockholders equity, most sectors are concentrated around the same area with a few sectors have a wider distribution particularly Financial Services.</p>
+</section>
+<section id="unifying-esg-metrics-and-financials" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Unifying ESG Metrics and Financials</h1>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>corr <span class="op">=</span> df[[<span class="st">'Gross Profit'</span>, <span class="st">'Market Cap'</span>, <span class="st">'Stockholders Equity'</span>, <span class="st">'env_score'</span>, <span class="st">'soc_score'</span>, <span class="st">'gov_score'</span>, <span class="st">'controversy_lvl'</span>]].corr()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, linewidths<span class="op">=</span><span class="fl">.5</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Correlation Between Financials and ESG Scores'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>Text(0.5, 1.0, 'Correlation Between Financials and ESG Scores')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="project_files/figure-html/cell-8-output-2.png" width="731" height="625"></p>
+</div>
+</div>
+<p>Market capitalization and Stockholders equity shave a strong, positive correlation with a companies gross profit. However there does not appear to be any strong correlation between a companies financials and their ESG score or controversy level. The highest correlation is the controversy level and gross profit at a weak, positive correlation of .38.</p>
+</section>
+<section id="diving-deeper-into-esg-metrics" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Diving Deeper into ESG Metrics</h1>
+<ul>
+<li>What is the top industry for each sector that has the highest environmental risk score?</li>
+</ul>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sectors_top_industry_env<span class="op">=</span> (</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'env_score'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'Sector'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    .head(<span class="dv">1</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>sectors_top_industry_env</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>sns.barplot(sectors_top_industry_env,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'env_score'</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'Industry'</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span> <span class="st">'Sector'</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>&lt;Axes: xlabel='env_score', ylabel='Industry'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="project_files/figure-html/cell-9-output-2.png" width="949" height="429"></p>
+</div>
+</div>
+<ul>
+<li>Which industry within each sector has the highest controversy levels?</li>
+</ul>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sectors_top_industry_cont<span class="op">=</span> (</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'controversy_lvl'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'Sector'</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    .head(<span class="dv">1</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>sns.barplot(sectors_top_industry_cont,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'controversy_lvl'</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'Industry'</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span> <span class="st">'Sector'</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>&lt;Axes: xlabel='controversy_lvl', ylabel='Industry'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="project_files/figure-html/cell-10-output-2.png" width="973" height="429"></p>
+</div>
+</div>
+<p>While a company’s ESG score or controversy level might not have a strong correlation with a company’s financials, investors should still take into consideration the ESG risk scores and controversy level that might bring potential harm to the company. Considering ESG risk and controversy levels can allow investors to consider the sustainability of a certain company and will help them make more informed decisions.</p>
+</section>
+<section id="references" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> References</h1>
+<p>“A Guide to Understanding ESG Ratings.” Yahoo! Finance, Yahoo!, finance.yahoo.com/news/guide-understanding-esg-ratings-151501443.html.</p>
+<p>I collaborated with Jordan Alfano to create the code used for collecting data using the yfinance API and web scraping with Selenium.</p>
+<p>ChatGPT was used to generate the lines of code that allowed the webdriver to launch and quit after pocessing every 20 companies.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script type="text/javascript" src="links.js"></script>

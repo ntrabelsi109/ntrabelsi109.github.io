@@ -1,5 +1,5 @@
 ---
-title: "Unifying Environmental, Social, and Governance Metrics with Financial Analysis"
+title: "Understanding ESG Metrics and Financial Anaylis By Sector"
 author: Nada Trabelsi
 date: 5/16/2024
 
@@ -7,7 +7,7 @@ toc: true
 toc-title: "Table of Contents"
 toc-depth: 2
 number-sections: true
-
+code-fold: true
 fig-width: 9
 
 execute:
@@ -19,15 +19,151 @@ from: markdown+emoji
 ---
 # Introduction
 
+ESG metrics are performance indicators of a company’s performance on Environmental, Social, and Governance issues. The ESG risk rating measures a companies risk of mismanaging environmental, social, and governance issues. A companies Controversy Level measures the level of incidents that negatively impact stockholders, the environment, or operations. A level 5 shows the highest controversy level with incidents that have the greatest possible impact to the company.
+
+I will be taking a deeper look and comparing companies ESG risk scores and financial analysis. Specifically focusing on the varying sectors and if there is a connection between a companies controversy level and their financials.
+
+First, I will merge the dataframes with the variables I will be using into one single DataFrame, 'df'.
+
 ```{python}
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 esg_proj = pd.read_csv("https://bcdanl.github.io/data/esg_proj.csv")
+history= pd.read_csv('https://ntrabelsi109.github.io/project_files/yfinance_history.csv')
+inc_stmnt= pd.read_csv('https://ntrabelsi109.github.io/project_files/yfinance_income_stmt.csv')
+bal_sheet= pd.read_csv('https://ntrabelsi109.github.io/project_files/yfinance_balance_sheet.csv')
+esg_scores = pd.read_csv("https://ntrabelsi109.github.io/project_files/company_esg_scores.csv")
 
+#Create merged dataframe with variables I will be using
+df1= (
+      esg_proj
+      [['Symbol', 'Company Name', 'Sector', 'Industry']]
+      )
+df2= (
+      inc_stmnt
+      [['date', 'company_name','Net Income', 'Total Expenses', 'Gross Profit', 'Total Revenue']]
+      .rename(columns={'company_name': 'Symbol'})
+      )
+df3= (
+      bal_sheet
+      [['date', 'company_name', 'Total Assets', 'Stockholders Equity', 'Common Stock','Net Debt']]
+      .rename(columns={'company_name': 'Symbol'})
+      )
+df4=(
+     esg_scores
+     .rename(columns={'company':'Symbol'}))
+
+
+df= pd.merge(esg_proj,df2, on='Symbol')
+df=pd.merge(df, df3, on=['Symbol', 'date'])
+df=pd.merge(df, df4, on=['Symbol'])
+df.nunique()
 ```
 
+# The Distribution of ESG Scores
+
+
+```{python}
+sns.histplot(df,
+              x= 'total_score',
+              bins= 10,
+             hue= 'Sector')
+```
+
+```{python}
+sns.countplot(df,
+              x= 'controversy_lvl')
+```
+
+
+```{python}
+df.groupby('Sector')['controversy_lvl'].describe()
+```
+
+By looking at the distribution of ESG metrics, we can see that a majority of companies have a total risk score around 10-30. With the sectors with the highest risk score above 40 being Energy, and Utilities.
+
+The average company has a controversy level of 2, with only a few companies having a controversy level above 5.Only three sectors have companies who reached a level of 5: Financial Services, Health Care, and Utilities. However, the sector who has the greatest average and median is Basic Materials and the sector with the lowest controversy level is Real Estate with at least 75% of the companies only having a controversy level of 1 and the highest controversy level being 2.
+
+# Financials By Sector
+```{python}
+sectors_gp= (
+    df
+    .groupby('Sector')
+    ['Gross Profit']
+)
+sectors_gp.describe()
+```
+
+```{python}
+(
+ sns.FacetGrid(
+       data = df,
+       row='Sector')
+ .map(sns.histplot, 'Stockholders Equity')
+ )
+```
+
+The Sector with the highest average gross profit is Communication Services, the lowest being Real Estate. When looking at stockholders equity, most sectors are concentrated around the same area with a few sectors have a wider distribution particularly Financial Services.
+
+# Unifying ESG Metrics and Financials
+```{python}
+corr = df[['Gross Profit', 'Market Cap', 'Stockholders Equity', 'env_score', 'soc_score', 'gov_score', 'controversy_lvl']].corr()
+
+plt.figure(figsize=(8, 6))
+
+sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5)
+
+plt.title('Correlation Between Financials and ESG Scores')
+```
+
+Market capitalization and Stockholders equity shave a strong, positive correlation with a companies gross profit. However there does not appear to be any strong correlation between a companies financials and their ESG score or controversy level. The highest correlation is the controversy level and gross profit at a weak, positive correlation of .38.
+
+# Diving Deeper into ESG Metrics
+
+* What is the top industry for each sector that has the highest environmental risk score?
+
+```{python}
+sectors_top_industry_env= (
+    df
+    .sort_values('env_score', ascending=False)
+    .groupby('Sector')
+    .head(1)
+)
+sectors_top_industry_env
+sns.barplot(sectors_top_industry_env,
+    x='env_score',
+    y='Industry',
+    hue= 'Sector'
+)
+```
+
+* Which industry within each sector has the highest controversy levels?
+
+```{python}
+sectors_top_industry_cont= (
+    df
+    .sort_values('controversy_lvl', ascending=False)
+    .groupby('Sector')
+    .head(1)
+)
+sns.barplot(sectors_top_industry_cont,
+    x='controversy_lvl',
+    y='Industry',
+    hue= 'Sector'
+)
+```
+
+While a company's ESG score or controversy level might not have a strong correlation with a company's financials, investors should still take into consideration the ESG risk scores and controversy level that might bring potential harm to the company. Considering ESG risk and controversy levels can allow investors to consider the sustainability of a certain company and will help them make more informed decisions.
+
+# References
+
+“A Guide to Understanding ESG Ratings.” Yahoo! Finance, Yahoo!, finance.yahoo.com/news/guide-understanding-esg-ratings-151501443.html.
+
+I collaborated with Jordan Alfano to create the code used for collecting data using the yfinance API and web scraping with Selenium.
+
+ChatGPT was used to generate the lines of code that allowed the webdriver to launch and quit after pocessing every 20 companies.
 
 
 
