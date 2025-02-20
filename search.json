@@ -151,14 +151,14 @@
     "href": "blog-listing.html",
     "title": "Insightful Analytics",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nSpotify\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nNada Trabelsi\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nPython Basics\n\n\n\n\n\n\n\n\n\nFeb 20, 2024\n\n\nNada Trabelsi\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nBeer Markets\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n\n9 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nggplot Basics\n\n\n\n\n\n\n\n\nFeb 19, 2025\n\n\nNada Trabelsi\n\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\n\nSpotify\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nNada Trabelsi\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\nPython Basics\n\n\n\n\n\n\n\n\nFeb 20, 2024\n\n\nNada Trabelsi\n\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\n\nBeer Markets\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n\n9 min\n\n\n\n\n\n\n\n\n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Nada Trabelsi",
     "section": "",
-    "text": "Nada Trabelsi majors in Accounting at SUNY Geneseo. When not working at her family restaurant, Nada enjoys spending time crocheting and learning how to sew."
+    "text": "Nada Trabelsi majors in Accounting with a minor in Data Analytics at SUNY Geneseo. When not working at her family restaurant, Nada enjoys spending time crocheting and learning how to sew."
   },
   {
     "objectID": "index.html#education",
@@ -285,5 +285,75 @@
     "title": "Understanding ESG Metrics and Financial Anaylis By Sector",
     "section": "",
     "text": "ESG metrics are performance indicators of a company’s performance on Environmental, Social, and Governance issues. The ESG risk rating measures a companies risk of mismanaging environmental, social, and governance issues. A companies Controversy Level measures the level of incidents that negatively impact stockholders, the environment, or operations. A level 5 shows the highest controversy level with incidents that have the greatest possible impact to the company.\nI will be taking a deeper look and comparing companies ESG risk scores and financial analysis. Specifically focusing on the varying sectors and if there is a connection between a companies controversy level and their financials.\nFirst, I will merge the dataframes with the variables I will be using into one single DataFrame, ‘df’.\n\n\nCode\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\nesg_proj = pd.read_csv(\"https://bcdanl.github.io/data/esg_proj.csv\")\nhistory= pd.read_csv('https://ntrabelsi109.github.io/project_files/yfinance_history.csv')\ninc_stmnt= pd.read_csv('https://ntrabelsi109.github.io/project_files/yfinance_income_stmt.csv')\nbal_sheet= pd.read_csv('https://ntrabelsi109.github.io/project_files/yfinance_balance_sheet.csv')\nesg_scores = pd.read_csv(\"https://ntrabelsi109.github.io/project_files/company_esg_scores.csv\")\n\n#Create merged dataframe with variables I will be using\ndf1= (\n      esg_proj\n      [['Symbol', 'Company Name', 'Sector', 'Industry']]\n      )\ndf2= (\n      inc_stmnt\n      [['date', 'company_name','Net Income', 'Total Expenses', 'Gross Profit', 'Total Revenue']]\n      .rename(columns={'company_name': 'Symbol'})\n      )\ndf3= (\n      bal_sheet\n      [['date', 'company_name', 'Total Assets', 'Stockholders Equity', 'Common Stock','Net Debt']]\n      .rename(columns={'company_name': 'Symbol'})\n      )\ndf4=(\n     esg_scores\n     .rename(columns={'company':'Symbol'}))\n\n\ndf= pd.merge(esg_proj,df2, on='Symbol')\ndf=pd.merge(df, df3, on=['Symbol', 'date'])\ndf=pd.merge(df, df4, on=['Symbol'])\ndf.nunique()\n\n\nSymbol                  634\nCompany Name            633\nSector                   12\nIndustry                123\nCountry                  19\nMarket Cap              634\ndate                     14\nNet Income             2569\nTotal Expenses         2744\nGross Profit           2476\nTotal Revenue          2956\nTotal Assets           3047\nStockholders Equity    3021\nCommon Stock           1302\nNet Debt               2611\nenv_score               177\nsoc_score               155\ngov_score               108\ntotal_score             250\ncontroversy_lvl           5\ndtype: int64"
+  },
+  {
+    "objectID": "lecture3.html",
+    "href": "lecture3.html",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "Code\nlibrary(skimr)\nlibrary(gapminder)\ngapminder\n\n\n# A tibble: 1,704 × 6\n   country     continent  year lifeExp      pop gdpPercap\n   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n 1 Afghanistan Asia       1952    28.8  8425333      779.\n 2 Afghanistan Asia       1957    30.3  9240934      821.\n 3 Afghanistan Asia       1962    32.0 10267083      853.\n 4 Afghanistan Asia       1967    34.0 11537966      836.\n 5 Afghanistan Asia       1972    36.1 13079460      740.\n 6 Afghanistan Asia       1977    38.4 14880372      786.\n 7 Afghanistan Asia       1982    39.9 12881816      978.\n 8 Afghanistan Asia       1987    40.8 13867957      852.\n 9 Afghanistan Asia       1992    41.7 16317921      649.\n10 Afghanistan Asia       1997    41.8 22227415      635.\n# ℹ 1,694 more rows\n\n\nCode\nskim(gapminder)\n\n\n\nData summary\n\n\nName\ngapminder\n\n\nNumber of rows\n1704\n\n\nNumber of columns\n6\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nfactor\n2\n\n\nnumeric\n4\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: factor\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nordered\nn_unique\ntop_counts\n\n\n\n\ncountry\n0\n1\nFALSE\n142\nAfg: 12, Alb: 12, Alg: 12, Ang: 12\n\n\ncontinent\n0\n1\nFALSE\n5\nAfr: 624, Asi: 396, Eur: 360, Ame: 300\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nyear\n0\n1\n1979.50\n17.27\n1952.00\n1965.75\n1979.50\n1993.25\n2007.0\n▇▅▅▅▇\n\n\nlifeExp\n0\n1\n59.47\n12.92\n23.60\n48.20\n60.71\n70.85\n82.6\n▁▆▇▇▇\n\n\npop\n0\n1\n29601212.32\n106157896.74\n60011.00\n2793664.00\n7023595.50\n19585221.75\n1318683096.0\n▇▁▁▁▁\n\n\ngdpPercap\n0\n1\n7215.33\n9857.45\n241.17\n1202.06\n3531.85\n9325.46\n113523.1\n▇▁▁▁▁\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\np &lt;- ggplot(data = gapminder)\np &lt;- ggplot(data = gapminder,\n            mapping = aes(x = gdpPercap,\n                          y = lifeExp))\n\n\n\n\nCode\np + geom_point() \n\n\n\n\n\n\n\n\n\n\n\nCode\np + geom_point() + geom_smooth() \n\n\n\n\n\n\n\n\n\nCode\np + geom_point() + geom_smooth(method = \"lm\") \n\n\n\n\n\n\n\n\n\nCode\np + geom_point() +\n    geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\n\n\n\nCode\np &lt;- ggplot(data = gapminder,\n            mapping = aes(x = gdpPercap,\n                          y = lifeExp))\n\np + geom_point(color = \"purple\") +\n    geom_smooth(method = \"loess\") \n\n\n\n\n\n\n\n\n\nCode\np + geom_point(alpha = 0.3) +\n    geom_smooth(color = \"orange\", \n                se = F, \n                size = 8, \n                method = lm) \n\n\n\n\n\n\n\n\n\n\n\nCode\np + geom_point(alpha = 0.3) +\n    geom_smooth(method = \"gam\") +\n    scale_x_log10(labels = scales::dollar) +\n    labs(x = \"GDP Per Capita\", y = \"Life Expectancy in Years\",\n         title = \"Economic Growth and Life Expectancy\",\n         subtitle = \"Data points are country-years\",\n         caption = \"Source: Gapminder.\")\n\n\n\n\n\n\n\n\n\n\n\nCode\np &lt;- ggplot(data = gapminder, \n            mapping = aes(x = gdpPercap, y = lifeExp))\n\np + geom_point(mapping = aes(color = continent)) +\n    geom_smooth(method = \"loess\")  +\n    scale_x_continuous(trans = scales::log_trans())  # natural log"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html",
+    "href": "posts/ggplot-basics/ggplot_basics.html",
+    "title": "ggplot Basics",
+    "section": "",
+    "text": "#Load libraries\nlibrary(tidyverse)\nlibrary(ggthemes)\n\n#set theme\n\ntheme_set(theme_minimal())\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   color = class,\n                   shape = class) )\n\n\n\n\n\n\n\n\n\n\n\nAdding transparency and changing size can help with issues of overplotting.\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .2)\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             size = 3)"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html#color-and-shape",
+    "href": "posts/ggplot-basics/ggplot_basics.html#color-and-shape",
+    "title": "ggplot Basics",
+    "section": "",
+    "text": "ggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   color = class) )\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   color = class) )"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html#setting-transparency-and-size",
+    "href": "posts/ggplot-basics/ggplot_basics.html#setting-transparency-and-size",
+    "title": "ggplot Basics",
+    "section": "",
+    "text": "Adding transparency and changing size can help with issues of overplotting.\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .2)\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             size = 3)"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html#scatterplot",
+    "href": "posts/ggplot-basics/ggplot_basics.html#scatterplot",
+    "title": "ggplot Basics",
+    "section": "Scatterplot",
+    "text": "Scatterplot\n\nggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy),\n             alpha = .3)"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html#setting-color-and-shape",
+    "href": "posts/ggplot-basics/ggplot_basics.html#setting-color-and-shape",
+    "title": "ggplot Basics",
+    "section": "",
+    "text": "ggplot(data = mpg) + \n  geom_point(mapping = \n               aes(x = displ, \n                   y = hwy, \n                   color = class,\n                   shape = class) )"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html#fitted-lines",
+    "href": "posts/ggplot-basics/ggplot_basics.html#fitted-lines",
+    "title": "ggplot Basics",
+    "section": "Fitted Lines",
+    "text": "Fitted Lines\nWe can set the linetype of the fitted line with linetype()\n\nggplot( data = mpg ) + \n  geom_smooth( mapping = \n                 aes( x = displ, \n                      y = hwy, \n                      linetype = drv) )\n\n\n\n\n\n\n\n\nYou can get a linear fitted line by setting method = lm.\nThe grey shaded area is the standard error. It can be removed by setting se = False (or F)\n\nggplot( data = mpg ) + \n  geom_smooth( mapping = \n                 aes( x = displ, \n                      y = hwy),\n               method = lm,\n               se = F)"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html#histogram",
+    "href": "posts/ggplot-basics/ggplot_basics.html#histogram",
+    "title": "ggplot Basics",
+    "section": "Histogram",
+    "text": "Histogram\nHistograms can be used to plot continuous variables like a bar chart.\nNumber of bins or the width of the bars can be set with “bins =” and “binwidth =”, respectively.\n\nggplot(diamonds) +\n  geom_histogram(aes(x = price), \n                 bins = 100)"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html#frequency-polygon",
+    "href": "posts/ggplot-basics/ggplot_basics.html#frequency-polygon",
+    "title": "ggplot Basics",
+    "section": "Frequency Polygon",
+    "text": "Frequency Polygon\nA frequency polygon is a line version of a histogram.\n\nggplot(diamonds) +\n  geom_freqpoly(aes(x = price), \n                 bins = 100)"
+  },
+  {
+    "objectID": "posts/ggplot-basics/ggplot_basics.html#combining-geom-objects",
+    "href": "posts/ggplot-basics/ggplot_basics.html#combining-geom-objects",
+    "title": "ggplot Basics",
+    "section": "Combining Geom Objects",
+    "text": "Combining Geom Objects\n\nlibrary(gapminder)\ngapminder &lt;- gapminder\np &lt;- ggplot(data = gapminder,\n            mapping = aes(x = gdpPercap,\n                          y = lifeExp))\np_out &lt;- p + geom_point(aes(color = continent)) + geom_smooth(se = F) \np_out"
   }
 ]

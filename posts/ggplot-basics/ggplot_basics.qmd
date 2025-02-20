@@ -1,0 +1,159 @@
+---
+title: ggplot Basics
+author: Nada Trabelsi
+date: 2025-02-19
+categories: [code, data analysis] # tags for a blog post (e.g., python)
+image: image.png 
+
+execute: 
+  warning: false
+  message: false
+  
+toc: true
+---
+# Aesthetic Mapping
+```{r}
+#Load libraries
+library(tidyverse)
+library(ggthemes)
+
+#set theme
+
+theme_set(theme_minimal())
+```
+
+
+## Setting Color and Shape
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy, 
+                   color = class,
+                   shape = class) )
+
+```
+## Setting Transparency and Size
+
+Adding transparency and changing size can help with issues of overplotting.
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .2)
+
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             size = 3)
+```
+
+
+# Facets
+
+Facets can be used to split plots into multiple different facets to display subplots of different subsets of the data. 
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy), 
+             alpha = .5) + 
+  facet_wrap( . ~ class, nrow = 2)
+
+```
+
+# Geometric Objects
+
+geom_x() is the geometrical object that is used for representing data in a plot. 
+
+```{r}
+cows_filtered <- read_csv(
+  'https://bcdanl.github.io/data/cows_filtered.csv')
+```
+## Scatterplot
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = 
+               aes(x = displ, 
+                   y = hwy),
+             alpha = .3)
+```
+
+## Fitted Lines
+We can set the linetype of the fitted line with linetype()
+```{r}
+ggplot( data = mpg ) + 
+  geom_smooth( mapping = 
+                 aes( x = displ, 
+                      y = hwy, 
+                      linetype = drv) )
+```
+You can get a linear fitted line by setting method = lm.
+
+The grey shaded area is the standard error. It can be removed by setting se = False (or F)
+```{r}
+ggplot( data = mpg ) + 
+  geom_smooth( mapping = 
+                 aes( x = displ, 
+                      y = hwy),
+               method = lm,
+               se = F)
+```
+
+## Histogram
+Histograms can be used to plot continuous variables like a bar chart. 
+
+Number of bins or the width of the bars can be set with “bins =” and “binwidth =”, respectively. 
+```{r}
+ggplot(diamonds) +
+  geom_histogram(aes(x = price), 
+                 bins = 100)
+```
+
+## Frequency Polygon
+
+A frequency polygon is a line version of a histogram. 
+
+```{r}
+ggplot(diamonds) +
+  geom_freqpoly(aes(x = price), 
+                 bins = 100)
+```
+
+
+## Combining Geom Objects
+
+```{r}
+library(gapminder)
+gapminder <- gapminder
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+p_out <- p + geom_point(aes(color = continent)) + geom_smooth(se = F) 
+p_out
+```
+
+
+# Saving a Plot
+
+We can save our plots using ggsave().
+
+```{r}
+ggsave("lifexp_vs_gdp_gradient.pdf",
+       plot = p_out, height = 8, width = 10, units = "in")
+
+
+```
+
+
+
+
+
+
+
+
+
