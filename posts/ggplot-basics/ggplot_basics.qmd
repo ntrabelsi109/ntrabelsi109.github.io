@@ -3,7 +3,7 @@ title: ggplot Basics
 author: Nada Trabelsi
 date: 2025-02-19
 categories: [code, data analysis] # tags for a blog post (e.g., python)
-image: image.png 
+image: ggplot2.png 
 
 execute: 
   warning: false
