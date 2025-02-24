@@ -11,9 +11,7 @@ website:
         href: project.qmd
       - text: Blog
         href: blog-listing.qmd
-      - text: HW
-        menu: 
-          - text: HW 1
+
         
   page-footer: 
     center: "Powered with GitHub and Quarto<br>© Nada Trabelsi, 2024"
