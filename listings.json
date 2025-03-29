@@ -2,6 +2,7 @@
   {
     "listing": "/blog-listing.html",
     "items": [
+      "/posts/ben-and-jerrys/ben_jerrys_blog.html",
       "/posts/ggplot-basics/ggplot_basics.html",
       "/posts/spotify/spotify.html",
       "/posts/python-basics/python-basics.html",
