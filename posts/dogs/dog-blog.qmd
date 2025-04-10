@@ -1,0 +1,214 @@
+---
+title: Dogs in New York City
+author: Nada Trabelsi
+date: 2025-04-5
+categories: [code, data analysis] # tags for a blog post (e.g., python)
+image: yorkie.png 
+
+execute: 
+  warning: false
+  message: false
+  
+toc: true
+---
+# Introduction to the Dataset
+
+```{r}
+library(tidyverse)
+library(skimr)
+library(dplyr)
+library(ggplot2)
+
+nyc_dog_license <- read_csv(
+  'https://bcdanl.github.io/data/nyc_dog_license.csv')
+nyc_zips_coord <- read_csv(
+  'https://bcdanl.github.io/data/nyc_zips_coord.csv')
+nyc_zips_df <- read_csv(
+  'https://bcdanl.github.io/data/nyc_zips_df.csv')
+```
+
+
+```{r}
+
+skim(nyc_dog_license)
+```
+
+# Top 5 Dog Breeds in NYC
+
+```{r}
+top_5 <- nyc_dog_license |> 
+  group_by(breed_rc) |> 
+  count() |> 
+  arrange(desc(n)) |> 
+  head(5) |> 
+  mutate(breed_rc = factor(breed_rc, levels = breed_rc))
+```
+
+
+```{r}
+ggplot(top_5,
+       aes(x = reorder(breed_rc, -n),
+           y = n)) +
+  
+  geom_bar(stat = "identity",
+           aes(fill = breed_rc)) +
+  
+  labs(title = "Top 5 Dogs in NYC",
+       x = "Breed",
+       y = "") +
+  
+  guides(fill=guide_legend(title="Dog Breed")) +
+  
+  theme_bw() +
+  
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9)
+  ) +
+  
+  scale_fill_brewer(palette = "Pastel1")
+  
+  
+```
+
+
+# The Top 5 Breeds Popularity by Zip Code
+
+```{r}
+map_df <- left_join(nyc_zips_df, nyc_zips_coord)
+```
+
+```{r}
+dog_breed <- nyc_dog_license |> 
+  filter(breed_rc %in% c("Yorkshire Terrier", "Labrador (or Crossbreed)", "Shih Tzu", "Pit Bull (or Mix)", "Chihuahua")) |>
+  group_by(borough, breed_rc) |> 
+  mutate(n = n())
+
+map <- left_join(map_df, dog_breed)
+
+```
+
+
+```{r}
+alwan <- c("Chihuahua" = "#f6bd60",
+           "Labrador (or Crossbreed)" = "#f7ede2",
+           "Pit Bull (or Mix)" = "#f5cac3",
+           "Shih Tzu" = "#84a59d",
+           "Yorkshire Terrier" = "#f28482",
+           "NA" = "grey")
+
+ggplot(map,
+       aes(x = X,
+           y = Y,
+           group = zip_code,
+           fill = breed_rc)) +
+  
+  geom_polygon() +
+  
+  labs(title = "The Top 5 Breeds Popularity by Zip Code") +
+  
+  theme_void() +
+  
+  theme(
+    legend.direction = "horizontal",
+    legend.position = "top",
+    plot.title = element_text(hjust = 0.5, size = 20),
+    legend.key.width = unit(2, "cm"),
+    legend.key.height = unit(0.5, "cm")
+  ) +
+  
+  guides(fill=guide_legend(title=" ",
+                           nrow = 1,
+                           title.position = "top",
+                           label.position = "bottom")) +
+  
+  coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
+  
+  scale_fill_manual(values = alwan)
+
+```
+It appears the top 5 dog breeds are spread rather equally across NYC, with the Yorkie and Lab taking up a couple large areas compared to the rest. There also appears to be a couple areas where none of the top 5 appear to be licensed in. Particularly in the South East. We'll be exploring which dogs are popular in these zip codes in the following section.  
+
+# Observing Other Dog Breeds Within Zip Codes Without the Top 5
+
+```{r}
+og_zip <-unique(nyc_dog_license$zip_code)
+og_zip <- data.frame(zip_code = og_zip)
+
+
+new_zip <- unique(dog_breed$zip_code)
+new_zip <- data.frame(zip_code = new_zip)
+
+```
+
+
+```{r}
+missing <- anti_join(og_zip, new_zip)
+
+missing_zip <- missing$zip_code
+```
+
+```{r}
+other_zips <- nyc_dog_license |> 
+  filter(zip_code %in% missing_zip) |> 
+  group_by(breed_rc) |> 
+  count()
+```
+
+
+```{r}
+unique(other_zips$breed_rc)
+```
+```{r}
+colors <- c("Maltese" = "#505D3D",
+            "Pomeranian" = "#606f49",
+            "German Shepherd Dog" = "#728359",
+            "Shih Tzu Crossbreed" = "#849669",
+            "Beagle" = "#97a97c",
+            "Havanese" = "#a6b98b",
+            "Poodle Crossbreed" = "#b5c99a",
+            "French Bulldog" = "#c2d5aa",
+            "Golden Retriever" = "#cfe1b9",
+            "Jack Russell Terrier" = "#dcebca",
+            "Chihuahua Crossbreed" = "#e9f5db")
+```
+
+
+
+```{r}
+other_zips$breed_rc <- as.factor(other_zips$breed_rc)
+
+ggplot(other_zips,
+       aes(x = n,
+           y = reorder(breed_rc, n))) +
+  
+  geom_bar(stat = "identity",
+           aes(fill = breed_rc)) +
+    
+  labs(title = "Dogs in Zip Codes Where Top 5 are Missing",
+       x = " ",
+       y = "Dog Breeds") +
+    
+  scale_fill_manual(values = colors) + 
+  
+    theme_classic() +
+    
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  
+  scale_x_continuous(expand = c(0, 0)) 
+```
+
+The Maltese and Pomeranian are some of the most popular dogs in the zip codes that are missing the top 5 mentioned earlier.
+
+
+
+
+
+
+
+
+
+
