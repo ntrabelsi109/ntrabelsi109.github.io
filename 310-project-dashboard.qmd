@@ -1,0 +1,335 @@
+---
+title: 310 Project Dashboard
+author: Nada Trabelsi
+format: 
+  dashboard: default
+orientation: rows
+scrolling: true
+navbar: true
+---
+
+```{r}
+library(readr)
+library(tidyverse)
+library(readxl)
+library(skimr)
+library(dplyr)
+library(sf)
+library(ggthemes)
+library(ggtext)
+library(ggrepel)
+library(plotly)
+library(knitr)
+
+##df1
+global_health <- read_csv("global_health.csv") 
+birth_rate_df <- read_excel("P_Data_Extract_From_World_Development_Indicators_all_years_for_kaggle.xlsx") |> 
+  filter(Time == 2021) |> 
+  mutate(Year = Time,
+         Country = Country_name) |> 
+  select(Country, Year, Birth_rate)
+
+global_health <- global_health |> 
+  left_join(birth_rate_df) |> 
+  mutate(Infant_Mortality_Rate = round((Infant_Deaths / (Birth_rate / 1000 * Total_Population)) * 1000, 2)) |> 
+  filter(Year == 2021)
+
+world_map <- read_sf("C:/Users/15857/Downloads/DANL-310/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp") |> 
+  rename("Country_Code" = "SOV_A3") |> 
+  filter(Country_Code != "ATA") |> 
+  mutate(Country_Code = recode(Country_Code,
+                               "US1" = "USA",
+                               "KA1" = "KAZ",
+                               "FR1" = "FRA",
+                               "CU1" = "CUB",
+                               "DN1" = "DNK",
+                               "NL1" = "NLD",
+                               "CH1" = "CHN",
+                               "IS1" = "ISR",
+                               "CYN" = "CYP",
+                               "GB1" = "GBR",
+                               "AU1" = "AUS",
+                               "NZ1" = "NZL",
+                               "FI1" = "FIN",
+                               "SDS" = "SSD"))
+##df2(map)  
+
+imr_map_data <- world_map |> 
+  left_join(global_health, by = "Country_Code") |> 
+  mutate(h_text = paste0(Country, "\nIMR:", Infant_Mortality_Rate))
+##df3 (with classifications)
+gh_with_classification <- global_health |>  
+  mutate(Classification = case_when(
+    GDP_Per_Capita <= 1045 ~ "Low Income",
+    GDP_Per_Capita > 1045 & GDP_Per_Capita <= 4095 ~ "Lower-Middle Income",
+    GDP_Per_Capita > 4095 & GDP_Per_Capita <= 12695 ~ "Upper-Middle Income",
+    GDP_Per_Capita > 12695 ~ "High Income"
+  )) |> 
+  filter(!is.na(Classification))
+
+```
+
+# Global Infant Mortality Rate
+
+## Row
+
+### Column {width=30%}
+```{r}
+#| content: valuebox
+#| title: "Global Median IMR"
+list(
+  icon = "globe-asia-australia",
+  color = "primary",
+  value = round(median(gh_with_classification$Infant_Mortality_Rate, na.rm = T), 1)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Lowest IMR:\n San Marino"
+list(
+  icon = "person-down",
+  color = "success",
+  value = round(min(gh_with_classification$Infant_Mortality_Rate, na.rm = T), 1)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Highest IMR:\n Central African Republic"
+list(
+  icon = "person-up",
+  color = "danger",
+  value = round(max(gh_with_classification$Infant_Mortality_Rate, na.rm = T), 1)
+)
+```
+
+
+```{r}
+#| content: valuebox
+#| title: "Countries Below Sustainable Development Goal Target (≤12)"
+num_not_meeting <- sum(gh_with_classification$Infant_Mortality_Rate > 12, na.rm = TRUE)
+total <- sum(!is.na(gh_with_classification$Infant_Mortality_Rate))
+pct_not_meeting <- round((num_not_meeting / total) * 100, 1)
+list(
+  icon = "person-exclamation",
+  color = "warning",
+  value = paste0(pct_not_meeting, "%")
+)
+```
+
+### Column {width=70%}
+
+```{r}
+#| title: Global Map of Infant Mortality Rates, 2021
+
+p <-  ggplot() +
+  
+    geom_sf(data = imr_map_data,
+            aes(fill = Infant_Mortality_Rate, text = h_text),
+            linewidth = 0.2)+
+  
+    labs(fill = "Infant Mortality Rate",
+         #title = "Infant Morality Rate, 2021",
+         caption = "Source: World Bank Open Data")+
+    scale_fill_viridis_c(option = "plasma")+
+  
+    coord_sf(crs = st_crs("ESRI:54030")) + 
+  
+    theme_void() +
+  
+    theme(legend.position = "bottom",
+          legend.title.position = "top",
+          plot.title = element_text(hjust = .5,
+                                    vjust = .5,
+                                    face = 'bold',
+                                    size = rel(2)))
+
+
+ggplotly(p, tooltip = "text")
+```
+
+
+#### Bar Charts {.tabset}
+
+```{r}
+#| title: Top 10 Countries with the Highest Infant Mortality Rates, 2021
+gh_with_classification$Country <- as.factor(gh_with_classification$Country)
+  
+top_10_1 <- gh_with_classification |>
+  arrange(-Infant_Mortality_Rate) |> 
+  head(10)
+top_10_2 <- gh_with_classification |> 
+  arrange(Infant_Mortality_Rate) |> 
+  head(10)
+
+colors <- c("Low Income" = "#f0f921ff",
+            "Lower-Middle Income" = "#e16462ff",
+            "Upper-Middle Income" = "#b12a90ff")
+ggplot(top_10_1,
+       aes(x = Infant_Mortality_Rate,
+           y = reorder(Country, Infant_Mortality_Rate))) +
+  
+  geom_bar(stat = "identity",
+           aes(fill = Classification)) +
+    
+  labs(title = "Top 10 Highest IMR",
+       x = "Infant Mortality Rate (per 1,000 live births)",
+       y = "Country",
+       caption = "Source: World Bank") +
+  theme_minimal()+
+    theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  scale_fill_manual(values = colors) +
+  
+  scale_x_continuous(expand = c(0, 0)) 
+
+```
+
+```{r}
+#| title: Top 10 Countries with the Lowest Infant Mortality Rates, 2021
+
+ggplot(top_10_2,
+       aes(x = Infant_Mortality_Rate,
+           y = reorder(Country, -Infant_Mortality_Rate))) +
+  
+  geom_bar(stat = "identity",
+           aes(fill = Classification)) +
+    
+  labs(title = "Top 10 Lowest IMR",
+       x = "Infant Mortality Rate (per 1,000 live births)",
+       y = "Country",
+       caption = "Source: World Bank") +
+  theme_minimal()+
+    theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  scale_fill_viridis_d(option = "plasma") +
+  
+  scale_x_continuous(expand = c(0, 0)) 
+```
+
+
+# Relation to Socioeconomic Factors
+## Row
+
+```{r}
+#| title: "Infant Mortality Summary Statistics by Income Classfication"
+sum_stats <- gh_with_classification |> 
+  mutate(Classification = factor(Classification, 
+                                 levels = c("High Income", "Upper-Middle Income", "Lower-Middle Income", "Low Income"))) |> 
+  group_by(Classification) |> 
+  summarize(
+    mean = round(mean(Infant_Mortality_Rate, na.rm = TRUE),2),
+    min = min(Infant_Mortality_Rate, na.rm = TRUE),
+    q1 = round(quantile(Infant_Mortality_Rate, probs = 0.25, na.rm = TRUE),2),
+    median = round(median(Infant_Mortality_Rate, na.rm = TRUE), 2),
+    q3 = round(quantile(Infant_Mortality_Rate, probs = 0.75, na.rm = TRUE),2),
+    max = max(Infant_Mortality_Rate, na.rm = TRUE)
+  ) |>
+  as.data.frame()
+kable(sum_stats)
+```
+
+```{r}
+#| title: "Distribution of Infant Mortality Rate by Income Classification"
+ggplot(gh_with_classification,
+       mapping= aes(x = fct_reorder(Classification, -Infant_Mortality_Rate, na.rm = T),
+                    y = Infant_Mortality_Rate,
+                    fill = Classification)) +
+  geom_boxplot() +
+  labs(#title = "Distribution of Infant Mortality Rate by Classification",
+       caption = "Source: World Bank")+
+  xlab("Classification")+
+  ylab("Infant Mortality Rate") +
+  theme_bw()+
+  theme(
+    legend.position = 'none',
+    plot.title = element_text(hjust = .5,
+                                  vjust = .5,
+                                  face = 'bold',
+                                  size = rel(2)),
+    axis.title.x = element_text(size = rel(1.5)),
+    axis.title.y = element_text(size = rel(1.5)),
+    axis.text.x = element_text(size = rel(1.5)),
+    axis.text.y = element_text(size = rel(1.5))) +
+   geom_text_repel(data = filter(gh_with_classification, Country %in% c("Palau", "Nauru")),
+            aes(label = Country), 
+            vjust = 0, hjust = 1.5, size = 5, force = 5) +
+  geom_text_repel(data = filter(gh_with_classification, Country %in% c("Equatorial Guinea", "Turkmenistan")),
+            aes(label = Country), 
+            vjust = -2, hjust = -.5, size = 5)
+```
+
+## Row
+
+```{r}
+#| title: "Clean Water Access vs. Infant Mortality Rate"
+gh3 <- gh_with_classification |> 
+  mutate(Classification = factor(Classification, levels = c(
+    "Low Income", "Lower-Middle Income", "Upper-Middle Income", "High Income"
+  )))
+
+ggplot(gh3,
+       mapping = aes(x = Safe_Water_Access_Percent,
+                     y = Infant_Mortality_Rate)) +
+  geom_smooth(method = "loess", se = F, size = 1) +
+  geom_point(aes(color = Classification)) +
+  labs(#title = "Clean Water Access vs. IMR",
+       caption = "Source: World Bank")+
+  xlab("Safe Water Access %")+
+  ylab("Infant Mortality Rate") +
+  scale_x_continuous(labels = scales::percent_format(scale = 1))+
+  theme_bw()+
+  theme(
+    plot.title = element_text(hjust = .5,
+                                  vjust = .5,
+                                  face = 'bold',
+                              size = rel(1.5)),
+    axis.title.x = element_text(size = rel(1.5)),
+    axis.title.y = element_text(size = rel(1.5)),
+    axis.text.x = element_text(size = rel(1.4)),
+    axis.text.y = element_text(size = rel(1.4)),
+    legend.text = element_text(size = rel(1.3)),
+    legend.title = element_text(size = rel(1.3))) +
+  geom_text_repel(data = filter(gh_with_classification, Country %in% c("Palau", "Nauru")),
+            aes(label = Country), 
+            vjust = 0, hjust = 1.5, size = 4, force = 5) +
+  geom_text_repel(data = filter(gh_with_classification, Country %in% c("Equatorial Guinea", "Turkmenistan")),
+                  aes(label = Country), size = 4, min.segment.length = 0)
+```
+
+```{r}
+#| title: "Immunization Rate vs. Infant Mortality Rate"
+
+ggplot(gh3,
+       mapping = aes(x = Immunization_Rate,
+                     y = Infant_Mortality_Rate)) +
+  geom_smooth(method = "loess", se = F, size = 1) +
+  geom_point(aes(color = Classification)) +
+  labs(#title = "Immunization Rate vs. IMR",
+       caption = "Source: World Bank")+
+  xlab("Immunization Rate")+
+  ylab("Infant Mortality Rate") +
+  scale_x_continuous(labels = scales::percent_format(scale = 1))+
+  theme_bw()+
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = .5,
+                                  vjust = .5,
+                                  face = 'bold',
+                              size = rel(1.5)),
+    axis.title.x = element_text(size = rel(1.5)),
+    axis.title.y = element_text(size = rel(1.5)),
+    axis.text.x = element_text(size = rel(1.4)),
+    axis.text.y = element_text(size = rel(1.4))) +
+  geom_text_repel(data = filter(gh3, Country %in% c("Palau", "Nauru")),
+            aes(label = Country), 
+            vjust = 0, hjust = 1.5, force = 5, min.segment.length = 0, segment.size = .7) +
+  geom_text_repel(data = filter(gh3, Country %in% c("Equatorial Guinea", "Turkmenistan")),
+                  aes(label = Country), force = 5, min.segment.length = 0, segment.size = .7)
+  
+```

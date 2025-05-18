@@ -7,10 +7,16 @@ website:
   navbar:
     pinned: true
     left:
-      - text: Project
+      - text: DANL-210 Project
         href: project.qmd
       - text: Blog
         href: blog-listing.qmd
+      - text: DANL-310 Project
+        menu: 
+          - text: Project Write-up
+            href: 310-project-imr.qmd
+          - text: Project Dashboard
+            href: 310-project-dashboard.qmd
 
         
   page-footer: 
