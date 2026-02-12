@@ -1,7 +1,7 @@
 ---
 title: Ben and Jerry's Ice Cream
 author: Nada Trabelsi
-date: 2025-03-23
+date: 2026-02-11
 categories: [code, data analysis] # tags for a blog post (e.g., python)
 image: benandjerrys.png 
 
@@ -18,83 +18,43 @@ library(tidyverse)
 library(skimr)
 library(dplyr)
 library(ggplot2)
+library(stargazer)
 ice_cream <- read_csv('https://bcdanl.github.io/data/ben-and-jerry-cleaned.csv')
 ```
-
+This dataset explores Ben and Jerry's ice cream sales with several variables, including the unit price, flavor, size, and customer information. We will be exploring the top flavors by region and the relationship region, flavors, size, and household size may have with unit price. 
 
 ```{r}
-
 skim(ice_cream)
 ```
-
-# Customer Demographics: Frequent vs. Infrequent Buyers
-
 ```{r}
-customer_demo <- ice_cream |> 
-  select(household_id, household_income, household_size, flavor_descr,region,race, tvcable) |>
-  add_count(household_id, name = "purchase_freq") |> 
-  mutate(household_size = as.factor(household_size),
-         customer_type = if_else(purchase_freq >=10, "Frequent", "Infrequent")) |> 
-  filter(!is.na(tvcable))
-  
-```
-
-## Customer's Household Size and TV Cable
-
-```{r}
-ggplot(customer_demo,
-       aes(x = household_size)) +
-  geom_bar(position = "dodge2",
-           aes(fill = tvcable)) +
-  facet_wrap(~customer_type) +
-  scale_fill_manual(values = c("#FFAD14", "#000000"))+
-  scale_x_discrete(name = "Household Size") +
-  scale_y_continuous(
-    expand = c(0, 0),
-    name = "Total Ice Cream Purchased") +
-  theme_bw()
-```
-Although infrequent customers are more common than frequent customers, they both share similar patterns regarding their household size and whether they have tv cable or not. Household sizes of 1-2 tend to purchase more Ben and Jerry's ice cream. In the case of all infrequent customers, customers tend to purchase more ice cream while owning cable. A majority of frequent customers also tend to own cable, however, the larger household sizes have a greater number of customers who do not own cable compared to those who do.
-
-# Top 3 Flavors by Race
-
-```{r}
-ice_cream$race <- str_to_title(ice_cream$race)
-```
-
-
-```{r}
-top_3 <- ice_cream |> 
-  group_by(race, flavor_descr) |> 
+top3_by_region <- ice_cream |> 
+  group_by(region, flavor_descr) |> 
   summarize(n_purchased = n(), .groups = 'drop') |> 
-  group_by(race) |> 
-  arrange(race, desc(n_purchased)) |> 
+  group_by(region) |> 
+  arrange(region, desc(n_purchased)) |> 
   slice_head(n = 3) |> 
   ungroup() 
-top_3 <- top_3 |> 
+top3_by_region <- top3_by_region |> 
     mutate(flavor_descr = factor(flavor_descr, 
-                               levels = top_3 |> 
-                                 group_by(race) |> 
-                                 arrange(race, desc(n_purchased)) |> 
+                               levels = top3_by_region |> 
+                                 group_by(region) |> 
+                                 arrange(region, desc(n_purchased)) |> 
                                  pull(flavor_descr) |> 
                                  unique()))
 
-top_3$race <- top_3$race |> 
-  str_to_title() |> 
-  factor(levels = c("White", "Black", "Asian", "Other"))
 
 ```
 
 ```{r}
-ggplot(top_3,
+ggplot(top3_by_region,
        aes( x = flavor_descr,
             y = n_purchased)) +
   geom_bar(stat = "identity",
            aes(fill = flavor_descr)) +
-  facet_wrap(~race,
+  facet_wrap(~region,
              scales = "free_x",
              nrow = 1) +
-  labs(title = "Top 3 Flavors by Race")+
+  labs(title = "Top 3 Flavors by Region")+
   xlab("Flavor")+
   ylab("Total Units Purchased")+
   theme_bw()+
@@ -106,8 +66,44 @@ ggplot(top_3,
   
 ```
 
-Cherry Garcia is the most popular flavor among all races.
+# Regression Model
+
+## Data Prep
+```{r}
+ice_cream <- ice_cream |> 
+ # filter(flavor_descr %in% c("CHERRY GRCA", "CHC FUDGE BROWNIE", "CHUNKY MONKEY", "PHISH FOOD", "HEATH COFFEE CRUNCH", "CHC CHIP C-DH")) |> 
+  mutate(flavor_descr = factor(flavor_descr),
+         flavor_descr = fct_relevel(flavor_descr, "CHERRY GRCA", "CHC FUDGE BROWNIE", "CHUNKY MONKEY", "PHISH FOOD", "HEATH COFFEE CRUNCH", "CHC CHIP C-DH"))
+```
 
 
+## Splitting into Treaining and Test Data
 
+```{r}
+set.seed(9)
 
+ice_cream<- ice_cream |> 
+  mutate(rnd = runif(n()))
+
+dtrain<- ice_cream |> 
+  filter(rnd > 0.3)
+
+dtest<- ice_cream |> 
+  filter(rnd <= 0.3)
+nrow(dtrain)/ nrow(ice_cream)
+```
+## Training the Model
+```{r}
+model <- lm(priceper1 ~ region + flavor_descr + usecoup,
+            data = dtrain)
+```
+
+## Regression Table
+```{r}
+#| results: asis
+
+stargazer(model, type = "html")
+```
+## Results
+
+Region appears to affect price as prices increases by 0.143 compared to the Central region. It appears most flavors price are lower than Cherry Garcia, the most popular flavor across all four regions. Indicating a higher price due to popular demand. It also appears using a coupon also increases the price by a small amount, indicating customers may likely be using coupons on higher priced ice-cream. However it is important to note that this model has a very high residual standard error of 0.659 and a low R2 of 0.029. This means only about 3% of the outcome is explained by the model. 
