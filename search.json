@@ -221,7 +221,7 @@
     "href": "blog-listing.html",
     "title": "Insightful Analytics",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nBen and Jerry’s Ice Cream\n\n\n\n\n\nFeb 11, 2026\n\n\nNada Trabelsi\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\nDogs in New York City\n\n\n\n\n\nApr 5, 2025\n\n\nNada Trabelsi\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\nggplot Basics\n\n\n\n\n\nFeb 19, 2025\n\n\nNada Trabelsi\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\nSpotify\n\n\n\n\n\nMar 8, 2024\n\n\nNada Trabelsi\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nPython Basics\n\n\n\n\n\nFeb 20, 2024\n\n\nNada Trabelsi\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nBeer Markets\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n9 min\n\n\n\n\n\n\n\n\n\n\n\nStarwars\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n1 min\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nBeer Markets\n\n\n\n\n\nMar 2, 2026\n\n\nNada Trabelsi\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nBen and Jerry’s Ice Cream\n\n\n\n\n\nFeb 11, 2026\n\n\nNada Trabelsi\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\nDogs in New York City\n\n\n\n\n\nApr 5, 2025\n\n\nNada Trabelsi\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\nggplot Basics\n\n\n\n\n\nFeb 19, 2025\n\n\nNada Trabelsi\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\nSpotify\n\n\n\n\n\nMar 8, 2024\n\n\nNada Trabelsi\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nPython Basics\n\n\n\n\n\nFeb 20, 2024\n\n\nNada Trabelsi\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nStarwars\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n1 min\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "danl_310_trabelsi_nada_project.html",
@@ -305,7 +305,7 @@
     "href": "posts/beer-markets/beer-markets.html",
     "title": "Beer Markets",
     "section": "",
-    "text": "Let’s analyze the beer_data data:\nbeer_data &lt;- read_csv(\"https://bcdanl.github.io/data/beer_markets.csv\")"
+    "text": "beer_markets &lt;- read_csv(\n  \"https://bcdanl.github.io/data/beer_markets_all_cleaned.csv\"\n)"
   },
   {
     "objectID": "posts/beer-markets/beer-markets.html#variable-description-for-beer_data-data.frame",
@@ -439,5 +439,12 @@
     "title": "Ben and Jerry’s Ice Cream",
     "section": "Results",
     "text": "Results\nRegion appears to affect price as prices increases by 0.143 compared to the Central region. It appears most flavors price are lower than Cherry Garcia, the most popular flavor across all four regions. Indicating a higher price due to popular demand. It also appears using a coupon also increases the price by a small amount, indicating customers may likely be using coupons on higher priced ice-cream. However it is important to note that this model has a very high residual standard error of 0.659 and a low R2 of 0.029. This means only about 3% of the outcome is explained by the model."
+  },
+  {
+    "objectID": "posts/beer-markets/beer-markets.html#variable-descriptions",
+    "href": "posts/beer-markets/beer-markets.html#variable-descriptions",
+    "title": "Beer Markets",
+    "section": "Variable Descriptions",
+    "text": "Variable Descriptions\n\n\n\n\n\n\n\nVariable Name\nDescription\n\n\n\n\nhousehold\nUnique identifier for household\n\n\nX_purchase_desc\nDescription of beer purchase\n\n\nquantity\nNumber of beer packages purchased\n\n\nbrand\nBrand of beer purchased\n\n\ndollar_spent\nTotal amount spent on the purchase\n\n\nbeer_floz\nTotal volume of beer purchased (in fluid ounces)\n\n\nprice_floz\nPrice per fluid ounce of beer\n\n\ncontainer\nType of beer container (e.g., CAN, BOTTLE)\n\n\npromo\nIndicates if the purchase was part of a promotion (TRUE/FALSE)\n\n\nregion\nGeographic region of purchase\n\n\nmarital\nMarital status of household head\n\n\nincome\nIncome level of the household\n\n\nage\nAge group of household head\n\n\nemployment\nEmployment status of household head\n\n\ndegree\nEducation level of household head\n\n\noccupation\nOccupation category of household head\n\n\nethnic\nEthnicity of household head\n\n\nmicrowave\nIndicates if the household owns a microwave (TRUE/FALSE)\n\n\ndishwasher\nIndicates if the household owns a dishwasher (TRUE/FALSE)\n\n\ntvcable\nType of television subscription (e.g., basic, premium)\n\n\nsinglefamilyhome\nIndicates if the household is a single-family home (TRUE/FALSE)\n\n\nnpeople\nNumber of people in the household"
   }
 ]
