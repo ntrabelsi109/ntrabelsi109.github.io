@@ -1,0 +1,230 @@
+---
+title: Exploring Socioeconomic Factors Associated with Low Food Access Tracts in New York State
+subtitle: "My Project"
+author:
+  - name: Nada Trabelsi
+    affiliation: SUNY Geneseo
+    
+  - name: Cameron Caffarelli
+    affiliation: SUNY Geneseo
+    
+date: last-modified
+
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  message: false
+  fig-width: 10
+  fig-height: 6
+
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-title: "Contents"
+    toc-expand: 3
+    number-sections: true
+    code-tools: true
+    highlight-style: atom-one
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+library(rmarkdown)
+library(DT)
+library(stargazer)
+library(broom)
+library(sf)
+library(tigris)
+library(ggplot2)
+library(margins)
+library(yardstick)
+library(WVPlots)
+library(pROC)
+library(glmnet)
+library(gamlr)
+library(Matrix)
+library(modelsummary)
+
+
+# Add other packages as needed.
+# Examples:
+# library(broom)
+# library(stargazer)
+# library(modelsummary)
+# library(glmnet)
+# library(ranger)
+# library(xgboost)
+
+# Feel free to revise this ggplot theme_set
+theme_set(theme_ipsum()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.33),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 90,
+                               size = rel(1.33),
+                               margin = margin(0,10,0,0))
+                )
+          )
+
+
+# Feel free to use below global options for color-blind-friendly scales
+# scale_colour_discrete <- function(...) scale_colour_viridis_d(...)
+# scale_fill_discrete <- function(...) scale_fill_viridis_d(...)
+
+# Models
+mod_halfand10_POLS <- readRDS("mod_halfand10_POLS.rds")
+mod_1and10_POLS <- readRDS("mod_1and10_POLS.rds")
+mod_halfand10_FE_CensusTract <- readRDS("mod_halfand10_FE_CensusTract.rds")
+mod_1and10_FE_CensusTract <- readRDS("mod_1and10_FE_CensusTract.rds")
+mod_halfand10_FE_Year <- readRDS("mod_halfand10_FE_Year.rds")
+mod_1and10_FE_Year <- readRDS("mod_1and10_FE_Year.rds")
+mod_halfand10_FE_CensusTract_Year <- readRDS("mod_halfand10_FE_CensusTract_Year.rds")
+mod_1and10_FE_CensusTract_Year <- readRDS("mod_1and10_FE_CensusTract_Year.rds")
+
+# Var Definition df
+key_var_def <- readRDS("key_var_def.rds")
+
+# Import Clean Dataset
+cleaned_fara <- read.csv("cleaned_fara_data.csv")
+
+# Maps
+fara_map_LAhalfand10 <- readRDS("fara_map_LAhalfand10.rds")
+fara_map_LA1and10 <- readRDS("fara_map_LA1and10.rds")
+
+
+```
+
+# Introduction
+
+Describe the real-world motivation for your project. Clearly state your research question and explain why it matters.
+
+Briefly preview your data, empirical approach, main findings, and contribution.
+
+# Background and Related Literature
+
+Summarize the relevant background, institutional setting, or prior research related to your topic.
+
+Explain what is already known and how your project contributes to the existing discussion.
+
+# Data
+
+## Data Source
+
+The data sets used were sourced from the United States Department of Agriculture’s (USDA’s) Food Access Research Atlas for 2015 and 2019. The Food Access Research Atlas Data contains food access flags for United States census tracts using different measurement thresholds, combined with demographic and socioeconomic data from multiple data sources. The USDA defines being low access as being geographically far from a “food store”, e.g., a supermarket, supercenter, or grocery store. Both data sets use a combination of two lists of food stores to represent sources of affordable and nutritious food from 2015 and 2019, respectively.  
+
+Data used in the 2015 Atlas includes population data from the 2010 Census of the Population, urban designation provided by the 2010 Census at the block level, and data on income, vehicle availability, and SNAP participation from the 2010-14 American Community Survey (ACS). Data from the 2019 Atlas uses the same population data as 2015, with urban designations from the 2019 urbanized area geographies, and data on income, vehicle availability, and SNAP participation from the 2014-18 ACS. Both data sets are based on 2010 census-tract boundaries and contain the same classification definitions, allowing us to combine data sets into a single panel data. 
+
+## Unit of Observation
+
+The unit of observation for both data sets is U.S. census tracts, with each row representing one census tract. Census tracts are small, geographic subdivisions of state counties.
+
+## Key Variables
+```{r}
+#| echo: false
+key_var_def |> 
+  paged_table()
+```
+
+The outcome variables used are `LAhalfand10` and `LA1and10`, which are low access flags at different measurement thresholds. A tract is deemed “low access” if at least 500 people or at least 33% of the population is greater than the measurement thresholds miles away from the nearest food store. `LAhalfand10` is measured by being a half mile away for urban tracts and 10 miles for nonurban tracts, while `LA1and10` is measured by being 1 mile away for urban tracts and 10 miles away for nonurban tracts.  
+
+This research focuses on socioeconomic variables, including low income tracts, poverty rate, accessibility to a personal vehicle, and population’s access to government assisted food program, SNAP. Demographic variables related to ethnicity and age are kept as control variables, while census tract and year variables will be used as fixed effects to control for time-invariant within-county characteristics and year shocks.
+
+## Data Cleaning
+
+The 2015 and 2019 data sets were prepared for combining into the main panel data by converting variables into their proper types and binding the rows together, filtering to keep data from New York state. Demographic data that is represented as raw counts, like `TractSNAP`, which is the total count of housing units receiving SNAP benefits, were recalculated as the total share of population for fair comparison across tracts. Variables with a high missing value count were dropped completely, and observations with missing values were dropped for consistency and in order to run lasso regression for variable selection later on. 
+
+
+## Summary Statistics
+```{r}
+#| echo: false
+fara_map_LAhalfand10
+fara_map_LA1and10
+```
+
+```{r summary-statistics}
+# Replace this example with your own data and summary statistics.
+cleaned_fara |> 
+  select(LAhalfand10, LA1and10, Urban, HUNVFlag, LowIncomeTracts, PovertyRate, TractSNAP, Year) |> 
+  group_by(Year) |> 
+  skim()
+```
+
+
+
+
+# Empirical Strategy / Methods
+
+Describe the method used to answer your research question. This may include regression, classification, clustering, forecasting, text analysis, or another data analytics method.
+
+For example, a **two-way fixed effects regression** can be used as an empirical strategy for **inference** when the goal is to estimate the relationship between a key explanatory variable and an outcome while accounting for unit-specific and time-specific factors:
+
+$$
+Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \varepsilon_{it},
+$$
+
+where $Y_{it}$ is the outcome of interest for unit $i$ at time $t$, $X_{it}$ is the main explanatory variable, $Z_{it}$ represents control variables, $\alpha_i$ captures unit fixed effects, $\lambda_t$ captures time fixed effects, and $\varepsilon_{it}$ is the error term.
+
+If your project uses machine learning or prediction, explain your train/test split, cross-validation, model tuning, and performance metrics.
+
+# Results
+
+Present your main empirical findings using tables, figures, and written interpretation.
+
+```{r results-table}
+# Replace this example with your own table or model output.
+# modelsummary(list(model1, model2))
+
+modelsummary(
+  list(
+    "Half & 10:\n POLS" = mod_halfand10_POLS,
+    "1 & 10:\n POLS" = mod_1and10_POLS,
+    
+    "Half & 10:\n CensusTract FE" = mod_halfand10_FE_CensusTract,
+    "1 & 10:\n CensusTract FE" = mod_1and10_FE_CensusTract,
+    
+    "Half & 10:\n Year FE" = mod_halfand10_FE_Year,
+    "1 & 10:\n Year FE" = mod_1and10_FE_Year,
+    
+    "Half & 10:\n Two-way FE" = mod_halfand10_FE_CensusTract_Year,
+    "1 & 10:\n Two-way FE" = mod_1and10_FE_CensusTract_Year
+  ),
+  stars = TRUE,
+  coef_omit = "InterceptIntercept|TractAsian|TractHispanic|TractWhite|TractAIAN|TractKids|TractSeniors|POP2010|TractOMultir"
+)
+
+```
+
+```{r results-figure}
+# Replace this example with your own figure.
+# ggplot(your_data, aes(x = x_variable, y = y_variable)) +
+#   geom_point() +
+#   labs(x = "X Variable", y = "Y Variable", title = "Main Result")
+```
+
+# Discussion and Implications
+
+Interpret your results. Explain what they imply for economics, business, policy, or society.
+
+Discuss limitations and clarify what your analysis can and cannot show.
+
+# Conclusion
+
+Summarize your research question, data, method, main findings, and key takeaway.
+
+Briefly suggest possible future extensions.
+
+# References
+
+List all sources cited in your project, including data sources, academic articles, reports, websites, packages, and tools.
+
+For online sources, include the full URL and date/time accessed.
+
