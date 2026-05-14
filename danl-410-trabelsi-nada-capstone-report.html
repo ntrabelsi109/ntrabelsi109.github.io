@@ -8,7 +8,7 @@
 
 <meta name="author" content="Nada Trabelsi">
 <meta name="author" content="Cameron Caffarelli">
-<meta name="dcterms.date" content="2026-05-13">
+<meta name="dcterms.date" content="2026-05-14">
 
 <title>Exploring Socioeconomic Factors Associated with Low Food Access Tracts in New York State – Nada Trabelsi</title>
 <style>
@@ -378,7 +378,11 @@ window.Quarto = {
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><span class="header-section-number">3.4</span> Data Cleaning</a></li>
   <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics"><span class="header-section-number">3.5</span> Summary Statistics</a></li>
   </ul></li>
-  <li><a href="#empirical-strategy-methods" id="toc-empirical-strategy-methods" class="nav-link" data-scroll-target="#empirical-strategy-methods"><span class="header-section-number">4</span> Empirical Strategy / Methods</a></li>
+  <li><a href="#empirical-strategy-methods" id="toc-empirical-strategy-methods" class="nav-link" data-scroll-target="#empirical-strategy-methods"><span class="header-section-number">4</span> Empirical Strategy / Methods</a>
+  <ul class="collapse">
+  <li><a href="#empirical-approach" id="toc-empirical-approach" class="nav-link" data-scroll-target="#empirical-approach"><span class="header-section-number">4.1</span> Empirical Approach</a></li>
+  <li><a href="#interpretations-and-identification" id="toc-interpretations-and-identification" class="nav-link" data-scroll-target="#interpretations-and-identification"><span class="header-section-number">4.2</span> Interpretations and Identification</a></li>
+  </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">5</span> Results</a></li>
   <li><a href="#discussion-and-implications" id="toc-discussion-and-implications" class="nav-link" data-scroll-target="#discussion-and-implications"><span class="header-section-number">6</span> Discussion and Implications</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
@@ -425,7 +429,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 13, 2026</p>
+      <p class="date">May 14, 2026</p>
     </div>
   </div>
   
@@ -439,13 +443,23 @@ window.Quarto = {
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>Describe the real-world motivation for your project. Clearly state your research question and explain why it matters.</p>
-<p>Briefly preview your data, empirical approach, main findings, and contribution.</p>
+<p>In the United States, reliable access to affordable, nutritious, and healthy food remains one of the most significant public health and public policy concerns. Today, food accessibility affects not only individual health outcomes but also broader issues related to economic opportunity, public/nonpublic transportation, housing inequality, and poverty. While many communities have access to nearby food sellers, the quality of the food is not up to par. Affordable, healthy food is not equally distributed across neighborhoods. In many urban areas, residents primarily rely on corner stores, delis, and convenience stores rather than grocery stores or supermarkets that offer fresh produce and affordable, healthy food options. Meanwhile, in rural communities, residents often face long distances to food sources. Together, these conditions contribute to what the United States Department of Agriculture now refers to as low-food-access communities, or “food deserts.”<br>
+According to the New York State Council on Hunger and Food Policy (2025), food insecurity continues to affect vulnerable populations throughout the state despite ongoing food assistance programs and policy initiatives. Rising food costs, transportation barriers, housing instability, and economic inequality continue to limit many households’ ability to consistently access healthy and affordable food. Unfortunately, according to the New York State Council on Hunger and Food Policy (2025), food insecurity and accessibility issues continue to affect several vulnerable populations throughout New York State. Despite all of the ongoing policy changes and food assistance programs. Housing instability, transportation barriers, economic inequality, and rising food costs, combined with distance to stores, tend to limit many communities’ and households’ ability to consistently access healthy and affordable food.<br>
+The motivation for this project comes from the broader importance of understanding how food accessibility affects everyday life within neighborhoods and communities. It affects workers, families, children, and elderly residents, able-bodied and non-able-bodied alike. All throughout rural and urban New York State. That being said, there is hope. For instance, data like ours helps identify which communities and neighborhoods face the most food access challenges. Then, policymakers, local governments, community organizations, and nonprofits can use this information to allocate resources more effectively in these low-access areas through more targeted food access policies.<br>
+Our project specifically examines the relationship/association between residential neighborhoods/communities and nearby food access points throughout New York State. The research question guiding this paper is:</p>
+<ul>
+<li>Which tract characteristics are associated with a higher probability of low access, holding other tract characteristics constant?</li>
+</ul>
+<p>Our project uses census tract-level data from the USDA’s Food Access Research Atlas Data 2015 and the USDA’s Food Access Research Atlas Data 2019. The unit of observation we used is the census tract. This allowed us to analyze tract-level variation in food accessibility throughout New York State. This combined dataset includes food access indicators along with socioeconomic and demographic information. Some of the data include information on various factors. For example, vehicle access, income, race and ethnicity, housing vulnerability, SNAP participation, age, and urban classification. However, our analysis focuses on only two low food access terms, low food access at the half mile for urban and 10 mile for nonurban tracts and low food access at the 1 and 10 mile threshold.</p>
+<p>To analyze these outcomes, we first combine the two previously mentioned data sets. Second, LASSO regression models were used to identify the most important predictors from a large set of economic, demographic, and interaction variables. Statistically significant in terms of addressing our research questions, as well as significant enough to help us provide our local analysis based on our findings. Then, selected variables were incorporated into pooled ordinary least squares (POLS), census-tract fixed-effects, year-fixed-effects, and two-way fixed-effects panel regression models.</p>
+<p>Our project aims to contribute to an understanding of food accessibility in New York State. First, it provides a localized, census-tract-level analysis of food access in New York State. Second, our project uses machine-learning variable selection and LASSO to identify important predictors of food access inequality. Third, our project contributes practical policy insight by identifying which neighborhood characteristics are most strongly associated with low food access classifications. Our findings are interpreted as statistical associations rather than causal relationships. It is not cause and effect. Unfortunately, we do not have enough in-depth data, so our analysis will not show that. That being said, our analysis still identifies patterns and relationships between food accessibility outcomes and neighborhood characteristics. As you shall soon see, our results provide in-depth insight (not inference) into the daily lives of residents of New York state.</p>
+<p>Ultimately, our project aims to provide insight into how low food access can affect neighborhoods throughout New York State and how policymakers and community organizations may better address food accessibility challenges in the future.</p>
 </section>
 <section id="background-and-related-literature" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Background and Related Literature</h1>
-<p>Summarize the relevant background, institutional setting, or prior research related to your topic.</p>
-<p>Explain what is already known and how your project contributes to the existing discussion.</p>
+<p>What does food accessibility entail? Food accessibility refers to a community’s/tract’s ability to consistently get healthy, affordable, and nutritious food within a reasonable geographic distance. The USDA Economic Research Service measures food accessibility using supermarket/grocery store proximity and transportation-based data. Tracts with limited access to supermarkets and grocery stores are often referred to as low-food-access areas or food deserts.</p>
+<p>According to the USDA Food Access Research Atlas, low-access tracts are defined as census tracts where a substantial share of the population lives beyond a specified distance threshold from the nearest supermarket or large grocery retailer. The USDA Food Access Research Atlas specifically defines two important measures used throughout this project. The first measure, LAhalfand10, identifies census tracts where at least 500 people, or at least 33 percent of the population, live more than one-half mile from the nearest supermarket in urban areas, or more than ten miles in rural areas. The second measure, LA1and10, applies a one-mile threshold for urban communities and a ten-mile threshold for rural communities. But as previously stated, distance to/from a grocery store is not all the information needed to understand this important and complex topic. For instance, the New York State Council on Hunger and Food Policy 2025 Annual Report provides important institutional and policy context. As such, this is used for understanding food accessibility challenges throughout New York State. Demonstrated as a continued food insecurity and access dilemma. The New York State Council on Hunger and Food Policy also emphasizes the importance of locally targeted food policy responses. These come from many different groups, such as non-profits and local governments. The report discusses programs, such as the Food Access Expansion Grant Program, administered by the New York State Department of Agriculture and Markets. This program supports and expands farmers’ markets, food stands, and supermarkets, and it provided approximately $10 million in 2025 to do so (New York State Council on Hunger and Food Policy, 2025). This helps tie in all the context provided by the previous studies and reports mentioned.</p>
+<p>The findings from these studies generally suggest that food accessibility challenges are driven by multiple socioeconomic factors rather than a single socioeconomic or demographic factor. These findings directly inform the empirical framework used in this project—particularly, the inclusion of transportation-related variables, low-income tract classifications, and interaction effects involving urban status, which will be shown later on in this paper.</p>
 </section>
 <section id="data" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Data</h1>
@@ -499,7 +513,7 @@ window.Quarto = {
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this example with your own data and summary statistics.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>cleaned_fara <span class="sc">|&gt;</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(LAhalfand10, LA1and10, Urban, HUNVFlag, LowIncomeTracts, PovertyRate, TractSNAP, Year) <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(LAhalfand10, LA1and10, Urban, HUNVFlag, LowIncomeTracts, PovertyRate, Year) <span class="sc">|&gt;</span> </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">|&gt;</span> </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -517,7 +531,7 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Number of columns</td>
-<td style="text-align: left;">8</td>
+<td style="text-align: left;">7</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">_______________________</td>
@@ -529,7 +543,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td style="text-align: left;">numeric</td>
-<td style="text-align: left;">7</td>
+<td style="text-align: left;">6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">________________________</td>
@@ -544,17 +558,17 @@ window.Quarto = {
 <p><strong>Variable type: numeric</strong></p>
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 17%">
+<col style="width: 18%">
 <col style="width: 5%">
 <col style="width: 11%">
-<col style="width: 15%">
+<col style="width: 16%">
 <col style="width: 6%">
 <col style="width: 6%">
 <col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 5%">
 <col style="width: 5%">
 <col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 7%">
 <col style="width: 6%">
 </colgroup>
 <thead>
@@ -582,10 +596,10 @@ window.Quarto = {
 <td style="text-align: right;">0.41</td>
 <td style="text-align: right;">0.49</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▆</td>
 </tr>
 <tr class="even">
@@ -596,10 +610,10 @@ window.Quarto = {
 <td style="text-align: right;">0.40</td>
 <td style="text-align: right;">0.49</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▆</td>
 </tr>
 <tr class="odd">
@@ -610,10 +624,10 @@ window.Quarto = {
 <td style="text-align: right;">0.19</td>
 <td style="text-align: right;">0.39</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▂</td>
 </tr>
 <tr class="even">
@@ -624,10 +638,10 @@ window.Quarto = {
 <td style="text-align: right;">0.19</td>
 <td style="text-align: right;">0.39</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▂</td>
 </tr>
 <tr class="odd">
@@ -638,10 +652,10 @@ window.Quarto = {
 <td style="text-align: right;">0.86</td>
 <td style="text-align: right;">0.35</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▁▁▁▁▇</td>
 </tr>
 <tr class="even">
@@ -652,10 +666,10 @@ window.Quarto = {
 <td style="text-align: right;">0.86</td>
 <td style="text-align: right;">0.35</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▁▁▁▁▇</td>
 </tr>
 <tr class="odd">
@@ -666,10 +680,10 @@ window.Quarto = {
 <td style="text-align: right;">0.16</td>
 <td style="text-align: right;">0.37</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▂</td>
 </tr>
 <tr class="even">
@@ -680,10 +694,10 @@ window.Quarto = {
 <td style="text-align: right;">0.16</td>
 <td style="text-align: right;">0.37</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▂</td>
 </tr>
 <tr class="odd">
@@ -694,10 +708,10 @@ window.Quarto = {
 <td style="text-align: right;">0.43</td>
 <td style="text-align: right;">0.49</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▆</td>
 </tr>
 <tr class="even">
@@ -708,10 +722,10 @@ window.Quarto = {
 <td style="text-align: right;">0.42</td>
 <td style="text-align: right;">0.49</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▆</td>
 </tr>
 <tr class="odd">
@@ -722,10 +736,10 @@ window.Quarto = {
 <td style="text-align: right;">15.96</td>
 <td style="text-align: right;">13.27</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">6.10</td>
-<td style="text-align: right;">12.00</td>
-<td style="text-align: right;">21.90</td>
-<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">6.1</td>
+<td style="text-align: right;">12.0</td>
+<td style="text-align: right;">21.9</td>
+<td style="text-align: right;">100.0</td>
 <td style="text-align: left;">▇▂▁▁▁</td>
 </tr>
 <tr class="even">
@@ -736,59 +750,44 @@ window.Quarto = {
 <td style="text-align: right;">15.00</td>
 <td style="text-align: right;">12.16</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">6.00</td>
-<td style="text-align: right;">11.40</td>
-<td style="text-align: right;">20.20</td>
-<td style="text-align: right;">77.10</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">11.4</td>
+<td style="text-align: right;">20.2</td>
+<td style="text-align: right;">77.1</td>
 <td style="text-align: left;">▇▃▁▁▁</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TractSNAP</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.16</td>
-<td style="text-align: right;">0.15</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">0.22</td>
-<td style="text-align: right;">0.89</td>
-<td style="text-align: left;">▇▂▁▁▁</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TractSNAP</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.16</td>
-<td style="text-align: right;">0.16</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">0.22</td>
-<td style="text-align: right;">2.33</td>
-<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<p>Although not apparent on the map, the number of low access tracts at the 1/2 and 10 mile threshold is much higher than the 1 and 10 mile threshold, with about 40% and 20% classified as low access, respectively. New York State has a large proportion of urban tracts at about 86% of all tracts being urban. About 43% of all tracts are low income and 16% are flagged for having low vehicle access. The average tract has about 16% poverty rate, with a large variance between the third quarter at about 22% and the maximum at 100%.</p>
 </section>
 </section>
 <section id="empirical-strategy-methods" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Empirical Strategy / Methods</h1>
-<p>Describe the method used to answer your research question. This may include regression, classification, clustering, forecasting, text analysis, or another data analytics method.</p>
-<p>For example, a <strong>two-way fixed effects regression</strong> can be used as an empirical strategy for <strong>inference</strong> when the goal is to estimate the relationship between a key explanatory variable and an outcome while accounting for unit-specific and time-specific factors:</p>
-<p><span class="math display">\[
-Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \varepsilon_{it},
-\]</span></p>
-<p>where <span class="math inline">\(Y_{it}\)</span> is the outcome of interest for unit <span class="math inline">\(i\)</span> at time <span class="math inline">\(t\)</span>, <span class="math inline">\(X_{it}\)</span> is the main explanatory variable, <span class="math inline">\(Z_{it}\)</span> represents control variables, <span class="math inline">\(\alpha_i\)</span> captures unit fixed effects, <span class="math inline">\(\lambda_t\)</span> captures time fixed effects, and <span class="math inline">\(\varepsilon_{it}\)</span> is the error term.</p>
-<p>If your project uses machine learning or prediction, explain your train/test split, cross-validation, model tuning, and performance metrics.</p>
+<section id="empirical-approach" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="empirical-approach"><span class="header-section-number">4.1</span> Empirical Approach</h2>
+<p>Multiple regression models are used to examine the association between socioeconomic factors and the probability of a tract being classified as low access at the half and 10 mile threshold and the 1 and 10 mile threshold. However, the dataset has a large number of variables, many of which were highly correlated. To address this issue, Least Absolute Shrinkage and Selection Operator (Lasso) regression was used for variable selection, to shrink irrelevant and highly correlated variables to zero. The Lasso model included interaction terms between year, urban classification, and all other variables to allow Lasso to select meaningful interaction terms that allow for a more flexible analysis while keeping census tract as a fixed effect to account for tract heterogeneity. After running Lasso, the variables and interaction terms selected are used for the main regression models.</p>
+<p><span class="math display">\[\begin{align}
+y_{it} &amp;= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \varepsilon_{it} \\
+
+y_{it} &amp;= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \alpha_i + \varepsilon_{it} \\
+
+y_{it} &amp;= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \lambda_t + \varepsilon_{it} \\
+
+y_{it} &amp;= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \varepsilon_{it}
+\end{align}\]</span></p>
+<p>where <span class="math inline">\(Y_{it}\)</span> is the outcomes <code>LAhalfand10</code> and <code>LA1and10</code> for census <span class="math inline">\(i\)</span> at time <span class="math inline">\(t\)</span>, <span class="math inline">\(Z_{it}\)</span> represents control variables, <span class="math inline">\(\alpha_i\)</span> captures CensusTract fixed effects, <span class="math inline">\(\lambda_t\)</span> captures Year fixed effects, and <span class="math inline">\(\varepsilon_{it}\)</span> is the error term.</p>
+<p>The first is a pooled ordinary least squares (POLS) model, which is used as the baseline to estimate the association between socioeconomic factors and probability of being low access across all tracts and years, reflecting a combination of cross-tract differences and within-tract changes over time. This baseline model provides estimates of the relationship between tract characteristics and being labeled food access, without accounting for unobserved heterogeneity across census tracts or time. The second is a one-way CensusTract fixed effects model, which is used to control for time-invariant characteristics within specific tracts and estimate the association between those factors and being classified as low access. The third is a one-way Year fixed effect model, used to control for factors that vary over time across all census tracts. Lastly, a two-way fixed effects model controls for both CensusTract and Year, accounting for unobserved within-tract factors and time trends/shocks.</p>
+</section>
+<section id="interpretations-and-identification" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="interpretations-and-identification"><span class="header-section-number">4.2</span> Interpretations and Identification</h2>
+<p>The model results should be interpreted as estimate associations between socioeconomic factors and the probability of being classified as low access. The results are strictly descriptive, not causal, used to estimate associations and compare relationships. Positive coefficients indicate a higher probability of being labeled low access, while negative coefficients indicate a lower probability of being labeled low access, holding all other variable constant.</p>
+<p>The POLS model reflects both differences across census tracts and changes within tracts over time, so results show the relationship between all tract’s socioeconomic factors and the probability of being low access on average. The CensusTract fixed effects model results show the relationship between socioeconomic factors and the probability of being low access within the same tract. While the Year fixed effects model results show the relationship while accounting for yearly trends and/or shocks. The two-way fixed effects model combine the two previous model, reflecting the relationship within the same tract, after removing year trends and/or shocks.</p>
+</section>
 </section>
 <section id="results" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Results</h1>
-<p>Present your main empirical findings using tables, figures, and written interpretation.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -810,7 +809,7 @@ Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \var
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> Two-way FE"</span> <span class="ot">=</span> mod_1and10_FE_CensusTract_Year</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  ),</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">coef_omit =</span> <span class="st">"InterceptIntercept|TractAsian|TractHispanic|TractWhite|TractAIAN|TractKids|TractSeniors|POP2010|TractOMultir"</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">coef_omit =</span> <span class="st">"InterceptIntercept|TractAsian|TractHispanic|TractWhite|TractAIAN|TractKids|TractSeniors|POP2010|TractOMultir |TractLOWI"</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -820,25 +819,25 @@ Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \var
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_ie8g99yht2hm6b0s0ox5 = TinyTable.createTableFunctions("tinytable_ie8g99yht2hm6b0s0ox5");
+      const tableFns_gxhl2j7o07qije25qjpd = TinyTable.createTableFunctions("tinytable_gxhl2j7o07qije25qjpd");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '42', j: 2 }, { i: '42', j: 3 }, { i: '42', j: 4 }, { i: '42', j: 5 }, { i: '42', j: 6 }, { i: '42', j: 7 }, { i: '42', j: 8 }, { i: '42', j: 9 } ], css_id: 'tinytable_css_0xdt5ts5h7s84hn2z48u',}, 
-          { positions: [ { i: '32', j: 2 }, { i: '32', j: 3 }, { i: '32', j: 4 }, { i: '32', j: 5 }, { i: '32', j: 6 }, { i: '32', j: 7 }, { i: '32', j: 8 }, { i: '32', j: 9 } ], css_id: 'tinytable_css_jemvfkjtbpodwsjhrxa3',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 }, { i: '22', j: 2 }, { i: '23', j: 2 }, { i: '24', j: 2 }, { i: '25', j: 2 }, { i: '26', j: 2 }, { i: '27', j: 2 }, { i: '28', j: 2 }, { i: '29', j: 2 }, { i: '30', j: 2 }, { i: '31', j: 2 }, { i: '33', j: 2 }, { i: '34', j: 2 }, { i: '35', j: 2 }, { i: '36', j: 2 }, { i: '37', j: 2 }, { i: '38', j: 2 }, { i: '39', j: 2 }, { i: '40', j: 2 }, { i: '41', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '17', j: 3 }, { i: '18', j: 3 }, { i: '19', j: 3 }, { i: '20', j: 3 }, { i: '21', j: 3 }, { i: '22', j: 3 }, { i: '23', j: 3 }, { i: '24', j: 3 }, { i: '25', j: 3 }, { i: '26', j: 3 }, { i: '27', j: 3 }, { i: '28', j: 3 }, { i: '29', j: 3 }, { i: '30', j: 3 }, { i: '31', j: 3 }, { i: '33', j: 3 }, { i: '34', j: 3 }, { i: '35', j: 3 }, { i: '36', j: 3 }, { i: '37', j: 3 }, { i: '38', j: 3 }, { i: '39', j: 3 }, { i: '40', j: 3 }, { i: '41', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 }, { i: '16', j: 4 }, { i: '17', j: 4 }, { i: '18', j: 4 }, { i: '19', j: 4 }, { i: '20', j: 4 }, { i: '21', j: 4 }, { i: '22', j: 4 }, { i: '23', j: 4 }, { i: '24', j: 4 }, { i: '25', j: 4 }, { i: '26', j: 4 }, { i: '27', j: 4 }, { i: '28', j: 4 }, { i: '29', j: 4 }, { i: '30', j: 4 }, { i: '31', j: 4 }, { i: '33', j: 4 }, { i: '34', j: 4 }, { i: '35', j: 4 }, { i: '36', j: 4 }, { i: '37', j: 4 }, { i: '38', j: 4 }, { i: '39', j: 4 }, { i: '40', j: 4 }, { i: '41', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '12', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 }, { i: '15', j: 5 }, { i: '16', j: 5 }, { i: '17', j: 5 }, { i: '18', j: 5 }, { i: '19', j: 5 }, { i: '20', j: 5 }, { i: '21', j: 5 }, { i: '22', j: 5 }, { i: '23', j: 5 }, { i: '24', j: 5 }, { i: '25', j: 5 }, { i: '26', j: 5 }, { i: '27', j: 5 }, { i: '28', j: 5 }, { i: '29', j: 5 }, { i: '30', j: 5 }, { i: '31', j: 5 }, { i: '33', j: 5 }, { i: '34', j: 5 }, { i: '35', j: 5 }, { i: '36', j: 5 }, { i: '37', j: 5 }, { i: '38', j: 5 }, { i: '39', j: 5 }, { i: '40', j: 5 }, { i: '41', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '5', j: 6 }, { i: '6', j: 6 }, { i: '7', j: 6 }, { i: '8', j: 6 }, { i: '9', j: 6 }, { i: '10', j: 6 }, { i: '11', j: 6 }, { i: '12', j: 6 }, { i: '13', j: 6 }, { i: '14', j: 6 }, { i: '15', j: 6 }, { i: '16', j: 6 }, { i: '17', j: 6 }, { i: '18', j: 6 }, { i: '19', j: 6 }, { i: '20', j: 6 }, { i: '21', j: 6 }, { i: '22', j: 6 }, { i: '23', j: 6 }, { i: '24', j: 6 }, { i: '25', j: 6 }, { i: '26', j: 6 }, { i: '27', j: 6 }, { i: '28', j: 6 }, { i: '29', j: 6 }, { i: '30', j: 6 }, { i: '31', j: 6 }, { i: '33', j: 6 }, { i: '34', j: 6 }, { i: '35', j: 6 }, { i: '36', j: 6 }, { i: '37', j: 6 }, { i: '38', j: 6 }, { i: '39', j: 6 }, { i: '40', j: 6 }, { i: '41', j: 6 }, { i: '1', j: 7 }, { i: '2', j: 7 }, { i: '3', j: 7 }, { i: '4', j: 7 }, { i: '5', j: 7 }, { i: '6', j: 7 }, { i: '7', j: 7 }, { i: '8', j: 7 }, { i: '9', j: 7 }, { i: '10', j: 7 }, { i: '11', j: 7 }, { i: '12', j: 7 }, { i: '13', j: 7 }, { i: '14', j: 7 }, { i: '15', j: 7 }, { i: '16', j: 7 }, { i: '17', j: 7 }, { i: '18', j: 7 }, { i: '19', j: 7 }, { i: '20', j: 7 }, { i: '21', j: 7 }, { i: '22', j: 7 }, { i: '23', j: 7 }, { i: '24', j: 7 }, { i: '25', j: 7 }, { i: '26', j: 7 }, { i: '27', j: 7 }, { i: '28', j: 7 }, { i: '29', j: 7 }, { i: '30', j: 7 }, { i: '31', j: 7 }, { i: '33', j: 7 }, { i: '34', j: 7 }, { i: '35', j: 7 }, { i: '36', j: 7 }, { i: '37', j: 7 }, { i: '38', j: 7 }, { i: '39', j: 7 }, { i: '40', j: 7 }, { i: '41', j: 7 }, { i: '1', j: 8 }, { i: '2', j: 8 }, { i: '3', j: 8 }, { i: '4', j: 8 }, { i: '5', j: 8 }, { i: '6', j: 8 }, { i: '7', j: 8 }, { i: '8', j: 8 }, { i: '9', j: 8 }, { i: '10', j: 8 }, { i: '11', j: 8 }, { i: '12', j: 8 }, { i: '13', j: 8 }, { i: '14', j: 8 }, { i: '15', j: 8 }, { i: '16', j: 8 }, { i: '17', j: 8 }, { i: '18', j: 8 }, { i: '19', j: 8 }, { i: '20', j: 8 }, { i: '21', j: 8 }, { i: '22', j: 8 }, { i: '23', j: 8 }, { i: '24', j: 8 }, { i: '25', j: 8 }, { i: '26', j: 8 }, { i: '27', j: 8 }, { i: '28', j: 8 }, { i: '29', j: 8 }, { i: '30', j: 8 }, { i: '31', j: 8 }, { i: '33', j: 8 }, { i: '34', j: 8 }, { i: '35', j: 8 }, { i: '36', j: 8 }, { i: '37', j: 8 }, { i: '38', j: 8 }, { i: '39', j: 8 }, { i: '40', j: 8 }, { i: '41', j: 8 }, { i: '1', j: 9 }, { i: '2', j: 9 }, { i: '3', j: 9 }, { i: '4', j: 9 }, { i: '5', j: 9 }, { i: '6', j: 9 }, { i: '7', j: 9 }, { i: '8', j: 9 }, { i: '9', j: 9 }, { i: '10', j: 9 }, { i: '11', j: 9 }, { i: '12', j: 9 }, { i: '13', j: 9 }, { i: '14', j: 9 }, { i: '15', j: 9 }, { i: '16', j: 9 }, { i: '17', j: 9 }, { i: '18', j: 9 }, { i: '19', j: 9 }, { i: '20', j: 9 }, { i: '21', j: 9 }, { i: '22', j: 9 }, { i: '23', j: 9 }, { i: '24', j: 9 }, { i: '25', j: 9 }, { i: '26', j: 9 }, { i: '27', j: 9 }, { i: '28', j: 9 }, { i: '29', j: 9 }, { i: '30', j: 9 }, { i: '31', j: 9 }, { i: '33', j: 9 }, { i: '34', j: 9 }, { i: '35', j: 9 }, { i: '36', j: 9 }, { i: '37', j: 9 }, { i: '38', j: 9 }, { i: '39', j: 9 }, { i: '40', j: 9 }, { i: '41', j: 9 } ], css_id: 'tinytable_css_k7cykuw6959b8ro2usag',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_89oajfi4fc6yfw21p3f7',}, 
-          { positions: [ { i: '42', j: 1 } ], css_id: 'tinytable_css_r6e4sr76zlfc4j69mhn4',}, 
-          { positions: [ { i: '32', j: 1 } ], css_id: 'tinytable_css_d29itbw1k7erixp0o78n',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 }, { i: '22', j: 1 }, { i: '23', j: 1 }, { i: '24', j: 1 }, { i: '25', j: 1 }, { i: '26', j: 1 }, { i: '27', j: 1 }, { i: '28', j: 1 }, { i: '29', j: 1 }, { i: '30', j: 1 }, { i: '31', j: 1 }, { i: '33', j: 1 }, { i: '34', j: 1 }, { i: '35', j: 1 }, { i: '36', j: 1 }, { i: '37', j: 1 }, { i: '38', j: 1 }, { i: '39', j: 1 }, { i: '40', j: 1 }, { i: '41', j: 1 } ], css_id: 'tinytable_css_3bk5zyl5y4c23vmo8q31',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_iog4i4w92go6eg1o9ehu',}, 
+          { positions: [ { i: '40', j: 2 }, { i: '40', j: 3 }, { i: '40', j: 4 }, { i: '40', j: 5 }, { i: '40', j: 6 }, { i: '40', j: 7 }, { i: '40', j: 8 }, { i: '40', j: 9 } ], css_id: 'tinytable_css_6ef2zbwd79e2ipd2dohw',}, 
+          { positions: [ { i: '30', j: 2 }, { i: '30', j: 3 }, { i: '30', j: 4 }, { i: '30', j: 5 }, { i: '30', j: 6 }, { i: '30', j: 7 }, { i: '30', j: 8 }, { i: '30', j: 9 } ], css_id: 'tinytable_css_dfbl7ngb4tc3rm4e1xtu',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 }, { i: '22', j: 2 }, { i: '23', j: 2 }, { i: '24', j: 2 }, { i: '25', j: 2 }, { i: '26', j: 2 }, { i: '27', j: 2 }, { i: '28', j: 2 }, { i: '29', j: 2 }, { i: '31', j: 2 }, { i: '32', j: 2 }, { i: '33', j: 2 }, { i: '34', j: 2 }, { i: '35', j: 2 }, { i: '36', j: 2 }, { i: '37', j: 2 }, { i: '38', j: 2 }, { i: '39', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '17', j: 3 }, { i: '18', j: 3 }, { i: '19', j: 3 }, { i: '20', j: 3 }, { i: '21', j: 3 }, { i: '22', j: 3 }, { i: '23', j: 3 }, { i: '24', j: 3 }, { i: '25', j: 3 }, { i: '26', j: 3 }, { i: '27', j: 3 }, { i: '28', j: 3 }, { i: '29', j: 3 }, { i: '31', j: 3 }, { i: '32', j: 3 }, { i: '33', j: 3 }, { i: '34', j: 3 }, { i: '35', j: 3 }, { i: '36', j: 3 }, { i: '37', j: 3 }, { i: '38', j: 3 }, { i: '39', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 }, { i: '16', j: 4 }, { i: '17', j: 4 }, { i: '18', j: 4 }, { i: '19', j: 4 }, { i: '20', j: 4 }, { i: '21', j: 4 }, { i: '22', j: 4 }, { i: '23', j: 4 }, { i: '24', j: 4 }, { i: '25', j: 4 }, { i: '26', j: 4 }, { i: '27', j: 4 }, { i: '28', j: 4 }, { i: '29', j: 4 }, { i: '31', j: 4 }, { i: '32', j: 4 }, { i: '33', j: 4 }, { i: '34', j: 4 }, { i: '35', j: 4 }, { i: '36', j: 4 }, { i: '37', j: 4 }, { i: '38', j: 4 }, { i: '39', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '12', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 }, { i: '15', j: 5 }, { i: '16', j: 5 }, { i: '17', j: 5 }, { i: '18', j: 5 }, { i: '19', j: 5 }, { i: '20', j: 5 }, { i: '21', j: 5 }, { i: '22', j: 5 }, { i: '23', j: 5 }, { i: '24', j: 5 }, { i: '25', j: 5 }, { i: '26', j: 5 }, { i: '27', j: 5 }, { i: '28', j: 5 }, { i: '29', j: 5 }, { i: '31', j: 5 }, { i: '32', j: 5 }, { i: '33', j: 5 }, { i: '34', j: 5 }, { i: '35', j: 5 }, { i: '36', j: 5 }, { i: '37', j: 5 }, { i: '38', j: 5 }, { i: '39', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '5', j: 6 }, { i: '6', j: 6 }, { i: '7', j: 6 }, { i: '8', j: 6 }, { i: '9', j: 6 }, { i: '10', j: 6 }, { i: '11', j: 6 }, { i: '12', j: 6 }, { i: '13', j: 6 }, { i: '14', j: 6 }, { i: '15', j: 6 }, { i: '16', j: 6 }, { i: '17', j: 6 }, { i: '18', j: 6 }, { i: '19', j: 6 }, { i: '20', j: 6 }, { i: '21', j: 6 }, { i: '22', j: 6 }, { i: '23', j: 6 }, { i: '24', j: 6 }, { i: '25', j: 6 }, { i: '26', j: 6 }, { i: '27', j: 6 }, { i: '28', j: 6 }, { i: '29', j: 6 }, { i: '31', j: 6 }, { i: '32', j: 6 }, { i: '33', j: 6 }, { i: '34', j: 6 }, { i: '35', j: 6 }, { i: '36', j: 6 }, { i: '37', j: 6 }, { i: '38', j: 6 }, { i: '39', j: 6 }, { i: '1', j: 7 }, { i: '2', j: 7 }, { i: '3', j: 7 }, { i: '4', j: 7 }, { i: '5', j: 7 }, { i: '6', j: 7 }, { i: '7', j: 7 }, { i: '8', j: 7 }, { i: '9', j: 7 }, { i: '10', j: 7 }, { i: '11', j: 7 }, { i: '12', j: 7 }, { i: '13', j: 7 }, { i: '14', j: 7 }, { i: '15', j: 7 }, { i: '16', j: 7 }, { i: '17', j: 7 }, { i: '18', j: 7 }, { i: '19', j: 7 }, { i: '20', j: 7 }, { i: '21', j: 7 }, { i: '22', j: 7 }, { i: '23', j: 7 }, { i: '24', j: 7 }, { i: '25', j: 7 }, { i: '26', j: 7 }, { i: '27', j: 7 }, { i: '28', j: 7 }, { i: '29', j: 7 }, { i: '31', j: 7 }, { i: '32', j: 7 }, { i: '33', j: 7 }, { i: '34', j: 7 }, { i: '35', j: 7 }, { i: '36', j: 7 }, { i: '37', j: 7 }, { i: '38', j: 7 }, { i: '39', j: 7 }, { i: '1', j: 8 }, { i: '2', j: 8 }, { i: '3', j: 8 }, { i: '4', j: 8 }, { i: '5', j: 8 }, { i: '6', j: 8 }, { i: '7', j: 8 }, { i: '8', j: 8 }, { i: '9', j: 8 }, { i: '10', j: 8 }, { i: '11', j: 8 }, { i: '12', j: 8 }, { i: '13', j: 8 }, { i: '14', j: 8 }, { i: '15', j: 8 }, { i: '16', j: 8 }, { i: '17', j: 8 }, { i: '18', j: 8 }, { i: '19', j: 8 }, { i: '20', j: 8 }, { i: '21', j: 8 }, { i: '22', j: 8 }, { i: '23', j: 8 }, { i: '24', j: 8 }, { i: '25', j: 8 }, { i: '26', j: 8 }, { i: '27', j: 8 }, { i: '28', j: 8 }, { i: '29', j: 8 }, { i: '31', j: 8 }, { i: '32', j: 8 }, { i: '33', j: 8 }, { i: '34', j: 8 }, { i: '35', j: 8 }, { i: '36', j: 8 }, { i: '37', j: 8 }, { i: '38', j: 8 }, { i: '39', j: 8 }, { i: '1', j: 9 }, { i: '2', j: 9 }, { i: '3', j: 9 }, { i: '4', j: 9 }, { i: '5', j: 9 }, { i: '6', j: 9 }, { i: '7', j: 9 }, { i: '8', j: 9 }, { i: '9', j: 9 }, { i: '10', j: 9 }, { i: '11', j: 9 }, { i: '12', j: 9 }, { i: '13', j: 9 }, { i: '14', j: 9 }, { i: '15', j: 9 }, { i: '16', j: 9 }, { i: '17', j: 9 }, { i: '18', j: 9 }, { i: '19', j: 9 }, { i: '20', j: 9 }, { i: '21', j: 9 }, { i: '22', j: 9 }, { i: '23', j: 9 }, { i: '24', j: 9 }, { i: '25', j: 9 }, { i: '26', j: 9 }, { i: '27', j: 9 }, { i: '28', j: 9 }, { i: '29', j: 9 }, { i: '31', j: 9 }, { i: '32', j: 9 }, { i: '33', j: 9 }, { i: '34', j: 9 }, { i: '35', j: 9 }, { i: '36', j: 9 }, { i: '37', j: 9 }, { i: '38', j: 9 }, { i: '39', j: 9 } ], css_id: 'tinytable_css_6bnb0caj5g4ahev0pg2l',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_ytfxpccq8r4fyn47z7jm',}, 
+          { positions: [ { i: '40', j: 1 } ], css_id: 'tinytable_css_qgeezyrent3noxreaffr',}, 
+          { positions: [ { i: '30', j: 1 } ], css_id: 'tinytable_css_bpyfo9fvy2vudt62wucu',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 }, { i: '22', j: 1 }, { i: '23', j: 1 }, { i: '24', j: 1 }, { i: '25', j: 1 }, { i: '26', j: 1 }, { i: '27', j: 1 }, { i: '28', j: 1 }, { i: '29', j: 1 }, { i: '31', j: 1 }, { i: '32', j: 1 }, { i: '33', j: 1 }, { i: '34', j: 1 }, { i: '35', j: 1 }, { i: '36', j: 1 }, { i: '37', j: 1 }, { i: '38', j: 1 }, { i: '39', j: 1 } ], css_id: 'tinytable_css_zwlpgifm9mhblp9qggah',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_v0x7umefo5jz8z8y02x3',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_ie8g99yht2hm6b0s0ox5.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_gxhl2j7o07qije25qjpd.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -847,17 +846,17 @@ Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \var
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_ie8g99yht2hm6b0s0ox5 td.tinytable_css_0xdt5ts5h7s84hn2z48u, #tinytable_ie8g99yht2hm6b0s0ox5 th.tinytable_css_0xdt5ts5h7s84hn2z48u {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_ie8g99yht2hm6b0s0ox5 td.tinytable_css_jemvfkjtbpodwsjhrxa3, #tinytable_ie8g99yht2hm6b0s0ox5 th.tinytable_css_jemvfkjtbpodwsjhrxa3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_ie8g99yht2hm6b0s0ox5 td.tinytable_css_k7cykuw6959b8ro2usag, #tinytable_ie8g99yht2hm6b0s0ox5 th.tinytable_css_k7cykuw6959b8ro2usag { text-align: center }
-    #tinytable_ie8g99yht2hm6b0s0ox5 td.tinytable_css_89oajfi4fc6yfw21p3f7, #tinytable_ie8g99yht2hm6b0s0ox5 th.tinytable_css_89oajfi4fc6yfw21p3f7 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_ie8g99yht2hm6b0s0ox5 td.tinytable_css_r6e4sr76zlfc4j69mhn4, #tinytable_ie8g99yht2hm6b0s0ox5 th.tinytable_css_r6e4sr76zlfc4j69mhn4 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_ie8g99yht2hm6b0s0ox5 td.tinytable_css_d29itbw1k7erixp0o78n, #tinytable_ie8g99yht2hm6b0s0ox5 th.tinytable_css_d29itbw1k7erixp0o78n {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_ie8g99yht2hm6b0s0ox5 td.tinytable_css_3bk5zyl5y4c23vmo8q31, #tinytable_ie8g99yht2hm6b0s0ox5 th.tinytable_css_3bk5zyl5y4c23vmo8q31 { text-align: left }
-    #tinytable_ie8g99yht2hm6b0s0ox5 td.tinytable_css_iog4i4w92go6eg1o9ehu, #tinytable_ie8g99yht2hm6b0s0ox5 th.tinytable_css_iog4i4w92go6eg1o9ehu {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_gxhl2j7o07qije25qjpd td.tinytable_css_6ef2zbwd79e2ipd2dohw, #tinytable_gxhl2j7o07qije25qjpd th.tinytable_css_6ef2zbwd79e2ipd2dohw {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_gxhl2j7o07qije25qjpd td.tinytable_css_dfbl7ngb4tc3rm4e1xtu, #tinytable_gxhl2j7o07qije25qjpd th.tinytable_css_dfbl7ngb4tc3rm4e1xtu {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_gxhl2j7o07qije25qjpd td.tinytable_css_6bnb0caj5g4ahev0pg2l, #tinytable_gxhl2j7o07qije25qjpd th.tinytable_css_6bnb0caj5g4ahev0pg2l { text-align: center }
+    #tinytable_gxhl2j7o07qije25qjpd td.tinytable_css_ytfxpccq8r4fyn47z7jm, #tinytable_gxhl2j7o07qije25qjpd th.tinytable_css_ytfxpccq8r4fyn47z7jm {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_gxhl2j7o07qije25qjpd td.tinytable_css_qgeezyrent3noxreaffr, #tinytable_gxhl2j7o07qije25qjpd th.tinytable_css_qgeezyrent3noxreaffr {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_gxhl2j7o07qije25qjpd td.tinytable_css_bpyfo9fvy2vudt62wucu, #tinytable_gxhl2j7o07qije25qjpd th.tinytable_css_bpyfo9fvy2vudt62wucu {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_gxhl2j7o07qije25qjpd td.tinytable_css_zwlpgifm9mhblp9qggah, #tinytable_gxhl2j7o07qije25qjpd th.tinytable_css_zwlpgifm9mhblp9qggah { text-align: left }
+    #tinytable_gxhl2j7o07qije25qjpd td.tinytable_css_v0x7umefo5jz8z8y02x3, #tinytable_gxhl2j7o07qije25qjpd th.tinytable_css_v0x7umefo5jz8z8y02x3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_ie8g99yht2hm6b0s0ox5" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_gxhl2j7o07qije25qjpd" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -949,46 +948,46 @@ Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \var
                   <td data-row="6" data-col="9"></td>
                 </tr>
                 <tr>
-                  <td data-row="7" data-col="1">TractLOWI</td>
-                  <td data-row="7" data-col="2">0.054</td>
-                  <td data-row="7" data-col="3">0.048</td>
-                  <td data-row="7" data-col="4">0.062</td>
-                  <td data-row="7" data-col="5">0.064</td>
-                  <td data-row="7" data-col="6">0.049</td>
-                  <td data-row="7" data-col="7">0.051</td>
-                  <td data-row="7" data-col="8">0.040</td>
-                  <td data-row="7" data-col="9">0.098</td>
+                  <td data-row="7" data-col="1">TractNHOPI</td>
+                  <td data-row="7" data-col="2">-4.314</td>
+                  <td data-row="7" data-col="3">3.157</td>
+                  <td data-row="7" data-col="4"></td>
+                  <td data-row="7" data-col="5"></td>
+                  <td data-row="7" data-col="6">-4.307</td>
+                  <td data-row="7" data-col="7">3.152</td>
+                  <td data-row="7" data-col="8"></td>
+                  <td data-row="7" data-col="9"></td>
                 </tr>
                 <tr>
                   <td data-row="8" data-col="1"></td>
-                  <td data-row="8" data-col="2">(0.153)</td>
-                  <td data-row="8" data-col="3">(0.157)</td>
-                  <td data-row="8" data-col="4">(0.131)</td>
-                  <td data-row="8" data-col="5">(1.24000e-01)</td>
-                  <td data-row="8" data-col="6">(0.153)</td>
-                  <td data-row="8" data-col="7">(0.157)</td>
-                  <td data-row="8" data-col="8">(0.131)</td>
-                  <td data-row="8" data-col="9">(0.124)</td>
+                  <td data-row="8" data-col="2">(3.605)</td>
+                  <td data-row="8" data-col="3">(3.685)</td>
+                  <td data-row="8" data-col="4"></td>
+                  <td data-row="8" data-col="5"></td>
+                  <td data-row="8" data-col="6">(3.605)</td>
+                  <td data-row="8" data-col="7">(3.685)</td>
+                  <td data-row="8" data-col="8"></td>
+                  <td data-row="8" data-col="9"></td>
                 </tr>
                 <tr>
-                  <td data-row="9" data-col="1">TractNHOPI</td>
-                  <td data-row="9" data-col="2">-4.314</td>
-                  <td data-row="9" data-col="3">3.157</td>
+                  <td data-row="9" data-col="1">TractOMultir</td>
+                  <td data-row="9" data-col="2">-0.097</td>
+                  <td data-row="9" data-col="3">0.119</td>
                   <td data-row="9" data-col="4"></td>
                   <td data-row="9" data-col="5"></td>
-                  <td data-row="9" data-col="6">-4.307</td>
-                  <td data-row="9" data-col="7">3.152</td>
+                  <td data-row="9" data-col="6">-0.097</td>
+                  <td data-row="9" data-col="7">0.120</td>
                   <td data-row="9" data-col="8"></td>
                   <td data-row="9" data-col="9"></td>
                 </tr>
                 <tr>
                   <td data-row="10" data-col="1"></td>
-                  <td data-row="10" data-col="2">(3.605)</td>
-                  <td data-row="10" data-col="3">(3.685)</td>
+                  <td data-row="10" data-col="2">(0.114)</td>
+                  <td data-row="10" data-col="3">(0.117)</td>
                   <td data-row="10" data-col="4"></td>
                   <td data-row="10" data-col="5"></td>
-                  <td data-row="10" data-col="6">(3.605)</td>
-                  <td data-row="10" data-col="7">(3.685)</td>
+                  <td data-row="10" data-col="6">(0.114)</td>
+                  <td data-row="10" data-col="7">(0.117)</td>
                   <td data-row="10" data-col="8"></td>
                   <td data-row="10" data-col="9"></td>
                 </tr>
@@ -1213,136 +1212,114 @@ Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \var
                   <td data-row="30" data-col="9">(0.184)</td>
                 </tr>
                 <tr>
-                  <td data-row="31" data-col="1">Urban × TractLOWI</td>
-                  <td data-row="31" data-col="2">-0.439**</td>
-                  <td data-row="31" data-col="3">-0.331*</td>
-                  <td data-row="31" data-col="4">-0.078</td>
-                  <td data-row="31" data-col="5">-0.084</td>
-                  <td data-row="31" data-col="6">-0.435**</td>
-                  <td data-row="31" data-col="7">-0.333*</td>
-                  <td data-row="31" data-col="8">-0.059</td>
-                  <td data-row="31" data-col="9">-0.112</td>
+                  <td data-row="31" data-col="1">Num.Obs.</td>
+                  <td data-row="31" data-col="2">9612</td>
+                  <td data-row="31" data-col="3">9612</td>
+                  <td data-row="31" data-col="4">9514</td>
+                  <td data-row="31" data-col="5">9514</td>
+                  <td data-row="31" data-col="6">9612</td>
+                  <td data-row="31" data-col="7">9612</td>
+                  <td data-row="31" data-col="8">9514</td>
+                  <td data-row="31" data-col="9">9514</td>
                 </tr>
                 <tr>
-                  <td data-row="32" data-col="1"></td>
-                  <td data-row="32" data-col="2">(0.160)</td>
-                  <td data-row="32" data-col="3">(0.163)</td>
-                  <td data-row="32" data-col="4">(0.135)</td>
-                  <td data-row="32" data-col="5">(1.28000e-01)</td>
-                  <td data-row="32" data-col="6">(0.160)</td>
-                  <td data-row="32" data-col="7">(0.163)</td>
-                  <td data-row="32" data-col="8">(0.135)</td>
-                  <td data-row="32" data-col="9">(0.128)</td>
+                  <td data-row="32" data-col="1">R2</td>
+                  <td data-row="32" data-col="2">0.580</td>
+                  <td data-row="32" data-col="3">0.307</td>
+                  <td data-row="32" data-col="4">0.968</td>
+                  <td data-row="32" data-col="5">0.955</td>
+                  <td data-row="32" data-col="6">0.580</td>
+                  <td data-row="32" data-col="7">0.307</td>
+                  <td data-row="32" data-col="8">0.968</td>
+                  <td data-row="32" data-col="9">0.955</td>
                 </tr>
                 <tr>
-                  <td data-row="33" data-col="1">Num.Obs.</td>
-                  <td data-row="33" data-col="2">9612</td>
-                  <td data-row="33" data-col="3">9612</td>
-                  <td data-row="33" data-col="4">9514</td>
-                  <td data-row="33" data-col="5">9514</td>
-                  <td data-row="33" data-col="6">9612</td>
-                  <td data-row="33" data-col="7">9612</td>
-                  <td data-row="33" data-col="8">9514</td>
-                  <td data-row="33" data-col="9">9514</td>
+                  <td data-row="33" data-col="1">R2 Adj.</td>
+                  <td data-row="33" data-col="2">0.578</td>
+                  <td data-row="33" data-col="3">0.305</td>
+                  <td data-row="33" data-col="4">0.936</td>
+                  <td data-row="33" data-col="5">0.910</td>
+                  <td data-row="33" data-col="6">0.578</td>
+                  <td data-row="33" data-col="7">0.305</td>
+                  <td data-row="33" data-col="8">0.936</td>
+                  <td data-row="33" data-col="9">0.910</td>
                 </tr>
                 <tr>
-                  <td data-row="34" data-col="1">R2</td>
-                  <td data-row="34" data-col="2">0.580</td>
-                  <td data-row="34" data-col="3">0.307</td>
-                  <td data-row="34" data-col="4">0.968</td>
-                  <td data-row="34" data-col="5">0.955</td>
+                  <td data-row="34" data-col="1">R2 Within</td>
+                  <td data-row="34" data-col="2"></td>
+                  <td data-row="34" data-col="3"></td>
+                  <td data-row="34" data-col="4">0.089</td>
+                  <td data-row="34" data-col="5">0.009</td>
                   <td data-row="34" data-col="6">0.580</td>
                   <td data-row="34" data-col="7">0.307</td>
-                  <td data-row="34" data-col="8">0.968</td>
-                  <td data-row="34" data-col="9">0.955</td>
+                  <td data-row="34" data-col="8">0.089</td>
+                  <td data-row="34" data-col="9">0.009</td>
                 </tr>
                 <tr>
-                  <td data-row="35" data-col="1">R2 Adj.</td>
-                  <td data-row="35" data-col="2">0.578</td>
-                  <td data-row="35" data-col="3">0.305</td>
-                  <td data-row="35" data-col="4">0.936</td>
-                  <td data-row="35" data-col="5">0.910</td>
+                  <td data-row="35" data-col="1">R2 Within Adj.</td>
+                  <td data-row="35" data-col="2"></td>
+                  <td data-row="35" data-col="3"></td>
+                  <td data-row="35" data-col="4">0.086</td>
+                  <td data-row="35" data-col="5">0.006</td>
                   <td data-row="35" data-col="6">0.578</td>
                   <td data-row="35" data-col="7">0.305</td>
-                  <td data-row="35" data-col="8">0.936</td>
-                  <td data-row="35" data-col="9">0.910</td>
+                  <td data-row="35" data-col="8">0.086</td>
+                  <td data-row="35" data-col="9">0.006</td>
                 </tr>
                 <tr>
-                  <td data-row="36" data-col="1">R2 Within</td>
-                  <td data-row="36" data-col="2"></td>
-                  <td data-row="36" data-col="3"></td>
-                  <td data-row="36" data-col="4">0.089</td>
-                  <td data-row="36" data-col="5">0.009</td>
-                  <td data-row="36" data-col="6">0.580</td>
-                  <td data-row="36" data-col="7">0.307</td>
-                  <td data-row="36" data-col="8">0.089</td>
-                  <td data-row="36" data-col="9">0.009</td>
+                  <td data-row="36" data-col="1">AIC</td>
+                  <td data-row="36" data-col="2">5350.2</td>
+                  <td data-row="36" data-col="3">5770.0</td>
+                  <td data-row="36" data-col="4">-9809.6</td>
+                  <td data-row="36" data-col="5">-10838.8</td>
+                  <td data-row="36" data-col="6">5351.0</td>
+                  <td data-row="36" data-col="7">5771.5</td>
+                  <td data-row="36" data-col="8">-9815.9</td>
+                  <td data-row="36" data-col="9">-10854.4</td>
                 </tr>
                 <tr>
-                  <td data-row="37" data-col="1">R2 Within Adj.</td>
-                  <td data-row="37" data-col="2"></td>
-                  <td data-row="37" data-col="3"></td>
-                  <td data-row="37" data-col="4">0.086</td>
-                  <td data-row="37" data-col="5">0.006</td>
-                  <td data-row="37" data-col="6">0.578</td>
-                  <td data-row="37" data-col="7">0.305</td>
-                  <td data-row="37" data-col="8">0.086</td>
-                  <td data-row="37" data-col="9">0.006</td>
+                  <td data-row="37" data-col="1">BIC</td>
+                  <td data-row="37" data-col="2">5565.3</td>
+                  <td data-row="37" data-col="3">5985.1</td>
+                  <td data-row="37" data-col="4">24346.1</td>
+                  <td data-row="37" data-col="5">23316.9</td>
+                  <td data-row="37" data-col="6">5573.3</td>
+                  <td data-row="37" data-col="7">5993.8</td>
+                  <td data-row="37" data-col="8">24339.8</td>
+                  <td data-row="37" data-col="9">23301.3</td>
                 </tr>
                 <tr>
-                  <td data-row="38" data-col="1">AIC</td>
-                  <td data-row="38" data-col="2">5350.2</td>
-                  <td data-row="38" data-col="3">5770.0</td>
-                  <td data-row="38" data-col="4">-9809.6</td>
-                  <td data-row="38" data-col="5">-10838.8</td>
-                  <td data-row="38" data-col="6">5351.0</td>
-                  <td data-row="38" data-col="7">5771.5</td>
-                  <td data-row="38" data-col="8">-9815.9</td>
-                  <td data-row="38" data-col="9">-10854.4</td>
+                  <td data-row="38" data-col="1">RMSE</td>
+                  <td data-row="38" data-col="2">0.32</td>
+                  <td data-row="38" data-col="3">0.33</td>
+                  <td data-row="38" data-col="4">0.09</td>
+                  <td data-row="38" data-col="5">0.08</td>
+                  <td data-row="38" data-col="6">0.32</td>
+                  <td data-row="38" data-col="7">0.33</td>
+                  <td data-row="38" data-col="8">0.09</td>
+                  <td data-row="38" data-col="9">0.08</td>
                 </tr>
                 <tr>
-                  <td data-row="39" data-col="1">BIC</td>
-                  <td data-row="39" data-col="2">5565.3</td>
-                  <td data-row="39" data-col="3">5985.1</td>
-                  <td data-row="39" data-col="4">24346.1</td>
-                  <td data-row="39" data-col="5">23316.9</td>
-                  <td data-row="39" data-col="6">5573.3</td>
-                  <td data-row="39" data-col="7">5993.8</td>
-                  <td data-row="39" data-col="8">24339.8</td>
-                  <td data-row="39" data-col="9">23301.3</td>
+                  <td data-row="39" data-col="1">FE: Year</td>
+                  <td data-row="39" data-col="2"></td>
+                  <td data-row="39" data-col="3"></td>
+                  <td data-row="39" data-col="4"></td>
+                  <td data-row="39" data-col="5"></td>
+                  <td data-row="39" data-col="6">X</td>
+                  <td data-row="39" data-col="7">X</td>
+                  <td data-row="39" data-col="8">X</td>
+                  <td data-row="39" data-col="9">X</td>
                 </tr>
                 <tr>
-                  <td data-row="40" data-col="1">RMSE</td>
-                  <td data-row="40" data-col="2">0.32</td>
-                  <td data-row="40" data-col="3">0.33</td>
-                  <td data-row="40" data-col="4">0.09</td>
-                  <td data-row="40" data-col="5">0.08</td>
-                  <td data-row="40" data-col="6">0.32</td>
-                  <td data-row="40" data-col="7">0.33</td>
-                  <td data-row="40" data-col="8">0.09</td>
-                  <td data-row="40" data-col="9">0.08</td>
-                </tr>
-                <tr>
-                  <td data-row="41" data-col="1">FE: Year</td>
-                  <td data-row="41" data-col="2"></td>
-                  <td data-row="41" data-col="3"></td>
-                  <td data-row="41" data-col="4"></td>
-                  <td data-row="41" data-col="5"></td>
-                  <td data-row="41" data-col="6">X</td>
-                  <td data-row="41" data-col="7">X</td>
-                  <td data-row="41" data-col="8">X</td>
-                  <td data-row="41" data-col="9">X</td>
-                </tr>
-                <tr>
-                  <td data-row="42" data-col="1">FE: CensusTract</td>
-                  <td data-row="42" data-col="2"></td>
-                  <td data-row="42" data-col="3"></td>
-                  <td data-row="42" data-col="4">X</td>
-                  <td data-row="42" data-col="5">X</td>
-                  <td data-row="42" data-col="6"></td>
-                  <td data-row="42" data-col="7"></td>
-                  <td data-row="42" data-col="8">X</td>
-                  <td data-row="42" data-col="9">X</td>
+                  <td data-row="40" data-col="1">FE: CensusTract</td>
+                  <td data-row="40" data-col="2"></td>
+                  <td data-row="40" data-col="3"></td>
+                  <td data-row="40" data-col="4">X</td>
+                  <td data-row="40" data-col="5">X</td>
+                  <td data-row="40" data-col="6"></td>
+                  <td data-row="40" data-col="7"></td>
+                  <td data-row="40" data-col="8">X</td>
+                  <td data-row="40" data-col="9">X</td>
                 </tr>
         </tbody>
       </table>
@@ -1350,30 +1327,56 @@ Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \var
 <!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this example with your own figure.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(your_data, aes(x = x_variable, y = y_variable)) +</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point() +</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x = "X Variable", y = "Y Variable", title = "Main Result")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+<p>Across the models, it appears coefficient estimates are typically consistent between the baseline POLS model and Year fixed effects model, indicating that time trends/shocks do not play a big role in the relationship between socioeconomic factors and low food access, and the associations are primarily changed by differences across census tracts, which explains why controlling for within-tract heterogeneity typically decreases the effect of the variables.</p>
+<p>A tract being urban alone is not statistically significant across any of the models. Urban tracts appear more likely to be low access in the POLS and Year FE models, indicating the relationship is driven by differences across tracts, not within-tracts changes. This suggests that a tract being urban alone is not a strong indicator of being low access, especially after accounting for unobserved tract heterogeneity. However, urban effects are strongly captured through interaction terms, indicating the effects of some socioeconomic variables and being low access is different in urban areas compared to nonurban areas. For example, the interaction term between Urban and HUNVFlag contains some of the strongest results and the estimates are statistically significant across all the models. This means that tracts being flagged as having limited vehicle access are more strongly associated with being classified as low access in urban areas, compared to rural areas. It is important to note that vehicle access in this variable refers to access to a personal vehicle and does not take public transportation measures into effect, therefore, not all tracts that have low vehicle access necessarily mean transportation access, especially for heavily urban areas like New York City where a fair share of the population relies on public transportation. That being said a tract being flagged as HUNV alone has a small, negative association with the probability of being low access and it is statistically insignificant across all models similar to the Urban flag.</p>
+<p>LowIncomeTracts are associated with about 6-7 percentage point (pp) higher probability of being classified as low access at both thresholds, for POLS and Year FE models, where both are statistically significant. However this effect is reduced and rendered insignificant when within-tract heterogeneity is accounted for. The interaction term between Urban and LowIncomeTracts, however, have a negative association, decreasing the probability of being low access by about 8-10 pp in urban tracts compared to rural.</p>
+<p>Increases in the share of households that participate in SNAP benefits is associated with about a very little positive increase of probability of being low access and it is statistically insignificant across all models, suggesting it is a weak indicator of a tract being classified as low access. Similar results are seen with poverty rate, where coefficients are near zero and statistically insignificant across models.</p>
+<pre><code>Overall, the results show that most socioeconomic factors do not have consistently stable and strong association with the probability of being labelled low access. A tract being flagged as low income has a positive association with being low access, but only when comparing different tracts to each other, not when observing changes within a tract. The strongest effects come from observing interactions between vehicle access and urban tracts, in which case there is a high positive association across all models for urban tracts compared to rural. The socioeconomic variables used in these models were very limited and do not capture many important unobserved factors, like public transportation, food quality, food affordability, and neighborhood walkability. The model is not able to establish causal relationships and it is not able to explore what drives certain socioeconomic factors that may be more significant for urban tracts compared to rural. </code></pre>
 </section>
 <section id="discussion-and-implications" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Discussion and Implications</h1>
-<p>Interpret your results. Explain what they imply for economics, business, policy, or society.</p>
-<p>Discuss limitations and clarify what your analysis can and cannot show.</p>
+<p>As you have seen, the results of this project have important implications for food accessibility policy throughout New York State. Our analysis demonstrates that low food access is closely connected to several broader socioeconomic factors.</p>
+<p>One of the most important findings from the analysis is that urban census tracts alone were not statistically significant predictors of low food access. For instance, after controlling for additional tract characteristics, the strongest relationships involved urban status and socioeconomic factors. This is important because it shows that the urban food accessibility challenges are more complex than simple geographical measurements suggest.</p>
+<p>Another important insight from the analysis is that traditional poverty measures alone were not strongly associated with food access outcomes after controlling for additional variables. PovertyRate remained near zero and statistically insignificant across most model specifications. Similarly, TractSNAP showed only modest associations with low-food-access outcomes.</p>
+<p>Meanwhile, the strongest and most consistent empirical findings involved the interaction between urban classification and low vehicle access. Urban tracts with higher levels of low vehicle access were significantly more likely to be classified as low access across all major regression specifications, particularly under the one-half-mile threshold definition.<br>
+The findings also suggest that policymakers should prioritize both statewide and local interventions to improve access to healthy, affordable food in these tracts. But since food accessibility challenges differ substantially between urban and rural areas, policy responses should be geographically targeted to enhance their effectiveness.<br>
+Here are a few policy suggestions for urban communities that we think New York State and localized parties should focus on:</p>
+<ul>
+<li>Expanding affordable grocery store access</li>
+<li>Increasing affordability of healthy food options</li>
+<li>Supporting neighborhood food retailers</li>
+</ul>
+<p>For rural communities, policies and parties should focus on:</p>
+<ul>
+<li>Supporting mobile grocery programs</li>
+<li>Expanding farmers’ market availability</li>
+<li>Improving transportation access</li>
+</ul>
+<p>Now, New York State already has policies in place for situations like this. One New York State program previously mentioned is the Food Access Expansion Grant Program. This program provided 10 million dollars in 2025 to help expand grocery stores and supermarkets in low-access tracts. We support and agree with these decisions. The results from this project support the continued expansion of these initiatives while emphasizing the need for community-specific policy approaches.</p>
+<p>The findings from this project also provide important insight into how socioeconomic factors are closely associated with low-access tracts in New York State. More broadly, the results demonstrate that food accessibility is not solely determined by physical distance from supermarkets or grocery stores; distance is only part of the puzzle.</p>
+<p>Importantly, the findings from this project should be interpreted as statistical associations rather than causal conclusions. The analysis identifies meaningful relationships between neighborhood characteristics and food accessibility outcomes, but it cannot definitively establish direct cause-and-effect relationships. Nevertheless, the findings provide useful evidence that policymakers and community organizations can use to identify vulnerable communities better and design more targeted food accessibility interventions.</p>
+<p>The findings from our project have several important implications for policymakers, nonprofit organizations, local governments, and community planning agencies throughout New York State. One major implication is that food accessibility policies should not rely exclusively on measures of geographic distance to identify vulnerable communities. Otherwise, they wouldn’t make the best, well-rounded decisions in policymaking, since distance is one piece of the puzzle. In other words, physical proximity to a food store does not necessarily imply meaningful access to affordable or healthy food.</p>
+<p>Ultimately, this project demonstrates that food accessibility is not simply a question of geographic distance. Food accessibility is deeply connected to several other socioeconomic factors we mentioned today, but we weren’t able to examine it in depth.</p>
 </section>
 <section id="conclusion" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Conclusion</h1>
-<p>Summarize your research question, data, method, main findings, and key takeaway.</p>
-<p>Briefly suggest possible future extensions.</p>
+<p>To conclude, our project examined a central research question related to food accessibility throughout New York State:</p>
+<ul>
+<li>Which tract characteristics are associated with a higher probability of low access, holding other tract characteristics constant?</li>
+</ul>
+<p>Questions like this are important because food accessibility remains closely connected to a range of socioeconomic issues. While food access is discussed primarily in terms of geographic distance to/from supermarkets, in our projects, data and results are. It’s important not to dismiss the bigger picture of the association between socioeconomic factors and distance to supermarkets.</p>
+<p>Using census tract-level panel data from the USDA Food Access Research Atlas for 2015 and 2019, our project used machine-learning variable-selection methods to examine food accessibility patterns across New York State. LASSO regression was used to identify the most important variables and interaction effects, while pooled ordinary least squares, census tract fixed effects, year fixed effects, and two-way fixed effects models were used to estimate associations between socioeconomic conditions and low food access classifications.</p>
+<p>Our findings should be interpreted as statistical associations rather than causal conclusions. The analysis identifies meaningful relationships between neighborhood characteristics and food accessibility outcomes, but it cannot definitively establish direct causal effects.</p>
+<p>Future research could improve upon this project by incorporating additional environmental, food quality, and transportation measures, including but not limited to grocery prices, food availability indicators, food quality, public transit access, and walkability. Future studies could also expand the analysis beyond New York State or incorporate more recent food access and census data, given the world’s constant change. Overall, this project provides a localized, census-tract-level analysis of food accessibility throughout New York State.</p>
 </section>
 <section id="references" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> References</h1>
-<p>List all sources cited in your project, including data sources, academic articles, reports, websites, packages, and tools.</p>
-<p>For online sources, include the full URL and date/time accessed.</p>
+<p>Choe, B. (n.d.). Exploring Socioeconomic Factors Associated with Low Food Access Tracts in New York State | Byeong-Hak Choe, https://bcdanl.github.io/410/feedback/cameron-nada-feedback.html. Accessed 23 March. 2026.</p>
+<p>New York State Council on Hunger and Food Policy. (2025). New York State Council on Hunger and Food Policy 2025 Annual Report, https://agriculture.ny.gov/system/files/documents/2026/03/chfp_2025_annualreport.pdf. Accessed 20 April. 2026.</p>
+<p>U.S. Department of Agriculture, Economic Research Service. Download the Data: Food Access Research Atlas. USDA ERS, https://www.ers.usda.gov/data-products/food-access-research-atlas/download-the-data. Accessed 17 Feb.&nbsp;2026.</p>
+<p>U.S. Department of Agriculture, Economic Research Service. Food Access Research Atlas. USDA ERS, updated 23 Sept.&nbsp;2025, https://www.ers.usda.gov/data-products/food-access-research-atlas. Accessed 19 Feb.&nbsp;2026.</p>
+<p>United States Department of Agriculture, Economic Research Service. (2019). Food Access Research Atlas: 2019 data. https://www.ers.usda.gov/data-products/food-access-research-atlas/ Accessed February 19, 2026</p>
+<p>United States Department of Agriculture, Economic Research Service. (2015). Food Access Research Atlas: 2015 data. https://www.ers.usda.gov/data-products/food-access-research-atlas/ Accessed February 19, 2026</p>
 
 
 <!-- -->
@@ -1953,128 +1956,217 @@ Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \var
 <span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
 <span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>Describe the real-world motivation for your project. Clearly state your research question and explain why it matters.</span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>Briefly preview your data, empirical approach, main findings, and contribution.</span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="fu"># Background and Related Literature</span></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>Summarize the relevant background, institutional setting, or prior research related to your topic.</span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>Explain what is already known and how your project contributes to the existing discussion.</span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data</span></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Source</span></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>In the United States, reliable access to affordable, nutritious, and healthy food remains one of the most significant public health and public policy concerns. Today, food accessibility affects not only individual health outcomes but also broader issues related to economic opportunity, public/nonpublic transportation, housing inequality, and poverty. While many communities have access to nearby food sellers, the quality of the food is not up to par. Affordable, healthy food is not equally distributed across neighborhoods.  In many urban areas, residents primarily rely on corner stores, delis, and convenience stores rather than grocery stores or supermarkets that offer fresh produce and affordable, healthy food options. Meanwhile, in rural communities, residents often face long distances to food sources. Together, these conditions contribute to what the United States Department of Agriculture now refers to as low-food-access communities, or “food deserts.”  </span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>According to the New York State Council on Hunger and Food Policy (2025), food insecurity continues to affect vulnerable populations throughout the state despite ongoing food assistance programs and policy initiatives. Rising food costs, transportation barriers, housing instability, and economic inequality continue to limit many households’ ability to consistently access healthy and affordable food. Unfortunately, according to the New York State Council on Hunger and Food Policy (2025), food insecurity and accessibility issues continue to affect several vulnerable populations throughout New York State.  Despite all of the ongoing policy changes and food assistance programs. Housing instability, transportation barriers, economic inequality, and rising food costs, combined with distance to stores, tend to limit many communities' and households' ability to consistently access healthy and affordable food.  </span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>The motivation for this project comes from the broader importance of understanding how food accessibility affects everyday life within neighborhoods and communities. It affects workers, families, children, and elderly residents, able-bodied and non-able-bodied alike. All throughout rural and urban New York State. That being said, there is hope. For instance, data like ours helps identify which communities and neighborhoods face the most food access challenges. Then, policymakers, local governments, community organizations, and nonprofits can use this information to allocate resources more effectively in these low-access areas through more targeted food access policies.  </span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>Our project specifically examines the relationship/association between residential neighborhoods/communities and nearby food access points throughout New York State. The research question guiding this paper is:  </span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Which tract characteristics are associated with a higher probability of low access, holding other tract characteristics constant?  </span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>Our project uses census tract-level data from the USDA’s Food Access Research Atlas Data 2015 and the USDA’s Food Access Research Atlas Data 2019. The unit of observation we used is the census tract. This allowed us to analyze tract-level variation in food accessibility throughout New York State. This combined dataset includes food access indicators along with socioeconomic and demographic information. Some of the data include information on various factors. For example, vehicle access, income, race and ethnicity, housing vulnerability, SNAP participation, age, and urban classification. However, our analysis focuses on only two low food access terms, low food access at the half mile for urban and 10 mile for nonurban tracts and low food access at the 1 and 10 mile threshold.  </span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>To analyze these outcomes, we first combine the two previously mentioned data sets. Second, LASSO regression models were used to identify the most important predictors from a large set of economic, demographic, and interaction variables. Statistically significant in terms of addressing our research questions, as well as significant enough to help us provide our local analysis based on our findings. Then, selected variables were incorporated into pooled ordinary least squares (POLS), census-tract fixed-effects, year-fixed-effects, and two-way fixed-effects panel regression models.  </span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>Our project aims to contribute to an understanding of food accessibility in New York State. First, it provides a localized, census-tract-level analysis of food access in New York State. Second, our project uses machine-learning variable selection and LASSO to identify important predictors of food access inequality. Third, our project contributes practical policy insight by identifying which neighborhood characteristics are most strongly associated with low food access classifications. </span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>Our findings are interpreted as statistical associations rather than causal relationships. It is not cause and effect. Unfortunately, we do not have enough in-depth data, so our analysis will not show that. That being said, our analysis still identifies patterns and relationships between food accessibility outcomes and neighborhood characteristics. As you shall soon see, our results provide in-depth insight (not inference) into the daily lives of residents of New York state.   </span>
 <span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>The data sets used were sourced from the United States Department of Agriculture’s (USDA’s) Food Access Research Atlas for 2015 and 2019. The Food Access Research Atlas Data contains food access flags for United States census tracts using different measurement thresholds, combined with demographic and socioeconomic data from multiple data sources. The USDA defines being low access as being geographically far from a “food store”, e.g., a supermarket, supercenter, or grocery store. Both data sets use a combination of two lists of food stores to represent sources of affordable and nutritious food from 2015 and 2019, respectively.  </span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>Ultimately, our project aims to provide insight into how low food access can affect neighborhoods throughout New York State and how policymakers and community organizations may better address food accessibility challenges in the future.</span>
 <span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>Data used in the 2015 Atlas includes population data from the 2010 Census of the Population, urban designation provided by the 2010 Census at the block level, and data on income, vehicle availability, and SNAP participation from the 2010-14 American Community Survey (ACS). Data from the 2019 Atlas uses the same population data as 2015, with urban designations from the 2019 urbanized area geographies, and data on income, vehicle availability, and SNAP participation from the 2014-18 ACS. Both data sets are based on 2010 census-tract boundaries and contain the same classification definitions, allowing us to combine data sets into a single panel data. </span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="fu">## Unit of Observation</span></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>The unit of observation for both data sets is U.S. census tracts, with each row representing one census tract. Census tracts are small, geographic subdivisions of state counties.</span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Variables</span></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>key_var_def <span class="sc">|&gt;</span> </span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>The outcome variables used are <span class="in">`LAhalfand10`</span> and <span class="in">`LA1and10`</span>, which are low access flags at different measurement thresholds. A tract is deemed “low access” if at least 500 people or at least 33% of the population is greater than the measurement thresholds miles away from the nearest food store. <span class="in">`LAhalfand10`</span> is measured by being a half mile away for urban tracts and 10 miles for nonurban tracts, while <span class="in">`LA1and10`</span> is measured by being 1 mile away for urban tracts and 10 miles away for nonurban tracts.  </span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>This research focuses on socioeconomic variables, including low income tracts, poverty rate, accessibility to a personal vehicle, and population’s access to government assisted food program, SNAP. Demographic variables related to ethnicity and age are kept as control variables, while census tract and year variables will be used as fixed effects to control for time-invariant within-county characteristics and year shocks.</span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Cleaning</span></span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>The 2015 and 2019 data sets were prepared for combining into the main panel data by converting variables into their proper types and binding the rows together, filtering to keep data from New York state. Demographic data that is represented as raw counts, like <span class="in">`TractSNAP`</span>, which is the total count of housing units receiving SNAP benefits, were recalculated as the total share of population for fair comparison across tracts. Variables with a high missing value count were dropped completely, and observations with missing values were dropped for consistency and in order to run lasso regression for variable selection later on. </span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Statistics</span></span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>fara_map_LAhalfand10</span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a>fara_map_LA1and10</span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="fu"># Background and Related Literature</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>What does food accessibility entail? Food accessibility refers to a community’s/tract's ability to consistently get healthy, affordable, and nutritious food within a reasonable geographic distance. The USDA Economic Research Service measures food accessibility using supermarket/grocery store proximity and transportation-based data. Tracts with limited access to supermarkets and grocery stores are often referred to as low-food-access areas or food deserts.  </span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>According to the USDA Food Access Research Atlas, low-access tracts are defined as census tracts where a substantial share of the population lives beyond a specified distance threshold from the nearest supermarket or large grocery retailer. The USDA Food Access Research Atlas specifically defines two important measures used throughout this project. The first measure, LAhalfand10, identifies census tracts where at least 500 people, or at least 33 percent of the population, live more than one-half mile from the nearest supermarket in urban areas, or more than ten miles in rural areas. The second measure, LA1and10, applies a one-mile threshold for urban communities and a ten-mile threshold for rural communities. But as previously stated, distance to/from a grocery store is not all the information needed to understand this important and complex topic.</span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>For instance, the New York State Council on Hunger and Food Policy 2025 Annual Report provides important institutional and policy context. As such, this is used for understanding food accessibility challenges throughout New York State. Demonstrated as a continued food insecurity and access dilemma. The New York State Council on Hunger and Food Policy also emphasizes the importance of locally targeted food policy responses. These come from many different groups, such as non-profits and local governments. The report discusses programs, such as the Food Access Expansion Grant Program, administered by the New York State Department of Agriculture and Markets. This program supports and expands farmers' markets, food stands, and supermarkets, and it provided approximately $10 million in 2025 to do so (New York State Council on Hunger and Food Policy, 2025). This helps tie in all the context provided by the previous studies and reports mentioned.  </span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>The findings from these studies generally suggest that food accessibility challenges are driven by multiple socioeconomic factors rather than a single socioeconomic or demographic factor. These findings directly inform the empirical framework used in this project—particularly, the inclusion of transportation-related variables, low-income tract classifications, and interaction effects involving urban status, which will be shown later on in this paper.   </span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Source</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>The data sets used were sourced from the United States Department of Agriculture’s (USDA’s) Food Access Research Atlas for 2015 and 2019. The Food Access Research Atlas Data contains food access flags for United States census tracts using different measurement thresholds, combined with demographic and socioeconomic data from multiple data sources. The USDA defines being low access as being geographically far from a “food store”, e.g., a supermarket, supercenter, or grocery store. Both data sets use a combination of two lists of food stores to represent sources of affordable and nutritious food from 2015 and 2019, respectively.  </span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>Data used in the 2015 Atlas includes population data from the 2010 Census of the Population, urban designation provided by the 2010 Census at the block level, and data on income, vehicle availability, and SNAP participation from the 2010-14 American Community Survey (ACS). Data from the 2019 Atlas uses the same population data as 2015, with urban designations from the 2019 urbanized area geographies, and data on income, vehicle availability, and SNAP participation from the 2014-18 ACS. Both data sets are based on 2010 census-tract boundaries and contain the same classification definitions, allowing us to combine data sets into a single panel data. </span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## Unit of Observation</span></span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>The unit of observation for both data sets is U.S. census tracts, with each row representing one census tract. Census tracts are small, geographic subdivisions of state counties.</span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Variables</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>key_var_def <span class="sc">|&gt;</span> </span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>The outcome variables used are <span class="in">`LAhalfand10`</span> and <span class="in">`LA1and10`</span>, which are low access flags at different measurement thresholds. A tract is deemed “low access” if at least 500 people or at least 33% of the population is greater than the measurement thresholds miles away from the nearest food store. <span class="in">`LAhalfand10`</span> is measured by being a half mile away for urban tracts and 10 miles for nonurban tracts, while <span class="in">`LA1and10`</span> is measured by being 1 mile away for urban tracts and 10 miles away for nonurban tracts.  </span>
 <span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summary-statistics}</span></span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this example with your own data and summary statistics.</span></span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>cleaned_fara <span class="sc">|&gt;</span> </span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(LAhalfand10, LA1and10, Urban, HUNVFlag, LowIncomeTracts, PovertyRate, TractSNAP, Year) <span class="sc">|&gt;</span> </span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">|&gt;</span> </span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="fu"># Empirical Strategy / Methods</span></span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a>Describe the method used to answer your research question. This may include regression, classification, clustering, forecasting, text analysis, or another data analytics method.</span>
-<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>For example, a **two-way fixed effects regression** can be used as an empirical strategy for **inference** when the goal is to estimate the relationship between a key explanatory variable and an outcome while accounting for unit-specific and time-specific factors:</span>
-<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a>Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \varepsilon_{it},</span>
-<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a>where $Y_{it}$ is the outcome of interest for unit $i$ at time $t$, $X_{it}$ is the main explanatory variable, $Z_{it}$ represents control variables, $\alpha_i$ captures unit fixed effects, $\lambda_t$ captures time fixed effects, and $\varepsilon_{it}$ is the error term.</span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a>If your project uses machine learning or prediction, explain your train/test split, cross-validation, model tuning, and performance metrics.</span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a>This research focuses on socioeconomic variables, including low income tracts, poverty rate, accessibility to a personal vehicle, and population’s access to government assisted food program, SNAP. Demographic variables related to ethnicity and age are kept as control variables, while census tract and year variables will be used as fixed effects to control for time-invariant within-county characteristics and year shocks.</span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Cleaning</span></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>The 2015 and 2019 data sets were prepared for combining into the main panel data by converting variables into their proper types and binding the rows together, filtering to keep data from New York state. Demographic data that is represented as raw counts, like <span class="in">`TractSNAP`</span>, which is the total count of housing units receiving SNAP benefits, were recalculated as the total share of population for fair comparison across tracts. Variables with a high missing value count were dropped completely, and observations with missing values were dropped for consistency and in order to run lasso regression for variable selection later on. </span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Statistics</span></span>
+<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a>fara_map_LAhalfand10</span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a>fara_map_LA1and10</span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summary-statistics}</span></span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this example with your own data and summary statistics.</span></span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a>cleaned_fara <span class="sc">|&gt;</span> </span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(LAhalfand10, LA1and10, Urban, HUNVFlag, LowIncomeTracts, PovertyRate, Year) <span class="sc">|&gt;</span> </span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">|&gt;</span> </span>
+<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a><span class="fu"># Results</span></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a>Although not apparent on the map, the number of low access tracts at the 1/2 and 10 mile threshold is much higher than the 1 and 10 mile threshold, with about 40% and 20% classified as low access, respectively. New York State has a large proportion of urban tracts at about 86% of all tracts being urban. About 43% of all tracts are low income and 16% are flagged for having low vehicle access. The average tract has about 16% poverty rate, with a large variance between the third quarter at about 22% and the maximum at 100%. </span>
 <span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a>Present your main empirical findings using tables, figures, and written interpretation.</span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a><span class="fu"># Empirical Strategy / Methods</span></span>
 <span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{r results-table}</span></span>
-<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this example with your own table or model output.</span></span>
-<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a><span class="co"># modelsummary(list(model1, model2))</span></span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## Empirical Approach</span></span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a>Multiple regression models are used to examine the association between socioeconomic factors and the probability of a tract being classified as low access at the half and 10 mile threshold and the 1 and 10 mile threshold. However, the dataset has a large number of variables, many of which were highly correlated. To address this issue, Least Absolute Shrinkage and Selection Operator (Lasso) regression was used for variable selection, to shrink irrelevant and highly correlated variables to zero. The Lasso model included interaction terms between year, urban classification, and all other variables to allow Lasso to select meaningful interaction terms that allow for a more flexible analysis while keeping census tract as a fixed effect to account for tract heterogeneity. After running Lasso, the variables and interaction terms selected are used for the main regression models.   </span>
 <span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(</span>
-<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Half &amp; 10:</span><span class="sc">\n</span><span class="st"> POLS"</span> <span class="ot">=</span> mod_halfand10_POLS,</span>
-<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> POLS"</span> <span class="ot">=</span> mod_1and10_POLS,</span>
-<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Half &amp; 10:</span><span class="sc">\n</span><span class="st"> CensusTract FE"</span> <span class="ot">=</span> mod_halfand10_FE_CensusTract,</span>
-<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> CensusTract FE"</span> <span class="ot">=</span> mod_1and10_FE_CensusTract,</span>
-<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Half &amp; 10:</span><span class="sc">\n</span><span class="st"> Year FE"</span> <span class="ot">=</span> mod_halfand10_FE_Year,</span>
-<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> Year FE"</span> <span class="ot">=</span> mod_1and10_FE_Year,</span>
-<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Half &amp; 10:</span><span class="sc">\n</span><span class="st"> Two-way FE"</span> <span class="ot">=</span> mod_halfand10_FE_CensusTract_Year,</span>
-<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> Two-way FE"</span> <span class="ot">=</span> mod_1and10_FE_CensusTract_Year</span>
-<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a>  <span class="at">coef_omit =</span> <span class="st">"InterceptIntercept|TractAsian|TractHispanic|TractWhite|TractAIAN|TractKids|TractSeniors|POP2010|TractOMultir"</span></span>
-<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r results-figure}</span></span>
-<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this example with your own figure.</span></span>
-<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(your_data, aes(x = x_variable, y = y_variable)) +</span></span>
-<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point() +</span></span>
-<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x = "X Variable", y = "Y Variable", title = "Main Result")</span></span>
-<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a><span class="fu"># Discussion and Implications</span></span>
-<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a>Interpret your results. Explain what they imply for economics, business, policy, or society.</span>
-<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a>Discuss limitations and clarify what your analysis can and cannot show.</span>
-<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
-<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a>Summarize your research question, data, method, main findings, and key takeaway.</span>
-<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a>Briefly suggest possible future extensions.</span>
-<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
-<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a>List all sources cited in your project, including data sources, academic articles, reports, websites, packages, and tools.</span>
-<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a>For online sources, include the full URL and date/time accessed.</span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>y_{it} &amp;= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \varepsilon_{it} <span class="sc">\\</span></span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a>y_{it} &amp;= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \alpha_i + \varepsilon_{it} <span class="sc">\\</span></span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a>y_{it} &amp;= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \lambda_t + \varepsilon_{it} <span class="sc">\\</span></span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a>y_{it} &amp;= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \varepsilon_{it}</span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a>where $Y_{it}$ is the outcomes <span class="in">`LAhalfand10`</span> and <span class="in">`LA1and10`</span> for census $i$ at time $t$, $Z_{it}$ represents control variables, $\alpha_i$ captures CensusTract fixed effects, $\lambda_t$ captures Year fixed effects, and $\varepsilon_{it}$ is the error term.</span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a>The first is a pooled ordinary least squares (POLS) model, which is used as the baseline to estimate the association between socioeconomic factors and probability of being low access across all tracts and years, reflecting a combination of cross-tract differences and within-tract changes over time. This baseline model provides estimates of the relationship between tract characteristics and being labeled food access, without accounting for unobserved heterogeneity across census tracts or time. The second is a one-way CensusTract fixed effects model, which is used to control for time-invariant characteristics within specific tracts and estimate the association between those factors and being classified as low access. The third is a one-way Year fixed effect model, used to control for factors that vary over time across all census tracts. Lastly, a two-way fixed effects model controls for both CensusTract and Year, accounting for unobserved within-tract factors and time trends/shocks.</span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretations and Identification</span></span>
+<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a>The model results should be interpreted as estimate associations between socioeconomic factors and the probability of being classified as low access. The results are strictly descriptive, not causal, used to estimate associations and compare relationships. Positive coefficients indicate a higher probability of being labeled low access, while negative coefficients indicate a lower probability of being labeled low access, holding all other variable constant.  </span>
+<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a>The POLS model reflects both differences across census tracts and changes within tracts over time, so results show the relationship between all tract's socioeconomic factors and the probability of being low access on average. The CensusTract fixed effects model results show the relationship between socioeconomic factors and the probability of being low access within the same tract. While the Year fixed effects model results show the relationship while accounting for yearly trends and/or shocks. The two-way fixed effects model combine the two previous model, reflecting the relationship within the same tract, after removing year trends and/or shocks. </span>
+<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a><span class="fu"># Results</span></span>
+<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{r results-table}</span></span>
+<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this example with your own table or model output.</span></span>
+<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a><span class="co"># modelsummary(list(model1, model2))</span></span>
+<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(</span>
+<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Half &amp; 10:</span><span class="sc">\n</span><span class="st"> POLS"</span> <span class="ot">=</span> mod_halfand10_POLS,</span>
+<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> POLS"</span> <span class="ot">=</span> mod_1and10_POLS,</span>
+<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Half &amp; 10:</span><span class="sc">\n</span><span class="st"> CensusTract FE"</span> <span class="ot">=</span> mod_halfand10_FE_CensusTract,</span>
+<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> CensusTract FE"</span> <span class="ot">=</span> mod_1and10_FE_CensusTract,</span>
+<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Half &amp; 10:</span><span class="sc">\n</span><span class="st"> Year FE"</span> <span class="ot">=</span> mod_halfand10_FE_Year,</span>
+<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> Year FE"</span> <span class="ot">=</span> mod_1and10_FE_Year,</span>
+<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Half &amp; 10:</span><span class="sc">\n</span><span class="st"> Two-way FE"</span> <span class="ot">=</span> mod_halfand10_FE_CensusTract_Year,</span>
+<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1 &amp; 10:</span><span class="sc">\n</span><span class="st"> Two-way FE"</span> <span class="ot">=</span> mod_1and10_FE_CensusTract_Year</span>
+<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a>  <span class="at">coef_omit =</span> <span class="st">"InterceptIntercept|TractAsian|TractHispanic|TractWhite|TractAIAN|TractKids|TractSeniors|POP2010|TractOMultir |TractLOWI"</span></span>
+<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a>Across the models, it appears coefficient estimates are typically consistent between the baseline POLS model and Year fixed effects model, indicating that time trends/shocks do not play a big role in the relationship between socioeconomic factors and low food access, and the associations are primarily changed by differences across census tracts, which explains why controlling for within-tract heterogeneity typically decreases the effect of the variables.  </span>
+<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a>A tract being urban alone is not statistically significant across any of the models. Urban tracts appear more likely to be low access in the POLS and Year FE models, indicating the relationship is driven by differences across tracts, not within-tracts changes. This suggests that a tract being urban alone is not a strong indicator of being low access, especially after accounting for unobserved tract heterogeneity. However, urban effects are strongly captured through interaction terms, indicating the effects of some socioeconomic variables and being low access is different in urban areas compared to nonurban areas. For example, the interaction term between Urban and HUNVFlag contains some of the strongest results and the estimates are statistically significant across all the models. This means that tracts being flagged as having limited vehicle access are more strongly associated with being classified as low access in urban areas, compared to rural areas. It is important to note that vehicle access in this variable refers to access to a personal vehicle and does not take public transportation measures into effect, therefore, not all tracts that have low vehicle access necessarily mean transportation access, especially for heavily urban areas like New York City where a fair share of the population relies on public transportation. That being said a tract being flagged as HUNV alone has a small, negative association with the probability of being low access and it is statistically insignificant across all models similar to the Urban flag.  </span>
+<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a>LowIncomeTracts are associated with about 6-7 percentage point (pp) higher probability of being classified as low access at both thresholds, for POLS and Year FE models, where both are statistically significant. However this effect is reduced and rendered insignificant when within-tract heterogeneity is accounted for. The interaction term between Urban and LowIncomeTracts, however, have a negative association, decreasing the probability of being low access by about 8-10 pp in urban tracts compared to rural.   </span>
+<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a>Increases in the share of households that participate in SNAP benefits is associated with about a very little positive increase of probability of being low access and it is statistically insignificant across all models, suggesting it is a weak indicator of a tract being classified as low access. Similar results are seen with poverty rate, where coefficients are near zero and statistically insignificant across models.   </span>
+<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a><span class="in">    Overall, the results show that most socioeconomic factors do not have consistently stable and strong association with the probability of being labelled low access. A tract being flagged as low income has a positive association with being low access, but only when comparing different tracts to each other, not when observing changes within a tract. The strongest effects come from observing interactions between vehicle access and urban tracts, in which case there is a high positive association across all models for urban tracts compared to rural. The socioeconomic variables used in these models were very limited and do not capture many important unobserved factors, like public transportation, food quality, food affordability, and neighborhood walkability. The model is not able to establish causal relationships and it is not able to explore what drives certain socioeconomic factors that may be more significant for urban tracts compared to rural. </span></span>
+<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a><span class="fu"># Discussion and Implications</span></span>
+<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a>As you have seen, the results of this project have important implications for food accessibility policy throughout New York State. Our analysis demonstrates that low food access is closely connected to several broader socioeconomic factors.  </span>
+<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a>One of the most important findings from the analysis is that urban census tracts alone were not statistically significant predictors of low food access. For instance, after controlling for additional tract characteristics, the strongest relationships involved urban status and socioeconomic factors. This is important because it shows that the urban food accessibility challenges are more complex than simple geographical measurements suggest.  </span>
+<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a>Another important insight from the analysis is that traditional poverty measures alone were not strongly associated with food access outcomes after controlling for additional variables. PovertyRate remained near zero and statistically insignificant across most model specifications. Similarly, TractSNAP showed only modest associations with low-food-access outcomes.  </span>
+<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a>Meanwhile, the strongest and most consistent empirical findings involved the interaction between urban classification and low vehicle access. Urban tracts with higher levels of low vehicle access were significantly more likely to be classified as low access across all major regression specifications, particularly under the one-half-mile threshold definition.  </span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a>The findings also suggest that policymakers should prioritize both statewide and local interventions to improve access to healthy, affordable food in these tracts. But since food accessibility challenges differ substantially between urban and rural areas, policy responses should be geographically targeted to enhance their effectiveness.  </span>
+<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a>Here are a few policy suggestions for urban communities that we think New York State and localized parties should focus on:</span>
+<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Expanding affordable grocery store access</span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Increasing affordability of healthy food options</span>
+<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Supporting neighborhood food retailers</span>
+<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a>For rural communities, policies and parties should focus on:</span>
+<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Supporting mobile grocery programs</span>
+<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Expanding farmers' market availability</span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Improving transportation access</span>
+<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a>Now, New York State already has policies in place for situations like this. One New York State program previously mentioned is the Food Access Expansion Grant Program. This program provided 10 million dollars in 2025 to help expand grocery stores and supermarkets in low-access tracts. We support and agree with these decisions. The results from this project support the continued expansion of these initiatives while emphasizing the need for community-specific policy approaches.</span>
+<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a>The findings from this project also provide important insight into how socioeconomic factors are closely associated with low-access tracts in New York State. More broadly, the results demonstrate that food accessibility is not solely determined by physical distance from supermarkets or grocery stores; distance is only part of the puzzle.</span>
+<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a>Importantly, the findings from this project should be interpreted as statistical associations rather than causal conclusions. The analysis identifies meaningful relationships between neighborhood characteristics and food accessibility outcomes, but it cannot definitively establish direct cause-and-effect relationships. Nevertheless, the findings provide useful evidence that policymakers and community organizations can use to identify vulnerable communities better and design more targeted food accessibility interventions.</span>
+<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a>The findings from our project have several important implications for policymakers, nonprofit organizations, local governments, and community planning agencies throughout New York State. One major implication is that food accessibility policies should not rely exclusively on measures of geographic distance to identify vulnerable communities. Otherwise, they wouldn't make the best, well-rounded decisions in policymaking, since distance is one piece of the puzzle. In other words, physical proximity to a food store does not necessarily imply meaningful access to affordable or healthy food.</span>
+<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a>Ultimately, this project demonstrates that food accessibility is not simply a question of geographic distance. Food accessibility is deeply connected to several other socioeconomic factors we mentioned today, but we weren't able to examine it in depth. </span>
+<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a>To conclude, our project examined a central research question related to food accessibility throughout New York State:</span>
+<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Which tract characteristics are associated with a higher probability of low access, holding other tract characteristics constant?  </span>
+<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a>Questions like this are important because food accessibility remains closely connected to a range of socioeconomic issues. While food access is discussed primarily in terms of geographic distance to/from supermarkets, in our projects, data and results are. It's important not to dismiss the bigger picture of the association between socioeconomic factors and distance to supermarkets.  </span>
+<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a>Using census tract-level panel data from the USDA Food Access Research Atlas for 2015 and 2019, our project used machine-learning variable-selection methods to examine food accessibility patterns across New York State. LASSO regression was used to identify the most important variables and interaction effects, while pooled ordinary least squares, census tract fixed effects, year fixed effects, and two-way fixed effects models were used to estimate associations between socioeconomic conditions and low food access classifications.  </span>
+<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a>Our findings should be interpreted as statistical associations rather than causal conclusions. The analysis identifies meaningful relationships between neighborhood characteristics and food accessibility outcomes, but it cannot definitively establish direct causal effects.  </span>
+<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a>Future research could improve upon this project by incorporating additional environmental, food quality, and transportation measures, including but not limited to grocery prices, food availability indicators, food quality, public transit access, and walkability. Future studies could also expand the analysis beyond New York State or incorporate more recent food access and census data, given the world's constant change.</span>
+<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a>Overall, this project provides a localized, census-tract-level analysis of food accessibility throughout New York State.</span>
+<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb4-300"><a href="#cb4-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-301"><a href="#cb4-301" aria-hidden="true" tabindex="-1"></a>Choe, B. (n.d.). Exploring Socioeconomic Factors Associated with Low Food Access Tracts in</span>
+<span id="cb4-302"><a href="#cb4-302" aria-hidden="true" tabindex="-1"></a>New York State | Byeong-Hak Choe,</span>
+<span id="cb4-303"><a href="#cb4-303" aria-hidden="true" tabindex="-1"></a>https://bcdanl.github.io/410/feedback/cameron-nada-feedback.html. </span>
+<span id="cb4-304"><a href="#cb4-304" aria-hidden="true" tabindex="-1"></a>Accessed 23 March. 2026.</span>
+<span id="cb4-305"><a href="#cb4-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-306"><a href="#cb4-306" aria-hidden="true" tabindex="-1"></a>New York State Council on Hunger and Food Policy. (2025). New York State Council on Hunger</span>
+<span id="cb4-307"><a href="#cb4-307" aria-hidden="true" tabindex="-1"></a>and Food Policy 2025 Annual Report,</span>
+<span id="cb4-308"><a href="#cb4-308" aria-hidden="true" tabindex="-1"></a>https://agriculture.ny.gov/system/files/documents/2026/03/chfp_2025_annualreport.pdf.</span>
+<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a>Accessed 20 April. 2026.</span>
+<span id="cb4-310"><a href="#cb4-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-311"><a href="#cb4-311" aria-hidden="true" tabindex="-1"></a>U.S. Department of Agriculture, Economic Research Service. Download the Data: Food Access Research Atlas. USDA ERS, https://www.ers.usda.gov/data-products/food-access-research-atlas/download-the-data.</span>
+<span id="cb4-312"><a href="#cb4-312" aria-hidden="true" tabindex="-1"></a>Accessed 17 Feb. 2026.</span>
+<span id="cb4-313"><a href="#cb4-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-314"><a href="#cb4-314" aria-hidden="true" tabindex="-1"></a>U.S. Department of Agriculture, Economic Research Service. Food Access Research Atlas. USDA ERS, updated 23 Sept. 2025, https://www.ers.usda.gov/data-products/food-access-research-atlas. </span>
+<span id="cb4-315"><a href="#cb4-315" aria-hidden="true" tabindex="-1"></a>Accessed 19 Feb. 2026.</span>
+<span id="cb4-316"><a href="#cb4-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-317"><a href="#cb4-317" aria-hidden="true" tabindex="-1"></a>United States Department of Agriculture, Economic Research Service. (2019). Food Access Research Atlas: 2019 data. https://www.ers.usda.gov/data-products/food-access-research-atlas/</span>
+<span id="cb4-318"><a href="#cb4-318" aria-hidden="true" tabindex="-1"></a>Accessed February 19, 2026</span>
+<span id="cb4-319"><a href="#cb4-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a>United States Department of Agriculture, Economic Research Service. (2015). Food Access Research Atlas: 2015 data. https://www.ers.usda.gov/data-products/food-access-research-atlas/</span>
+<span id="cb4-321"><a href="#cb4-321" aria-hidden="true" tabindex="-1"></a>Accessed February 19, 2026</span>
+<span id="cb4-322"><a href="#cb4-322" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

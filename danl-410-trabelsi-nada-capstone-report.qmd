@@ -105,15 +105,31 @@ fara_map_LA1and10 <- readRDS("fara_map_LA1and10.rds")
 
 # Introduction
 
-Describe the real-world motivation for your project. Clearly state your research question and explain why it matters.
+In the United States, reliable access to affordable, nutritious, and healthy food remains one of the most significant public health and public policy concerns. Today, food accessibility affects not only individual health outcomes but also broader issues related to economic opportunity, public/nonpublic transportation, housing inequality, and poverty. While many communities have access to nearby food sellers, the quality of the food is not up to par. Affordable, healthy food is not equally distributed across neighborhoods.  In many urban areas, residents primarily rely on corner stores, delis, and convenience stores rather than grocery stores or supermarkets that offer fresh produce and affordable, healthy food options. Meanwhile, in rural communities, residents often face long distances to food sources. Together, these conditions contribute to what the United States Department of Agriculture now refers to as low-food-access communities, or “food deserts.”  
+According to the New York State Council on Hunger and Food Policy (2025), food insecurity continues to affect vulnerable populations throughout the state despite ongoing food assistance programs and policy initiatives. Rising food costs, transportation barriers, housing instability, and economic inequality continue to limit many households’ ability to consistently access healthy and affordable food. Unfortunately, according to the New York State Council on Hunger and Food Policy (2025), food insecurity and accessibility issues continue to affect several vulnerable populations throughout New York State.  Despite all of the ongoing policy changes and food assistance programs. Housing instability, transportation barriers, economic inequality, and rising food costs, combined with distance to stores, tend to limit many communities' and households' ability to consistently access healthy and affordable food.  
+The motivation for this project comes from the broader importance of understanding how food accessibility affects everyday life within neighborhoods and communities. It affects workers, families, children, and elderly residents, able-bodied and non-able-bodied alike. All throughout rural and urban New York State. That being said, there is hope. For instance, data like ours helps identify which communities and neighborhoods face the most food access challenges. Then, policymakers, local governments, community organizations, and nonprofits can use this information to allocate resources more effectively in these low-access areas through more targeted food access policies.  
+Our project specifically examines the relationship/association between residential neighborhoods/communities and nearby food access points throughout New York State. The research question guiding this paper is:  
 
-Briefly preview your data, empirical approach, main findings, and contribution.
+* Which tract characteristics are associated with a higher probability of low access, holding other tract characteristics constant?  
+
+Our project uses census tract-level data from the USDA’s Food Access Research Atlas Data 2015 and the USDA’s Food Access Research Atlas Data 2019. The unit of observation we used is the census tract. This allowed us to analyze tract-level variation in food accessibility throughout New York State. This combined dataset includes food access indicators along with socioeconomic and demographic information. Some of the data include information on various factors. For example, vehicle access, income, race and ethnicity, housing vulnerability, SNAP participation, age, and urban classification. However, our analysis focuses on only two low food access terms, low food access at the half mile for urban and 10 mile for nonurban tracts and low food access at the 1 and 10 mile threshold.  
+
+To analyze these outcomes, we first combine the two previously mentioned data sets. Second, LASSO regression models were used to identify the most important predictors from a large set of economic, demographic, and interaction variables. Statistically significant in terms of addressing our research questions, as well as significant enough to help us provide our local analysis based on our findings. Then, selected variables were incorporated into pooled ordinary least squares (POLS), census-tract fixed-effects, year-fixed-effects, and two-way fixed-effects panel regression models.  
+
+Our project aims to contribute to an understanding of food accessibility in New York State. First, it provides a localized, census-tract-level analysis of food access in New York State. Second, our project uses machine-learning variable selection and LASSO to identify important predictors of food access inequality. Third, our project contributes practical policy insight by identifying which neighborhood characteristics are most strongly associated with low food access classifications. 
+Our findings are interpreted as statistical associations rather than causal relationships. It is not cause and effect. Unfortunately, we do not have enough in-depth data, so our analysis will not show that. That being said, our analysis still identifies patterns and relationships between food accessibility outcomes and neighborhood characteristics. As you shall soon see, our results provide in-depth insight (not inference) into the daily lives of residents of New York state.   
+
+Ultimately, our project aims to provide insight into how low food access can affect neighborhoods throughout New York State and how policymakers and community organizations may better address food accessibility challenges in the future.
+
 
 # Background and Related Literature
 
-Summarize the relevant background, institutional setting, or prior research related to your topic.
+What does food accessibility entail? Food accessibility refers to a community’s/tract's ability to consistently get healthy, affordable, and nutritious food within a reasonable geographic distance. The USDA Economic Research Service measures food accessibility using supermarket/grocery store proximity and transportation-based data. Tracts with limited access to supermarkets and grocery stores are often referred to as low-food-access areas or food deserts.  
 
-Explain what is already known and how your project contributes to the existing discussion.
+According to the USDA Food Access Research Atlas, low-access tracts are defined as census tracts where a substantial share of the population lives beyond a specified distance threshold from the nearest supermarket or large grocery retailer. The USDA Food Access Research Atlas specifically defines two important measures used throughout this project. The first measure, LAhalfand10, identifies census tracts where at least 500 people, or at least 33 percent of the population, live more than one-half mile from the nearest supermarket in urban areas, or more than ten miles in rural areas. The second measure, LA1and10, applies a one-mile threshold for urban communities and a ten-mile threshold for rural communities. But as previously stated, distance to/from a grocery store is not all the information needed to understand this important and complex topic.
+For instance, the New York State Council on Hunger and Food Policy 2025 Annual Report provides important institutional and policy context. As such, this is used for understanding food accessibility challenges throughout New York State. Demonstrated as a continued food insecurity and access dilemma. The New York State Council on Hunger and Food Policy also emphasizes the importance of locally targeted food policy responses. These come from many different groups, such as non-profits and local governments. The report discusses programs, such as the Food Access Expansion Grant Program, administered by the New York State Department of Agriculture and Markets. This program supports and expands farmers' markets, food stands, and supermarkets, and it provided approximately $10 million in 2025 to do so (New York State Council on Hunger and Food Policy, 2025). This helps tie in all the context provided by the previous studies and reports mentioned.  
+
+The findings from these studies generally suggest that food accessibility challenges are driven by multiple socioeconomic factors rather than a single socioeconomic or demographic factor. These findings directly inform the empirical framework used in this project—particularly, the inclusion of transportation-related variables, low-income tract classifications, and interaction effects involving urban status, which will be shown later on in this paper.   
 
 # Data
 
@@ -153,31 +169,43 @@ fara_map_LA1and10
 ```{r summary-statistics}
 # Replace this example with your own data and summary statistics.
 cleaned_fara |> 
-  select(LAhalfand10, LA1and10, Urban, HUNVFlag, LowIncomeTracts, PovertyRate, TractSNAP, Year) |> 
+  select(LAhalfand10, LA1and10, Urban, HUNVFlag, LowIncomeTracts, PovertyRate, Year) |> 
   group_by(Year) |> 
   skim()
 ```
 
 
-
+Although not apparent on the map, the number of low access tracts at the 1/2 and 10 mile threshold is much higher than the 1 and 10 mile threshold, with about 40% and 20% classified as low access, respectively. New York State has a large proportion of urban tracts at about 86% of all tracts being urban. About 43% of all tracts are low income and 16% are flagged for having low vehicle access. The average tract has about 16% poverty rate, with a large variance between the third quarter at about 22% and the maximum at 100%. 
 
 # Empirical Strategy / Methods
 
-Describe the method used to answer your research question. This may include regression, classification, clustering, forecasting, text analysis, or another data analytics method.
+## Empirical Approach
 
-For example, a **two-way fixed effects regression** can be used as an empirical strategy for **inference** when the goal is to estimate the relationship between a key explanatory variable and an outcome while accounting for unit-specific and time-specific factors:
+Multiple regression models are used to examine the association between socioeconomic factors and the probability of a tract being classified as low access at the half and 10 mile threshold and the 1 and 10 mile threshold. However, the dataset has a large number of variables, many of which were highly correlated. To address this issue, Least Absolute Shrinkage and Selection Operator (Lasso) regression was used for variable selection, to shrink irrelevant and highly correlated variables to zero. The Lasso model included interaction terms between year, urban classification, and all other variables to allow Lasso to select meaningful interaction terms that allow for a more flexible analysis while keeping census tract as a fixed effect to account for tract heterogeneity. After running Lasso, the variables and interaction terms selected are used for the main regression models.   
 
-$$
-Y_{it} = \beta_0 + \beta_1 X_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \varepsilon_{it},
-$$
 
-where $Y_{it}$ is the outcome of interest for unit $i$ at time $t$, $X_{it}$ is the main explanatory variable, $Z_{it}$ represents control variables, $\alpha_i$ captures unit fixed effects, $\lambda_t$ captures time fixed effects, and $\varepsilon_{it}$ is the error term.
+\begin{align}
+y_{it} &= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \varepsilon_{it} \\
 
-If your project uses machine learning or prediction, explain your train/test split, cross-validation, model tuning, and performance metrics.
+y_{it} &= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \alpha_i + \varepsilon_{it} \\
+
+y_{it} &= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \lambda_t + \varepsilon_{it} \\
+
+y_{it} &= \beta_0 + \beta_1 Urban_{it} + \beta_2 LowIncomeTracts_{it} + \beta_3 TractHUNV_{it} + \beta_4 TractSNAP_{it} + \beta_5 \text{PovertyRate}_{it} + \delta' Z_{it} + \alpha_i + \lambda_t + \varepsilon_{it}
+\end{align}
+
+
+where $Y_{it}$ is the outcomes `LAhalfand10` and `LA1and10` for census $i$ at time $t$, $Z_{it}$ represents control variables, $\alpha_i$ captures CensusTract fixed effects, $\lambda_t$ captures Year fixed effects, and $\varepsilon_{it}$ is the error term.
+
+The first is a pooled ordinary least squares (POLS) model, which is used as the baseline to estimate the association between socioeconomic factors and probability of being low access across all tracts and years, reflecting a combination of cross-tract differences and within-tract changes over time. This baseline model provides estimates of the relationship between tract characteristics and being labeled food access, without accounting for unobserved heterogeneity across census tracts or time. The second is a one-way CensusTract fixed effects model, which is used to control for time-invariant characteristics within specific tracts and estimate the association between those factors and being classified as low access. The third is a one-way Year fixed effect model, used to control for factors that vary over time across all census tracts. Lastly, a two-way fixed effects model controls for both CensusTract and Year, accounting for unobserved within-tract factors and time trends/shocks.
+
+## Interpretations and Identification
+The model results should be interpreted as estimate associations between socioeconomic factors and the probability of being classified as low access. The results are strictly descriptive, not causal, used to estimate associations and compare relationships. Positive coefficients indicate a higher probability of being labeled low access, while negative coefficients indicate a lower probability of being labeled low access, holding all other variable constant.  
+
+The POLS model reflects both differences across census tracts and changes within tracts over time, so results show the relationship between all tract's socioeconomic factors and the probability of being low access on average. The CensusTract fixed effects model results show the relationship between socioeconomic factors and the probability of being low access within the same tract. While the Year fixed effects model results show the relationship while accounting for yearly trends and/or shocks. The two-way fixed effects model combine the two previous model, reflecting the relationship within the same tract, after removing year trends and/or shocks. 
+
 
 # Results
-
-Present your main empirical findings using tables, figures, and written interpretation.
 
 ```{r results-table}
 # Replace this example with your own table or model output.
@@ -198,33 +226,94 @@ modelsummary(
     "1 & 10:\n Two-way FE" = mod_1and10_FE_CensusTract_Year
   ),
   stars = TRUE,
-  coef_omit = "InterceptIntercept|TractAsian|TractHispanic|TractWhite|TractAIAN|TractKids|TractSeniors|POP2010|TractOMultir"
+  coef_omit = "InterceptIntercept|TractAsian|TractHispanic|TractWhite|TractAIAN|TractKids|TractSeniors|POP2010|TractOMultir |TractLOWI"
 )
 
 ```
 
-```{r results-figure}
-# Replace this example with your own figure.
-# ggplot(your_data, aes(x = x_variable, y = y_variable)) +
-#   geom_point() +
-#   labs(x = "X Variable", y = "Y Variable", title = "Main Result")
-```
+Across the models, it appears coefficient estimates are typically consistent between the baseline POLS model and Year fixed effects model, indicating that time trends/shocks do not play a big role in the relationship between socioeconomic factors and low food access, and the associations are primarily changed by differences across census tracts, which explains why controlling for within-tract heterogeneity typically decreases the effect of the variables.  
+
+A tract being urban alone is not statistically significant across any of the models. Urban tracts appear more likely to be low access in the POLS and Year FE models, indicating the relationship is driven by differences across tracts, not within-tracts changes. This suggests that a tract being urban alone is not a strong indicator of being low access, especially after accounting for unobserved tract heterogeneity. However, urban effects are strongly captured through interaction terms, indicating the effects of some socioeconomic variables and being low access is different in urban areas compared to nonurban areas. For example, the interaction term between Urban and HUNVFlag contains some of the strongest results and the estimates are statistically significant across all the models. This means that tracts being flagged as having limited vehicle access are more strongly associated with being classified as low access in urban areas, compared to rural areas. It is important to note that vehicle access in this variable refers to access to a personal vehicle and does not take public transportation measures into effect, therefore, not all tracts that have low vehicle access necessarily mean transportation access, especially for heavily urban areas like New York City where a fair share of the population relies on public transportation. That being said a tract being flagged as HUNV alone has a small, negative association with the probability of being low access and it is statistically insignificant across all models similar to the Urban flag.  
+
+LowIncomeTracts are associated with about 6-7 percentage point (pp) higher probability of being classified as low access at both thresholds, for POLS and Year FE models, where both are statistically significant. However this effect is reduced and rendered insignificant when within-tract heterogeneity is accounted for. The interaction term between Urban and LowIncomeTracts, however, have a negative association, decreasing the probability of being low access by about 8-10 pp in urban tracts compared to rural.   
+
+Increases in the share of households that participate in SNAP benefits is associated with about a very little positive increase of probability of being low access and it is statistically insignificant across all models, suggesting it is a weak indicator of a tract being classified as low access. Similar results are seen with poverty rate, where coefficients are near zero and statistically insignificant across models.   
+
+	Overall, the results show that most socioeconomic factors do not have consistently stable and strong association with the probability of being labelled low access. A tract being flagged as low income has a positive association with being low access, but only when comparing different tracts to each other, not when observing changes within a tract. The strongest effects come from observing interactions between vehicle access and urban tracts, in which case there is a high positive association across all models for urban tracts compared to rural. The socioeconomic variables used in these models were very limited and do not capture many important unobserved factors, like public transportation, food quality, food affordability, and neighborhood walkability. The model is not able to establish causal relationships and it is not able to explore what drives certain socioeconomic factors that may be more significant for urban tracts compared to rural. 
+
 
 # Discussion and Implications
 
-Interpret your results. Explain what they imply for economics, business, policy, or society.
+As you have seen, the results of this project have important implications for food accessibility policy throughout New York State. Our analysis demonstrates that low food access is closely connected to several broader socioeconomic factors.  
 
-Discuss limitations and clarify what your analysis can and cannot show.
+One of the most important findings from the analysis is that urban census tracts alone were not statistically significant predictors of low food access. For instance, after controlling for additional tract characteristics, the strongest relationships involved urban status and socioeconomic factors. This is important because it shows that the urban food accessibility challenges are more complex than simple geographical measurements suggest.  
+
+Another important insight from the analysis is that traditional poverty measures alone were not strongly associated with food access outcomes after controlling for additional variables. PovertyRate remained near zero and statistically insignificant across most model specifications. Similarly, TractSNAP showed only modest associations with low-food-access outcomes.  
+
+Meanwhile, the strongest and most consistent empirical findings involved the interaction between urban classification and low vehicle access. Urban tracts with higher levels of low vehicle access were significantly more likely to be classified as low access across all major regression specifications, particularly under the one-half-mile threshold definition.  
+The findings also suggest that policymakers should prioritize both statewide and local interventions to improve access to healthy, affordable food in these tracts. But since food accessibility challenges differ substantially between urban and rural areas, policy responses should be geographically targeted to enhance their effectiveness.  
+Here are a few policy suggestions for urban communities that we think New York State and localized parties should focus on:
+
+* Expanding affordable grocery store access
+* Increasing affordability of healthy food options
+* Supporting neighborhood food retailers
+
+For rural communities, policies and parties should focus on:
+
+* Supporting mobile grocery programs
+* Expanding farmers' market availability
+* Improving transportation access
+
+Now, New York State already has policies in place for situations like this. One New York State program previously mentioned is the Food Access Expansion Grant Program. This program provided 10 million dollars in 2025 to help expand grocery stores and supermarkets in low-access tracts. We support and agree with these decisions. The results from this project support the continued expansion of these initiatives while emphasizing the need for community-specific policy approaches.
+
+The findings from this project also provide important insight into how socioeconomic factors are closely associated with low-access tracts in New York State. More broadly, the results demonstrate that food accessibility is not solely determined by physical distance from supermarkets or grocery stores; distance is only part of the puzzle.
+
+Importantly, the findings from this project should be interpreted as statistical associations rather than causal conclusions. The analysis identifies meaningful relationships between neighborhood characteristics and food accessibility outcomes, but it cannot definitively establish direct cause-and-effect relationships. Nevertheless, the findings provide useful evidence that policymakers and community organizations can use to identify vulnerable communities better and design more targeted food accessibility interventions.
+
+The findings from our project have several important implications for policymakers, nonprofit organizations, local governments, and community planning agencies throughout New York State. One major implication is that food accessibility policies should not rely exclusively on measures of geographic distance to identify vulnerable communities. Otherwise, they wouldn't make the best, well-rounded decisions in policymaking, since distance is one piece of the puzzle. In other words, physical proximity to a food store does not necessarily imply meaningful access to affordable or healthy food.
+
+Ultimately, this project demonstrates that food accessibility is not simply a question of geographic distance. Food accessibility is deeply connected to several other socioeconomic factors we mentioned today, but we weren't able to examine it in depth. 
+
 
 # Conclusion
 
-Summarize your research question, data, method, main findings, and key takeaway.
+To conclude, our project examined a central research question related to food accessibility throughout New York State:
 
-Briefly suggest possible future extensions.
+* Which tract characteristics are associated with a higher probability of low access, holding other tract characteristics constant?  
+
+Questions like this are important because food accessibility remains closely connected to a range of socioeconomic issues. While food access is discussed primarily in terms of geographic distance to/from supermarkets, in our projects, data and results are. It's important not to dismiss the bigger picture of the association between socioeconomic factors and distance to supermarkets.  
+
+Using census tract-level panel data from the USDA Food Access Research Atlas for 2015 and 2019, our project used machine-learning variable-selection methods to examine food accessibility patterns across New York State. LASSO regression was used to identify the most important variables and interaction effects, while pooled ordinary least squares, census tract fixed effects, year fixed effects, and two-way fixed effects models were used to estimate associations between socioeconomic conditions and low food access classifications.  
+
+Our findings should be interpreted as statistical associations rather than causal conclusions. The analysis identifies meaningful relationships between neighborhood characteristics and food accessibility outcomes, but it cannot definitively establish direct causal effects.  
+
+Future research could improve upon this project by incorporating additional environmental, food quality, and transportation measures, including but not limited to grocery prices, food availability indicators, food quality, public transit access, and walkability. Future studies could also expand the analysis beyond New York State or incorporate more recent food access and census data, given the world's constant change.
+Overall, this project provides a localized, census-tract-level analysis of food accessibility throughout New York State.
+
+
 
 # References
 
-List all sources cited in your project, including data sources, academic articles, reports, websites, packages, and tools.
+Choe, B. (n.d.). Exploring Socioeconomic Factors Associated with Low Food Access Tracts in
+New York State | Byeong-Hak Choe,
+https://bcdanl.github.io/410/feedback/cameron-nada-feedback.html. 
+Accessed 23 March. 2026.
 
-For online sources, include the full URL and date/time accessed.
+New York State Council on Hunger and Food Policy. (2025). New York State Council on Hunger
+and Food Policy 2025 Annual Report,
+https://agriculture.ny.gov/system/files/documents/2026/03/chfp_2025_annualreport.pdf.
+Accessed 20 April. 2026.
+
+U.S. Department of Agriculture, Economic Research Service. Download the Data: Food Access Research Atlas. USDA ERS, https://www.ers.usda.gov/data-products/food-access-research-atlas/download-the-data.
+Accessed 17 Feb. 2026.
+
+U.S. Department of Agriculture, Economic Research Service. Food Access Research Atlas. USDA ERS, updated 23 Sept. 2025, https://www.ers.usda.gov/data-products/food-access-research-atlas. 
+Accessed 19 Feb. 2026.
+
+United States Department of Agriculture, Economic Research Service. (2019). Food Access Research Atlas: 2019 data. https://www.ers.usda.gov/data-products/food-access-research-atlas/
+Accessed February 19, 2026
+
+United States Department of Agriculture, Economic Research Service. (2015). Food Access Research Atlas: 2015 data. https://www.ers.usda.gov/data-products/food-access-research-atlas/
+Accessed February 19, 2026
+
 
