@@ -217,9 +217,9 @@ The dataset was split into train and test datasets in order to evaluate how well
 
 A two-way fixed effects model is used because it control for unobserved differences across countries while controlling for yearly trends and/or shocks. 
 
-$$
-Infant_Mortality_Rate_{it} &= \beta_0 + \textbf{X'_{it}\beta} + \alpha_i + \lambda_t + \varepsilon_{it},
-$$
+\begin{aligned}
+IMR_{it} &= \beta_0 + \mathbf{X'_{it}\beta} + \alpha_i + \lambda_t + \varepsilon_{it}
+\end{aligned}
 
 where the outcome is IMR in country $i$ at time $t$, $\alpha_i$ captures country fixed effects, $\lambda_t$ captures year fixed effects, and $\varepsilon_{it}$ is the error term.
 
@@ -364,6 +364,8 @@ K-means clustering will be used to group countries together in 4 distinct groups
 
 ```{r}
 #| echo: false
+set.seed(9)
+
 data_cluster <- global_health |> 
   select(Infant_Mortality_Rate, Fertility_Rate, Air_Pollution, Sanitary_Expense_Per_GDP, Urban_Population_Percent, Immunization_Rate, Safe_Water_Access_Percent, GDP_Per_Capita)
 
@@ -380,12 +382,34 @@ cluster_summary <- data_cluster |>
 
 cluster_summary<- cluster_summary |> 
   pivot_longer(-cluster, names_to = "Predictor", values_to = "value") |> 
-  pivot_wider(names_from = cluster, values_from = value) 
+  pivot_wider(names_from = cluster, values_from = value) |> 
+  select(Predictor, "4", "2", "1", "3")
 
-cluster_summary
+cluster_summary |> 
+  paged_table()
 ```
+Cluster 3 represents the most vulnerable group with the highest IMR. This cluster has the highest fertility rate, high air pollution, low access to safe water, lowest GDP, lowest immunization rate, and lowest sanitary expenses per GDP. Cluster 1 represents relatively high IMR, including high fertility rate, the lowest urban population, relatively low access to safe water and the lowest GDP per capita. Cluster 2 represents moderate countries with a relatively low IMR, moderate fertility rate, high immunization rate and access to safe water. Cluster 4 represents highly developed countries with significantly low IMR (3.67 deaths), the highest GDP per capita and sanitary expense per GDP, high urban, immunization rate, and access to safe water. This cluster also has the lowest fertility rate, air pollution.
+
+# Discussion
+The results highlight that the predictors most strongly associated with IMR are fertility rate and GDP per capita. With higher fertility rates is associated with higher IMR and higher GDP per capita associated with lower IMR within-countries, controlling for yearly trends/shocks. The clustering results support this with the cluster with the highest IMR including highest fertility rate and relatively low GDP and the countries with lowest IMR having lowest fertility rare and highest GDP per capita.  Regularized regression had low RMSE and MAE, indicating strong predictive performance outside of the training data. 
+
+Clustering countries can help group and identify high risk countries. This can help Non-governmental organizations (NGOs) and global agencies like the WHO better allocate resources to help mitigate IMR. This can help guide global health funding and can guide targeted interventions.  
+
+A key limitation is that most factors are highly correlated, and many factors were dropped due to having high missing value count. There are also many factors that are not captured in the dataset that may have a large association with IMR. 
+
+# Conclusion
+Using model regressions, fertility rate and GDP per Capita were the strongest predictors for IMR. The supervised regression models highlighted key predictors while cluster identified distinct country profiles that differed in characteristics. 
+
+This project can further be expanded by including additional predictor variables that could measure country inequality and healthcare quality. The clustering results could be expanded by pairing them with principal component analysis which would allow for clear visualization in low dimension space. 
 
 
+# References
+
+The World Health Organization (n.d.). Child mortality and causes of death. World Health Organization. https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/child-mortality-and-causes-of-death 
+
+Galasso, M. (2024, November 30). Global Health and Development (2012-2021). Kaggle. https://www.kaggle.com/datasets/martinagalasso/global-health-and-development-2012-2021 
+
+González Muñoz, N. A. (2024, April 9). World Bank World Development Indicators. Kaggle. https://www.kaggle.com/datasets/nicolasgonzalezmunoz/world-bank-world-development-indicators 
 
 
 

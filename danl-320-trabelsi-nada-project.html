@@ -352,6 +352,9 @@ window.Quarto = {
   <li><a href="#comparing-the-models" id="toc-comparing-the-models" class="nav-link" data-scroll-target="#comparing-the-models">Comparing the Models</a></li>
   </ul></li>
   <li><a href="#unsupervised-machine-learning-analysis" id="toc-unsupervised-machine-learning-analysis" class="nav-link" data-scroll-target="#unsupervised-machine-learning-analysis">Unsupervised Machine Learning Analysis</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -609,9 +612,9 @@ window.Quarto = {
 <section id="two-way-fixed-effects-model" class="level2">
 <h2 class="anchored" data-anchor-id="two-way-fixed-effects-model">Two-Way Fixed Effects Model</h2>
 <p>A two-way fixed effects model is used because it control for unobserved differences across countries while controlling for yearly trends and/or shocks.</p>
-<p><span class="math display">\[
-Infant_Mortality_Rate_{it} &amp;= \beta_0 + \textbf{X'_{it}\beta} + \alpha_i + \lambda_t + \varepsilon_{it},
-\]</span></p>
+<span class="math display">\[\begin{aligned}
+IMR_{it} &amp;= \beta_0 + \mathbf{X'_{it}\beta} + \alpha_i + \lambda_t + \varepsilon_{it}
+\end{aligned}\]</span>
 <p>where the outcome is IMR in country <span class="math inline">\(i\)</span> at time <span class="math inline">\(t\)</span>, <span class="math inline">\(\alpha_i\)</span> captures country fixed effects, <span class="math inline">\(\lambda_t\)</span> captures year fixed effects, and <span class="math inline">\(\varepsilon_{it}\)</span> is the error term.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -658,7 +661,7 @@ Infant_Mortality_Rate_{it} &amp;= \beta_0 + \textbf{X'_{it}\beta} + \alpha_i + \
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["rmse"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mae"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Lasso regression","2":"1.6242","3":"1.1346"},{"1":"Ridge regression","2":"1.9189","3":"1.3874"},{"1":"2-Way FE regression","2":"10.8359","3":"8.6239"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["rmse"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mae"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Lasso regression","2":"1.8369","3":"1.3204"},{"1":"Ridge regression","2":"2.1504","3":"1.5140"},{"1":"2-Way FE regression","2":"10.3215","3":"8.0257"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -670,20 +673,32 @@ Infant_Mortality_Rate_{it} &amp;= \beta_0 + \textbf{X'_{it}\beta} + \alpha_i + \
 <h1>Unsupervised Machine Learning Analysis</h1>
 <p>K-means clustering will be used to group countries together in 4 distinct groups based on similar characterists to create cluster profiles. This will be used to identify distinct patterns among countries with low and high IMR. All observations are standardized because k-means clustering uses distance and variables need to be scaled so variables with larger scales do not dominate.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 5
-  Predictor                     `1`      `2`      `3`     `4`
-  &lt;chr&gt;                       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
-1 Infant_Mortality_Rate       30.9      3.36    11.7    55.2 
-2 Fertility_Rate               3.34     1.66     2.01    4.79
-3 Air_Pollution               28.6     15.7     21.5    44.4 
-4 Sanitary_Expense_Per_GDP     5.54     8.8      6.99    5.11
-5 Urban_Population_Percent    35.6     84.5     66.3    43.0 
-6 Immunization_Rate           89.8     95.2     92.0    69.0 
-7 Safe_Water_Access_Percent   73.3     99.7     93.2    47.8 
-8 GDP_Per_Capita            2538.   54622.   10649.   1800.  </code></pre>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Predictor"],"name":[1],"type":["chr"],"align":["left"]},{"label":["4"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["3"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Infant_Mortality_Rate","2":"3.67","3":"12.96","4":"39.47","5":"54.87"},{"1":"Fertility_Rate","2":"1.68","3":"2.09","4":"3.88","5":"4.79"},{"1":"Air_Pollution","2":"15.25","3":"22.28","4":"33.59","5":"43.42"},{"1":"Sanitary_Expense_Per_GDP","2":"9.02","3":"6.56","4":"6.53","5":"4.17"},{"1":"Urban_Population_Percent","2":"84.24","3":"63.13","4":"32.87","5":"44.95"},{"1":"Immunization_Rate","2":"95.17","3":"91.91","4":"88.74","5":"63.80"},{"1":"Safe_Water_Access_Percent","2":"99.69","3":"92.15","4":"63.46","5":"48.27"},{"1":"GDP_Per_Capita","2":"52741.94","3":"9711.29","4":"1613.20","5":"2157.70"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
+</div>
+<p>Cluster 3 represents the most vulnerable group with the highest IMR. This cluster has the highest fertility rate, high air pollution, low access to safe water, lowest GDP, lowest immunization rate, and lowest sanitary expenses per GDP. Cluster 1 represents relatively high IMR, including high fertility rate, the lowest urban population, relatively low access to safe water and the lowest GDP per capita. Cluster 2 represents moderate countries with a relatively low IMR, moderate fertility rate, high immunization rate and access to safe water. Cluster 4 represents highly developed countries with significantly low IMR (3.67 deaths), the highest GDP per capita and sanitary expense per GDP, high urban, immunization rate, and access to safe water. This cluster also has the lowest fertility rate, air pollution.</p>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<p>The results highlight that the predictors most strongly associated with IMR are fertility rate and GDP per capita. With higher fertility rates is associated with higher IMR and higher GDP per capita associated with lower IMR within-countries, controlling for yearly trends/shocks. The clustering results support this with the cluster with the highest IMR including highest fertility rate and relatively low GDP and the countries with lowest IMR having lowest fertility rare and highest GDP per capita. Regularized regression had low RMSE and MAE, indicating strong predictive performance outside of the training data.</p>
+<p>Clustering countries can help group and identify high risk countries. This can help Non-governmental organizations (NGOs) and global agencies like the WHO better allocate resources to help mitigate IMR. This can help guide global health funding and can guide targeted interventions.</p>
+<p>A key limitation is that most factors are highly correlated, and many factors were dropped due to having high missing value count. There are also many factors that are not captured in the dataset that may have a large association with IMR.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Using model regressions, fertility rate and GDP per Capita were the strongest predictors for IMR. The supervised regression models highlighted key predictors while cluster identified distinct country profiles that differed in characteristics.</p>
+<p>This project can further be expanded by including additional predictor variables that could measure country inequality and healthcare quality. The clustering results could be expanded by pairing them with principal component analysis which would allow for clear visualization in low dimension space.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>The World Health Organization (n.d.). Child mortality and causes of death. World Health Organization. https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/child-mortality-and-causes-of-death</p>
+<p>Galasso, M. (2024, November 30). Global Health and Development (2012-2021). Kaggle. https://www.kaggle.com/datasets/martinagalasso/global-health-and-development-2012-2021</p>
+<p>González Muñoz, N. A. (2024, April 9). World Bank World Development Indicators. Kaggle. https://www.kaggle.com/datasets/nicolasgonzalezmunoz/world-bank-world-development-indicators</p>
 
 
 </section>
