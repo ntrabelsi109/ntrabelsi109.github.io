@@ -15,6 +15,8 @@ website:
             href: danl_310_trabelsi_nada_project.qmd
           - text: Project Dashboard
             href: 310-project-dashboard.qmd
+      - text: DANL-320 Project
+        href: danl-320-trabelsi-nada-project.qmd
       - text: Capstone Report
         href: danl-410-trabelsi-nada-capstone-report.qmd
 

@@ -1,6 +1,6 @@
 ---
 title: Exploring Socioeconomic Factors Associated with Low Food Access Tracts in New York State
-subtitle: "My Project"
+subtitle: "My Capstone Project"
 author:
   - name: Nada Trabelsi
     affiliation: SUNY Geneseo

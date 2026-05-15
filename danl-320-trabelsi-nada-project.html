@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Nada Trabelsi">
+<meta name="dcterms.date" content="2026-05-14">
 
-<title>Nada Trabelsi</title>
+<title>Exploring Patterns and Predictors of Infant Mortality Across the Globe – Nada Trabelsi</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,6 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e5c0da90bde570b7566f6217e7c63da7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-cea25e2310d9ee8b66de880732a0fbab.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -72,12 +75,45 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -276,7 +312,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./danl-320-trabelsi-nada-project.html"> 
+    <a class="nav-link active" href="./danl-320-trabelsi-nada-project.html" aria-current="page"> 
 <span class="menu-text">DANL-320 Project</span></a>
   </li>  
   <li class="nav-item">
@@ -295,55 +331,364 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul class="collapse">
+  <li><a href="#source-and-scope" id="toc-source-and-scope" class="nav-link" data-scroll-target="#source-and-scope">Source and Scope</a></li>
+  <li><a href="#cleaning-and-preparation" id="toc-cleaning-and-preparation" class="nav-link" data-scroll-target="#cleaning-and-preparation">Cleaning and Preparation</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#exploratory-analysis" id="toc-exploratory-analysis" class="nav-link" data-scroll-target="#exploratory-analysis">Exploratory Analysis</a></li>
+  </ul></li>
+  <li><a href="#supervised-machine-learning-analysis" id="toc-supervised-machine-learning-analysis" class="nav-link" data-scroll-target="#supervised-machine-learning-analysis">Supervised Machine Learning Analysis</a>
+  <ul class="collapse">
+  <li><a href="#two-way-fixed-effects-model" id="toc-two-way-fixed-effects-model" class="nav-link" data-scroll-target="#two-way-fixed-effects-model">Two-Way Fixed Effects Model</a></li>
+  <li><a href="#lasso-linear-regression" id="toc-lasso-linear-regression" class="nav-link" data-scroll-target="#lasso-linear-regression">Lasso Linear Regression</a></li>
+  <li><a href="#ridge-linear-regression" id="toc-ridge-linear-regression" class="nav-link" data-scroll-target="#ridge-linear-regression">Ridge Linear Regression</a></li>
+  <li><a href="#comparing-the-models" id="toc-comparing-the-models" class="nav-link" data-scroll-target="#comparing-the-models">Comparing the Models</a></li>
+  </ul></li>
+  <li><a href="#unsupervised-machine-learning-analysis" id="toc-unsupervised-machine-learning-analysis" class="nav-link" data-scroll-target="#unsupervised-machine-learning-analysis">Unsupervised Machine Learning Analysis</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-trestles">
-  <div class="about-entity">
-    <img src="img/profilepic.jpg" class="about-image
-  round " style="height: 16em; width: 16em;">
+<main class="content" id="quarto-document-content">
+
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Nada Trabelsi</h1>
+<h1 class="title">Exploring Patterns and Predictors of Infant Mortality Across the Globe</h1>
+<p class="subtitle lead">DANL-320 Project Write-up</p>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nada Trabelsi </p>
+          </div>
   </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 14, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
 </header>
-    <div class="about-links">
-  <a href="https://linkedin.com/in/nada-trabelsi-40233624a/" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/ntrabelsi109" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="https://github.com/ntrabelsi109/ntrabelsi109.github.io/blob/main/nada_trabelsi_resume.pdf" class="about-link" rel="" target="">
-    <i class="bi bi-file-earmark-pdf"></i>
-     <span class="about-link-text">Resumé</span>
-  </a>
-  <a href="mailto:nbt2@geneseo.edu" class="about-link" rel="" target="">
-    <i class="bi bi-mailbox"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents"><main class="content" id="quarto-document-content">
 
-<p>Nada Trabelsi majors in Accounting with a minor in Data Analytics at SUNY Geneseo. When not working at her family restaurant, Nada enjoys spending time crocheting and learning how to sew.</p>
-<section id="education" class="level2">
-<h2 data-anchor-id="education">Education</h2>
-<p>State University of New York at Geneseo | Geneseo, NY <br> B.S. in Accounting | Aug 2022 - May 2026 <br> Minor in Data Analytics</p>
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Infant mortality is the death of a child under 1 year old, measured in deaths per 1,000 live births. For example, a rate of 9 indicates that 9 infants die for every 1,000 live births, not accounting for stillbirths or miscarriages. Infant death can be caused by several different reasons and can be caused by accidents, lack of resources, and severe living conditions (World Health Organization).</p>
+<p>The infant mortality rate (IMR) is an important health indicator as it is a marker for a country’s overall public health, development, and social equity. Factors such as poor access to clean water, low immunization coverage, and limited economic development can have a major impact on a country’s ability to reduce infant mortality. This project aims to analyze the association between IMR and different factors, and assess their ability to predict IMR.</p>
 </section>
-<section id="experience" class="level2">
-<h2 data-anchor-id="experience">Experience</h2>
-<p>Gregorio’s Pizzeria | Part-Time Restaurant Worker | June 2018 - Present</p>
-<p>Sewgreen | Sewing Supply Store Intern | July 2022-Aug 2022</p>
+<section id="data" class="level1">
+<h1>Data</h1>
+<section id="source-and-scope" class="level2">
+<h2 class="anchored" data-anchor-id="source-and-scope">Source and Scope</h2>
+<p>The main data set, “Global Health and Development (2012-2021)”, was produced by Martina Galasso by combining reliable data from the World Bank and the World Health Organization (WHO) to showcase a comprehensive overview of of global health, demographics, economic, and environmental metrics for 188 countries between 2012 and 2021. This data set included the total number of infant deaths in a year but did not include the infant mortality rate. This led me to search for another data set that provided an indicator that would allow me to calculate the infant mortality rate. The second data set, “World Bank World Development Indicators”, curated by Nicolás Ariel González Muñoz contained world development indicators from 1960 to 2022. This data set contained the birth rate, which allowed me to reverse the equations and find the infant mortality rate for every available country in the latest available year in the first data set. Both data sets were combined, resulting in a final panel data spanning 2012-2021, with each row representing one country at a specific year.</p>
+</section>
+<section id="cleaning-and-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-and-preparation">Cleaning and Preparation</h2>
+<p>After joining both datasets, <code>Infant_Mortality_Rate</code> was calculated by dividing total infant deaths with total live births and multiplying by 1,000. To find the total number of live births, the Birth_Rate was divided by 1,000 and multiplied by the Total_Population. The infant mortality rate was then found by dividing the total live births with the Infant_Deaths and multiplying by 1,000. The rate was rounded to two decimal points to keep the data set from looking cluttered.</p>
+<p>Variables with high levels of missing values were removed and remaining observations with missing values were originally estimated using the last observation carried forward with the <code>na.locf</code> function. The dataset was also later standardized with the <code>scaled()</code> for clustering.</p>
+</section>
+<section id="variables" class="level2">
+<h2 class="anchored" data-anchor-id="variables">Variables</h2>
+<p>This study focuses on the following factors as predictors of IMR:</p>
+<ul>
+<li><code>GDP_Per_Capita</code>: The total value of a country’s economic output per person</li>
+<li><code>Sanitary_Expense_per_GDP</code>: The portion of GDP spent on sanitary services, e.g., waste management</li>
+<li><code>Ferility_Rate</code>: Birth rate per woman</li>
+<li><code>Immunization_Rate</code>: The percentage of the population who received vaccinations to protect against certain diseases</li>
+<li><code>Safe_Water_Access</code>: The percentage of the population who have access to clean and safe water</li>
+<li><code>Urban_Population_percent</code>: The percentage of the population that live in urban areas</li>
+</ul>
+</section>
+<section id="exploratory-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-analysis">Exploratory Analysis</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">select(…)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">1605</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Infant_Mortality_Rate</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">22.49</td>
+<td style="text-align: right;">20.07</td>
+<td style="text-align: right;">1.58</td>
+<td style="text-align: right;">6.06</td>
+<td style="text-align: right;">14.94</td>
+<td style="text-align: right;">34.91</td>
+<td style="text-align: right;">86.75</td>
+<td style="text-align: left;">▇▂▂▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GDP_Per_Capita</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13725.90</td>
+<td style="text-align: right;">19772.43</td>
+<td style="text-align: right;">216.83</td>
+<td style="text-align: right;">1915.55</td>
+<td style="text-align: right;">5759.04</td>
+<td style="text-align: right;">15820.03</td>
+<td style="text-align: right;">133711.79</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sanitary_Expense_Per_GDP</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6.60</td>
+<td style="text-align: right;">2.88</td>
+<td style="text-align: right;">1.51</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">6.27</td>
+<td style="text-align: right;">8.42</td>
+<td style="text-align: right;">24.28</td>
+<td style="text-align: left;">▇▇▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fertility_Rate</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.75</td>
+<td style="text-align: right;">1.34</td>
+<td style="text-align: right;">1.10</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">2.28</td>
+<td style="text-align: right;">3.62</td>
+<td style="text-align: right;">7.40</td>
+<td style="text-align: left;">▇▃▂▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Immunization_Rate</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">87.85</td>
+<td style="text-align: right;">13.42</td>
+<td style="text-align: right;">19.00</td>
+<td style="text-align: right;">84.00</td>
+<td style="text-align: right;">92.00</td>
+<td style="text-align: right;">97.00</td>
+<td style="text-align: right;">99.00</td>
+<td style="text-align: left;">▁▁▁▂▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Safe_Water_Access_Percent</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">81.66</td>
+<td style="text-align: right;">21.21</td>
+<td style="text-align: right;">25.61</td>
+<td style="text-align: right;">65.14</td>
+<td style="text-align: right;">90.75</td>
+<td style="text-align: right;">99.65</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: left;">▁▂▂▁▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Urban_Population_Percent</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">58.05</td>
+<td style="text-align: right;">22.83</td>
+<td style="text-align: right;">11.19</td>
+<td style="text-align: right;">40.24</td>
+<td style="text-align: right;">57.96</td>
+<td style="text-align: right;">76.83</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: left;">▅▅▇▇▅</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The average IMR is about 22 around but there is great variation between the third quarter and the maximum IMR, jumping from 34 to 86. There seems to be great variation and range in key variables between countries.</p>
+<div style="text-align: center; margin: 1em 0;">
+  <iframe src="https://0196e215-b119-0a0b-0be6-179545105a82.share.connect.posit.cloud/" style="width: 1100px; height: 800px; border: none;"></iframe>
+</div>
+<p>A majority of countries that experience severe infant mortality are Central and Western Africa and South Asia.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="danl-320-trabelsi-nada-project_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There appears to be a strong, positive relation between fertility rate and IMR. Countries with higher access to safe water typically have lower IMR, while countries with low access to safe water higher IMR.</p>
+</section>
+</section>
+<section id="supervised-machine-learning-analysis" class="level1">
+<h1>Supervised Machine Learning Analysis</h1>
+<p>The dataset was split into train and test datasets in order to evaluate how well the models are able to predict IMR outside of the training data. Root mean squared error (RMSE) and Mean squared error (MAE) will be used to evaluate the models performance to predict IMR. Several regression models are utilized to examine the relationship between selected predictors and IMR.</p>
+<section id="two-way-fixed-effects-model" class="level2">
+<h2 class="anchored" data-anchor-id="two-way-fixed-effects-model">Two-Way Fixed Effects Model</h2>
+<p>A two-way fixed effects model is used because it control for unobserved differences across countries while controlling for yearly trends and/or shocks.</p>
+<p><span class="math display">\[
+Infant_Mortality_Rate_{it} &amp;= \beta_0 + \textbf{X'_{it}\beta} + \alpha_i + \lambda_t + \varepsilon_{it},
+\]</span></p>
+<p>where the outcome is IMR in country <span class="math inline">\(i\)</span> at time <span class="math inline">\(t\)</span>, <span class="math inline">\(\alpha_i\)</span> captures country fixed effects, <span class="math inline">\(\lambda_t\)</span> captures year fixed effects, and <span class="math inline">\(\varepsilon_{it}\)</span> is the error term.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="danl-320-trabelsi-nada-project_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Fertility rate has the strongest association among all predictors, iplying increasing fertility by one, increases the IMR by about 6.5 deaths, holding all other factors constant. GDP per capita is the predictor with the second highest effect, with a coefficient of about 1.2. This means thatthat a 10% increase in GDP per capita is associatied with a 0.12 increase in IMR, holding everything else constant. All the other predictors are near zero indicating they have very weak association with IMR after controlling for the other predictors.</p>
+</section>
+<section id="lasso-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="lasso-linear-regression">Lasso Linear Regression</h2>
+<p>Lasso regression is used to address any multicollinearity as it performs strict variable selection, shrinking less important predictors coefficients toward zero. Country and year dummy variables are used as fixed effects to control for unobserved differences between countries and year trends and/or shocks.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="danl-320-trabelsi-nada-project_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Similar to the two-way fixed effects model, fertility rate has the strongest, positive coefficient, meaning increasing fertility by one, increases the IMR by about 7.8 deaths, holding all other factors constant. The lasso regression has similar results to the first model, however, log(GDP_Per_Capita)’s coefficients are reversed indicating that a 10% increase in GDP per capita is associatied with a 0.1 decrease in IMR, holding everything else constant. All other variables are near zero indicating they are very weak predictors of IMR.</p>
+</section>
+<section id="ridge-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="ridge-linear-regression">Ridge Linear Regression</h2>
+<p>Ridge regression is used to address any multicollinearity by shrinking coefficients, similar to Lasso, but instead stabilizing the shared effect among the highly correlated variables.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="danl-320-trabelsi-nada-project_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Compared to the lasso model, the ridge model shrinks the effect of the fertility rate to about 3.5, meaning increasing fertility by one, increases the IMR by about 3.5 deaths, holding all other factors constant. The effect of the GDP per capita is increased, showing a stronger negative effect on IMR compared to the lasso model. Sanitary expense per GDP is shrunk completely to zero, showing it does not contribute meaningfully when the other factors are considered.</p>
+</section>
+<section id="comparing-the-models" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-the-models">Comparing the Models</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["rmse"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mae"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Lasso regression","2":"1.6242","3":"1.1346"},{"1":"Ridge regression","2":"1.9189","3":"1.3874"},{"1":"2-Way FE regression","2":"10.8359","3":"8.6239"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Lasso had the lowest prediciton error, followed closely by ridge regression. This is because the regularized regression model were able to shrink coefficients, which improves the models performance. The linear regression had the highest error, meaning compared to regularized regression it is not well at generalizing to fit data outside of the training data.</p>
+</section>
+</section>
+<section id="unsupervised-machine-learning-analysis" class="level1">
+<h1>Unsupervised Machine Learning Analysis</h1>
+<p>K-means clustering will be used to group countries together in 4 distinct groups based on similar characterists to create cluster profiles. This will be used to identify distinct patterns among countries with low and high IMR. All observations are standardized because k-means clustering uses distance and variables need to be scaled so variables with larger scales do not dominate.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 5
+  Predictor                     `1`      `2`      `3`     `4`
+  &lt;chr&gt;                       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1 Infant_Mortality_Rate       30.9      3.36    11.7    55.2 
+2 Fertility_Rate               3.34     1.66     2.01    4.79
+3 Air_Pollution               28.6     15.7     21.5    44.4 
+4 Sanitary_Expense_Per_GDP     5.54     8.8      6.99    5.11
+5 Urban_Population_Percent    35.6     84.5     66.3    43.0 
+6 Immunization_Rate           89.8     95.2     92.0    69.0 
+7 Safe_Water_Access_Percent   73.3     99.7     93.2    47.8 
+8 GDP_Per_Capita            2538.   54622.   10649.   1800.  </code></pre>
+</div>
+</div>
 
 
 </section>
-</main></div>
-</div>
- <!-- /main -->
+
+</main> <!-- /main -->
 <script type="text/javascript" src="links.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -360,6 +705,13 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
